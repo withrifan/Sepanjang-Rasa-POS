@@ -17,6 +17,7 @@ public class SepanjangRasaPOS {
         // TODO code application logic here
         System.out.println("Hallo dunia");
         System.out.println("Halo Indonesia");
+        System.out.println("Halo Java");
     }
     
 }
