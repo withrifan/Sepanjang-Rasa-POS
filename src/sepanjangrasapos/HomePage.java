@@ -26,7 +26,17 @@ public class HomePage extends javax.swing.JFrame {
         ImageIcon icon6 = new ImageIcon(getClass().getResource("/BahanSteak/1steak.jpg"));
         ImageIcon icon7 = new ImageIcon(getClass().getResource("/BahanSteak/1tenderloin.jpg"));
         ImageIcon icon8 = new ImageIcon(getClass().getResource("/BahanSteak/1tomahwak.jpg"));
-        
+        ImageIcon icon9 = new ImageIcon(getClass().getResource("/BahanSteak/2Expresso.jpg"));
+        ImageIcon icon10 = new ImageIcon(getClass().getResource("/BahanSteak/2Lemoncucumber.jpg"));
+        ImageIcon icon11 = new ImageIcon(getClass().getResource("/BahanSteak/2perrier.jpg"));
+        ImageIcon icon12 = new ImageIcon(getClass().getResource("/BahanSteak/2strawberrylemonade.jpeg"));
+        ImageIcon icon13 = new ImageIcon(getClass().getResource("/BahanSteak/2virginmojito.jpg"));
+        ImageIcon icon14 = new ImageIcon(getClass().getResource("/BahanSteak/3applecrumble.jpg"));
+        ImageIcon icon15 = new ImageIcon(getClass().getResource("/BahanSteak/3cheesecake.jpeg"));
+        ImageIcon icon16 = new ImageIcon(getClass().getResource("/BahanSteak/3chocolateLavaCake.jpg"));
+        ImageIcon icon17 = new ImageIcon(getClass().getResource("/BahanSteak/3tiramisu.jpg"));
+        ImageIcon icon18 = new ImageIcon(getClass().getResource("/BahanSteak/3crèmebrûlée.jpg"));
+       
         Image img = icon.getImage().getScaledInstance(LogoTop.getWidth(),LogoTop.getHeight(), Image.SCALE_SMOOTH);
         Image img1 = icon1.getImage().getScaledInstance(picMenu1.getWidth(),picMenu1.getHeight(), Image.SCALE_SMOOTH);
         Image img2 = icon2.getImage().getScaledInstance(picMenu2.getWidth(),picMenu2.getHeight(), Image.SCALE_SMOOTH);
@@ -36,6 +46,16 @@ public class HomePage extends javax.swing.JFrame {
         Image img6 = icon6.getImage().getScaledInstance(picMenu6.getWidth(),picMenu6.getHeight(), Image.SCALE_SMOOTH);
         Image img7 = icon7.getImage().getScaledInstance(picMenu7.getWidth(),picMenu7.getHeight(), Image.SCALE_SMOOTH);
         Image img8 = icon8.getImage().getScaledInstance(picMenu8.getWidth(),picMenu8.getHeight(), Image.SCALE_SMOOTH);
+        Image img9 = icon9.getImage().getScaledInstance(picMenu9.getWidth(),picMenu9.getHeight(), Image.SCALE_SMOOTH);
+        Image img10 = icon10.getImage().getScaledInstance(picMenu10.getWidth(),picMenu10.getHeight(), Image.SCALE_SMOOTH);
+        Image img11 = icon11.getImage().getScaledInstance(picMenu11.getWidth(),picMenu11.getHeight(), Image.SCALE_SMOOTH);
+        Image img12 = icon12.getImage().getScaledInstance(picMenu12.getWidth(),picMenu12.getHeight(), Image.SCALE_SMOOTH);
+        Image img13 = icon13.getImage().getScaledInstance(picMenu13.getWidth(),picMenu13.getHeight(), Image.SCALE_SMOOTH);
+        Image img14 = icon14.getImage().getScaledInstance(picMenu14.getWidth(),picMenu14.getHeight(), Image.SCALE_SMOOTH);
+        Image img15 = icon15.getImage().getScaledInstance(picMenu15.getWidth(),picMenu15.getHeight(), Image.SCALE_SMOOTH);
+        Image img16 = icon16.getImage().getScaledInstance(picMenu16.getWidth(),picMenu16.getHeight(), Image.SCALE_SMOOTH);
+        Image img17 = icon17.getImage().getScaledInstance(picMenu17.getWidth(),picMenu17.getHeight(), Image.SCALE_SMOOTH);
+        Image img18 = icon18.getImage().getScaledInstance(picMenu18.getWidth(),picMenu18.getHeight(), Image.SCALE_SMOOTH);
         
         LogoTop.setIcon(new ImageIcon(img));
         picMenu1.setIcon(new ImageIcon(img1));
@@ -46,6 +66,16 @@ public class HomePage extends javax.swing.JFrame {
         picMenu6.setIcon(new ImageIcon(img6));
         picMenu7.setIcon(new ImageIcon(img7));
         picMenu8.setIcon(new ImageIcon(img8));
+        picMenu9.setIcon(new ImageIcon(img9));
+        picMenu10.setIcon(new ImageIcon(img10));
+        picMenu11.setIcon(new ImageIcon(img11));
+        picMenu12.setIcon(new ImageIcon(img12));
+        picMenu13.setIcon(new ImageIcon(img13));
+        picMenu14.setIcon(new ImageIcon(img14));
+        picMenu15.setIcon(new ImageIcon(img15));
+        picMenu16.setIcon(new ImageIcon(img16));
+        picMenu17.setIcon(new ImageIcon(img17));
+        picMenu18.setIcon(new ImageIcon(img18));
     }
     
     public void setTime(){
@@ -2085,4 +2115,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JPanel rightPanel;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
+
+}
+
 }
