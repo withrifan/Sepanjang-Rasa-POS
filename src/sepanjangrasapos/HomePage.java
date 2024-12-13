@@ -2,6 +2,7 @@ package sepanjangrasapos;
 
 import java.awt.Image;
 import java.awt.Menu;
+import java.awt.print.PrinterException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -186,7 +187,7 @@ public class HomePage extends javax.swing.JFrame {
     public void orderList(){
         jTextAreaOrder.setText("************************ Sepanjang Rasa ***********************\n"
                 + "Time: " + Waktu.getText()+ " Date: " + Tanggal.getText()+ "\n"
-                + "******************************************************************" + "\n"
+                + "********************************************************************" + "\n"
                 + "Produk"+"\t\t"+"jumlah"+"\t"+"Total"+"\n");
     }
     
@@ -354,6 +355,11 @@ public class HomePage extends javax.swing.JFrame {
         topPanel.setBackground(new java.awt.Color(255, 255, 255));
         topPanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(159, 159, 158), 2, true));
         topPanel.setPreferredSize(new java.awt.Dimension(1536, 80));
+        topPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                topPanelMouseDragged(evt);
+            }
+        });
 
         Waktu.setFont(new java.awt.Font("Poppins Medium", 0, 15)); // NOI18N
         Waktu.setForeground(new java.awt.Color(159, 159, 158));
@@ -1903,7 +1909,7 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu1ActionPerformed
         int qty = Integer.parseInt(qtyMenu1.getValue().toString());
-        if(qtyIsZero(qty) && addMenu1.isSelected()){
+        if(qtyIsZero(qty) && addMenu1.isSelected()){ 
             x++;
             if(x==1){
                 orderList();
@@ -2274,11 +2280,18 @@ public class HomePage extends javax.swing.JFrame {
         }else{
           outputKembali.setText(outputKembali.getText()+"Rp. "+kembali); 
           btnBayar.setEnabled(false);
+          jTextAreaOrder.setText(jTextAreaOrder.getText() + "\n\n********************************************************************\n" 
+                  + "Subtotal: \t\t\t" + subtotal + "\nPajak 12%: \t\t\t" + pajak + "\nTotal: \t\t\t" + total + "\nTunai: \t\t\t" + tunai 
+                  + "\n*************************** Thank You ***************************\n");
         } 
     }//GEN-LAST:event_btnBayarActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-          
+        try {
+            jTextAreaOrder.print();
+        } catch (PrinterException ex) {
+            Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnPrintActionPerformed
 
     private void outputKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputKembaliActionPerformed
@@ -2288,6 +2301,10 @@ public class HomePage extends javax.swing.JFrame {
     private void inputTunaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTunaiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputTunaiActionPerformed
+
+    private void topPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_topPanelMouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_topPanelMouseDragged
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
