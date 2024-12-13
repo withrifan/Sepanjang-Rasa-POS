@@ -178,7 +178,7 @@ public class HomePage extends javax.swing.JFrame {
         addMenu17.setSelected(false);
         addMenu14.setSelected(false);
         addMenu13.setSelected(false);
-        btnProses.setEnabled(true);
+        btnBayar.setEnabled(true);
         btnPrint.setEnabled(true);
     }
     
@@ -338,7 +338,7 @@ public class HomePage extends javax.swing.JFrame {
         outputKembali = new javax.swing.JTextField();
         btnPrint = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
-        btnProses = new javax.swing.JButton();
+        btnBayar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         outputSubtotal = new javax.swing.JTextField();
@@ -1653,13 +1653,13 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        btnProses.setBackground(new java.awt.Color(252, 128, 25));
-        btnProses.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
-        btnProses.setForeground(new java.awt.Color(255, 255, 255));
-        btnProses.setText("Proses");
-        btnProses.addActionListener(new java.awt.event.ActionListener() {
+        btnBayar.setBackground(new java.awt.Color(252, 128, 25));
+        btnBayar.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        btnBayar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBayar.setText("Bayar");
+        btnBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProsesActionPerformed(evt);
+                btnBayarActionPerformed(evt);
             }
         });
 
@@ -1684,7 +1684,7 @@ public class HomePage extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17)
-                        .addComponent(btnProses, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -1704,7 +1704,7 @@ public class HomePage extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnProses, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15))
         );
 
@@ -2260,7 +2260,7 @@ public class HomePage extends javax.swing.JFrame {
         reset();
     }//GEN-LAST:event_btnResetActionPerformed
 
-    private void btnProsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProsesActionPerformed
+    private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
         tunai = Double.parseDouble(inputTunai.getText());
         kembali = tunai - total;
         
@@ -2268,9 +2268,9 @@ public class HomePage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,("Masukkan nominal tunai"));
         }else{
           outputKembali.setText(outputKembali.getText()+kembali); 
-          btnProses.setEnabled(false);
+          btnBayar.setEnabled(false);
         } 
-    }//GEN-LAST:event_btnProsesActionPerformed
+    }//GEN-LAST:event_btnBayarActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
           
@@ -2335,8 +2335,8 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JCheckBox addMenu7;
     private javax.swing.JCheckBox addMenu8;
     private javax.swing.JCheckBox addMenu9;
+    private javax.swing.JButton btnBayar;
     private javax.swing.JButton btnPrint;
-    private javax.swing.JButton btnProses;
     private javax.swing.JButton btnReset;
     private javax.swing.JTextField inputTunai;
     private javax.swing.JLabel jLabel1;
@@ -2465,7 +2465,5 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JPanel rightPanel;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
-
-}
 
 }

@@ -326,7 +326,6 @@ public class OrderPage extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
                         .addGap(6, 6, 6))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgOrderPageLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addComponent(panelLeftOrderPage, javax.swing.GroupLayout.DEFAULT_SIZE, 817, Short.MAX_VALUE)
                         .addContainerGap())))
         );
