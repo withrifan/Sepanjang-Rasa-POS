@@ -185,10 +185,10 @@ public class HomePage extends javax.swing.JFrame {
     
     //mencetak teks di JTextArea
     public void orderList(){
-        jTextAreaOrder.setText("************************ Sepanjang Rasa ***********************\n"
-                + "Time: " + Waktu.getText()+ " Date: " + Tanggal.getText()+ "\n"
+        jTextAreaOrder.setText("************************ Sepanjang Rasa *************************\n"
+                + "Time: " + Waktu.getText()+ "\n" + "Date: " + Tanggal.getText()+ "\n"
                 + "********************************************************************" + "\n"
-                + "Produk"+"\t\t"+"jumlah"+"\t"+"Total"+"\n");
+                + "Produk"+"\t\t"+"Jumlah"+"\t"+"Total"+"\n");
     }
     
 
@@ -1906,7 +1906,7 @@ public class HomePage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+      
     private void addMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu1ActionPerformed
         int qty = Integer.parseInt(qtyMenu1.getValue().toString());
         if(qtyIsZero(qty) && addMenu1.isSelected()){ 
@@ -2282,7 +2282,7 @@ public class HomePage extends javax.swing.JFrame {
           btnBayar.setEnabled(false);
           jTextAreaOrder.setText(jTextAreaOrder.getText() + "\n\n********************************************************************\n" 
                   + "Subtotal: \t\t\t" + subtotal + "\nPajak 12%: \t\t\t" + pajak + "\nTotal: \t\t\t" + total + "\nTunai: \t\t\t" + tunai 
-                  + "\n*************************** Thank You ***************************\n");
+                  + "\n*************************** Thank You ****************************\n");
         } 
     }//GEN-LAST:event_btnBayarActionPerformed
 
