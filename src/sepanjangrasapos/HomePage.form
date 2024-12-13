@@ -87,6 +87,9 @@
               <Dimension value="[1536, 80]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseDragged" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="topPanelMouseDragged"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
