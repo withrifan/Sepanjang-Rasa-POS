@@ -79,6 +79,7 @@ public class OrderPage extends javax.swing.JFrame {
         outStatus = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/BahanSteak/iconSR.jpg")).getImage());
         setPreferredSize(new java.awt.Dimension(1600, 900));
 
         bgOrderPage.setBackground(new java.awt.Color(245, 245, 245));
