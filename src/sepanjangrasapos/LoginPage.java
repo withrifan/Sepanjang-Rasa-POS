@@ -2,16 +2,16 @@ package sepanjangrasapos;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class LoginPage extends javax.swing.JFrame {
-
+    
     public LoginPage() {
         initComponents();
-        init();
-  
-    }
-    
-    public void init(){
         setImg();
     }
     
@@ -20,7 +20,6 @@ public class LoginPage extends javax.swing.JFrame {
         Image img = icon.getImage().getScaledInstance(logoLogin.getWidth(),logoLogin.getHeight(), Image.SCALE_SMOOTH);
         logoLogin.setIcon(new ImageIcon(img));
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -34,7 +33,7 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         usernameInput = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        passwordInput = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,7 +81,12 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Poppins", 0, 15)); // NOI18N
         jLabel3.setText("Password");
 
-        jPasswordField1.setPreferredSize(new java.awt.Dimension(64, 33));
+        passwordInput.setPreferredSize(new java.awt.Dimension(64, 33));
+        passwordInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordInputActionPerformed(evt);
+            }
+        });
 
         btnLogin.setBackground(new java.awt.Color(252, 128, 25));
         btnLogin.setFont(new java.awt.Font("Poppins SemiBold", 1, 16)); // NOI18N
@@ -110,7 +114,7 @@ public class LoginPage extends javax.swing.JFrame {
                             .addComponent(usernameInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)))
+                            .addComponent(passwordInput, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(129, 129, 129)
                         .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -127,8 +131,8 @@ public class LoginPage extends javax.swing.JFrame {
                 .addComponent(usernameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(jLabel3)
-                .addGap(1, 1, 1)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passwordInput, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(120, Short.MAX_VALUE))
@@ -164,12 +168,46 @@ public class LoginPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
+        String email = usernameInput.getText().trim(); // Ambil input email
+        String password = String.valueOf(passwordInput.getPassword()).trim(); // Ambil input password
+
+        if (email.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Email dan Password tidak boleh kosong!", "Login Gagal", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try (Connection conn = DBConnection.getConnection()) {
+            String query = "SELECT * FROM tb_staff WHERE email = ? AND password = ?";
+            PreparedStatement pst = conn.prepareStatement(query);
+            pst.setString(1, email);
+            pst.setString(2, password);
+
+            ResultSet rs = pst.executeQuery();
+        
+        if (rs.next()) {
+            JOptionPane.showMessageDialog(this, "Login berhasil! Selamat datang, " + rs.getString("nama"), "Login Berhasil", JOptionPane.INFORMATION_MESSAGE);
+            
+            // Berpindah ke halaman berikutnya
+            new HomePage().setVisible(true); // Contoh nama frame berikutnya
+            this.dispose(); // Menutup halaman login
+        } else {
+            JOptionPane.showMessageDialog(this, "Email atau Password salah!", "Login Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+
+        rs.close();
+        pst.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(this, "Koneksi database gagal: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void usernameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameInputActionPerformed
-        // TODO add your handling code here:
+             
     }//GEN-LAST:event_usernameInputActionPerformed
+
+    private void passwordInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordInputActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -215,8 +253,8 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel logoLogin;
+    private javax.swing.JPasswordField passwordInput;
     private javax.swing.JTextField usernameInput;
     // End of variables declaration//GEN-END:variables
 }
