@@ -55,7 +55,7 @@ public class HomePage extends javax.swing.JFrame {
         ImageIcon icon16 = new ImageIcon(getClass().getResource("/BahanSteak/3chocolateLavaCake.jpg"));
         ImageIcon icon17 = new ImageIcon(getClass().getResource("/BahanSteak/3tiramisu.jpg"));
         ImageIcon icon18 = new ImageIcon(getClass().getResource("/BahanSteak/3crèmebrûlée.jpg"));
-        
+       
         Image img = icon.getImage().getScaledInstance(LogoTop.getWidth(),LogoTop.getHeight(), Image.SCALE_SMOOTH);
         Image img1 = icon1.getImage().getScaledInstance(picMenu1.getWidth(),picMenu1.getHeight(), Image.SCALE_SMOOTH);
         Image img2 = icon2.getImage().getScaledInstance(picMenu2.getWidth(),picMenu2.getHeight(), Image.SCALE_SMOOTH);
@@ -2465,4 +2465,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JPanel rightPanel;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
+
+}
+
 }
