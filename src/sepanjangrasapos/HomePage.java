@@ -123,9 +123,9 @@ public class HomePage extends javax.swing.JFrame {
     public void hitung(){
         pajak = subtotal*0.12;
         total = subtotal+pajak;
-        outputSubtotal.setText(String.valueOf(subtotal));
-        outputPPN.setText(String.valueOf(pajak));
-        outputTotal.setText(String.valueOf(total));
+        outputSubtotal.setText("Rp. "+ String.valueOf(subtotal));
+        outputPPN.setText("Rp. "+ String.valueOf(pajak));
+        outputTotal.setText("Rp. "+ String.valueOf(total));
     }
     
     //mereset semua nilai yang ada
@@ -418,7 +418,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblVarian1.setText("Varian");
 
-        opsiMenu1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
         opsiMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu1ActionPerformed(evt);
@@ -484,7 +484,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian2.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian2.setText("Varian");
 
-        opsiMenu2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
         opsiMenu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu2ActionPerformed(evt);
@@ -550,7 +550,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian3.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian3.setText("Varian");
 
-        opsiMenu3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
         opsiMenu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu3ActionPerformed(evt);
@@ -615,7 +615,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian4.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian4.setText("Varian");
 
-        opsiMenu4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
         opsiMenu4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu4ActionPerformed(evt);
@@ -681,7 +681,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian5.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian5.setText("Varian");
 
-        opsiMenu5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
         opsiMenu5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu5ActionPerformed(evt);
@@ -747,7 +747,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian6.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian6.setText("Varian");
 
-        opsiMenu6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
         opsiMenu6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu6ActionPerformed(evt);
@@ -814,7 +814,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblVarian7.setText("Varian");
 
-        opsiMenu7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
         opsiMenu7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu7ActionPerformed(evt);
@@ -880,7 +880,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian8.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian8.setText("Varian");
 
-        opsiMenu8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
         opsiMenu8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu8ActionPerformed(evt);
@@ -1608,23 +1608,28 @@ public class HomePage extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(159, 159, 158), 2));
 
-        jLabel4.setFont(new java.awt.Font("Poppins Medium", 0, 13)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Poppins SemiBold", 0, 13)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Tunai");
         jLabel4.setPreferredSize(new java.awt.Dimension(55, 25));
 
-        jLabel5.setFont(new java.awt.Font("Poppins Medium", 0, 13)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Poppins SemiBold", 0, 13)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("Kembali");
         jLabel5.setPreferredSize(new java.awt.Dimension(55, 25));
 
         inputTunai.setBackground(new java.awt.Color(245, 245, 245));
-        inputTunai.setFont(new java.awt.Font("Poppins Medium", 0, 13)); // NOI18N
+        inputTunai.setFont(new java.awt.Font("Poppins SemiBold", 0, 13)); // NOI18N
         inputTunai.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         inputTunai.setBorder(null);
+        inputTunai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputTunaiActionPerformed(evt);
+            }
+        });
 
         outputKembali.setBackground(new java.awt.Color(245, 245, 245));
-        outputKembali.setFont(new java.awt.Font("Poppins Medium", 0, 13)); // NOI18N
+        outputKembali.setFont(new java.awt.Font("Poppins SemiBold", 0, 13)); // NOI18N
         outputKembali.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         outputKembali.setBorder(null);
         outputKembali.addActionListener(new java.awt.event.ActionListener() {
@@ -1677,8 +1682,8 @@ public class HomePage extends javax.swing.JFrame {
                                 .addGap(65, 65, 65)
                                 .addComponent(inputTunai))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(65, 65, 65)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(56, 56, 56)
                                 .addComponent(outputKembali))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -1724,13 +1729,13 @@ public class HomePage extends javax.swing.JFrame {
         outputPPN.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         outputPPN.setBorder(null);
 
-        jLabel3.setFont(new java.awt.Font("Poppins Medium", 0, 13)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Poppins SemiBold", 0, 13)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("Total");
         jLabel3.setPreferredSize(new java.awt.Dimension(55, 25));
 
         outputTotal.setBackground(new java.awt.Color(245, 245, 245));
-        outputTotal.setFont(new java.awt.Font("Poppins Medium", 0, 13)); // NOI18N
+        outputTotal.setFont(new java.awt.Font("Poppins SemiBold", 0, 13)); // NOI18N
         outputTotal.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         outputTotal.setBorder(null);
         outputTotal.setPreferredSize(new java.awt.Dimension(181, 25));
@@ -1905,7 +1910,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*69000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu1.getText()+"\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu1.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu1.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu1.setSelected(false);
@@ -1929,7 +1934,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*108000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu2.getText()+"\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu2.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu2.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu2.setSelected(false);
@@ -1949,7 +1954,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*241000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu3.getText()+"\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu3.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu3.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu3.setSelected(false);
@@ -1969,7 +1974,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*150000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu4.getText()+"\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu4.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu4.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu4.setSelected(false);
@@ -1989,7 +1994,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*119000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu5.getText()+"\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu5.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu5.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu5.setSelected(false);
@@ -2009,7 +2014,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*116000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu6.getText()+"\t\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu6.getText()+"\t\t"+qty+"\t"+price+"\n     "+opsiMenu6.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu6.setSelected(false);
@@ -2029,7 +2034,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*141000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu7.getText()+"\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu7.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu7.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu7.setSelected(false);
@@ -2049,7 +2054,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*176000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu8.getText()+"\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu8.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu8.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu8.setSelected(false);
@@ -2069,7 +2074,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*45000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu9.getText()+"\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu9.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu9.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu9.setSelected(false);
@@ -2089,7 +2094,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*55000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu10.getText()+"\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu10.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu10.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu10.setSelected(false);
@@ -2109,7 +2114,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*69000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu11.getText()+"\t\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu11.getText()+"\t\t"+qty+"\t"+price+"\n     "+opsiMenu11.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu11.setSelected(false);
@@ -2129,7 +2134,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*57000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu12.getText()+"\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu12.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu11.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu12.setSelected(false);
@@ -2149,7 +2154,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*130000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu18.getText()+"\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu18.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu18.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu18.setSelected(false);
@@ -2169,7 +2174,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*97000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu16.getText()+"\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu16.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu16.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu16.setSelected(false);
@@ -2189,7 +2194,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*81000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu15.getText()+"\t\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu15.getText()+"\t\t"+qty+"\t"+price+"\n     "+opsiMenu15.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu15.setSelected(false);
@@ -2209,7 +2214,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*93000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu17.getText()+"\t\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu17.getText()+"\t\t"+qty+"\t"+price+"\n     "+opsiMenu17.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu17.setSelected(false);
@@ -2229,7 +2234,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*110000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu14.getText()+"\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu14.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu14.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu14.setSelected(false);
@@ -2249,7 +2254,7 @@ public class HomePage extends javax.swing.JFrame {
             }
             double price = qty*55000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu13.getText()+"\t\t"+qty+"\t"+price+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu13.getText()+"\t\t"+qty+"\t"+price+"\n     "+opsiMenu13.getSelectedItem()+"\n");
             hitung();
         }else{
             addMenu13.setSelected(false);
@@ -2267,7 +2272,7 @@ public class HomePage extends javax.swing.JFrame {
         if(tunai==0.0){
             JOptionPane.showMessageDialog(null,("Masukkan nominal tunai"));
         }else{
-          outputKembali.setText(outputKembali.getText()+kembali); 
+          outputKembali.setText(outputKembali.getText()+"Rp. "+kembali); 
           btnBayar.setEnabled(false);
         } 
     }//GEN-LAST:event_btnBayarActionPerformed
@@ -2279,6 +2284,10 @@ public class HomePage extends javax.swing.JFrame {
     private void outputKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputKembaliActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_outputKembaliActionPerformed
+
+    private void inputTunaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTunaiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputTunaiActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
