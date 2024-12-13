@@ -1290,11 +1290,10 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu9">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="1 shot"/>
+                        <StringItem index="1" value="2 shot"/>
+                        <StringItem index="2" value="3 shot"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1405,11 +1404,9 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu10">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Sugar"/>
+                        <StringItem index="1" value="Less Sugar"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1520,11 +1517,9 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu11">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Light"/>
+                        <StringItem index="1" value="Bold"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1635,11 +1630,10 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu12">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="Clasic"/>
+                        <StringItem index="1" value="Mint"/>
+                        <StringItem index="2" value="Sparkling"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1750,11 +1744,10 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu18">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="Vanilla"/>
+                        <StringItem index="1" value="Chocolate"/>
+                        <StringItem index="2" value="Berry"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1865,11 +1858,10 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu16">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="Clasic"/>
+                        <StringItem index="1" value="White Choco"/>
+                        <StringItem index="2" value="Macha"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1981,10 +1973,10 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                        <StringItem index="0" value="Clasic"/>
+                        <StringItem index="1" value="Strawberry"/>
+                        <StringItem index="2" value="Blueberry"/>
+                        <StringItem index="3" value="Chocolate"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -2095,11 +2087,10 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu17">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="Clasic"/>
+                        <StringItem index="1" value="White Choco"/>
+                        <StringItem index="2" value="Macha"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -2210,11 +2201,10 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu14">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="Clasic"/>
+                        <StringItem index="1" value="Caramel"/>
+                        <StringItem index="2" value="Spiced"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -2327,10 +2317,10 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                        <StringItem index="0" value="Lemon"/>
+                        <StringItem index="1" value="Strawberry"/>
+                        <StringItem index="2" value="Rasberry"/>
+                        <StringItem index="3" value="Orange"/>
                       </StringArray>
                     </Property>
                   </Properties>

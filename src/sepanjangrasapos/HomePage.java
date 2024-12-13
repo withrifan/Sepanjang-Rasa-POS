@@ -946,7 +946,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian9.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian9.setText("Varian");
 
-        opsiMenu9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 shot", "2 shot", "3 shot" }));
         opsiMenu9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu9ActionPerformed(evt);
@@ -1012,7 +1012,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian10.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian10.setText("Varian");
 
-        opsiMenu10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sugar", "Less Sugar" }));
         opsiMenu10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu10ActionPerformed(evt);
@@ -1078,7 +1078,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian11.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian11.setText("Varian");
 
-        opsiMenu11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Light", "Bold" }));
         opsiMenu11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu11ActionPerformed(evt);
@@ -1144,7 +1144,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian12.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian12.setText("Varian");
 
-        opsiMenu12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clasic", "Mint", "Sparkling" }));
         opsiMenu12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu12ActionPerformed(evt);
@@ -1210,7 +1210,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian18.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian18.setText("Varian");
 
-        opsiMenu18.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu18.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vanilla", "Chocolate", "Berry" }));
         opsiMenu18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu18ActionPerformed(evt);
@@ -1276,7 +1276,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian16.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian16.setText("Varian");
 
-        opsiMenu16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clasic", "White Choco", "Macha" }));
         opsiMenu16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu16ActionPerformed(evt);
@@ -1342,7 +1342,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian15.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian15.setText("Varian");
 
-        opsiMenu15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clasic", "Strawberry", "Blueberry", "Chocolate" }));
         opsiMenu15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu15ActionPerformed(evt);
@@ -1408,7 +1408,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian17.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian17.setText("Varian");
 
-        opsiMenu17.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu17.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clasic", "White Choco", "Macha" }));
         opsiMenu17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu17ActionPerformed(evt);
@@ -1474,7 +1474,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian14.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian14.setText("Varian");
 
-        opsiMenu14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clasic", "Caramel", "Spiced" }));
         opsiMenu14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu14ActionPerformed(evt);
@@ -1541,7 +1541,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblVarian13.setText("Varian");
 
-        opsiMenu13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        opsiMenu13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lemon", "Strawberry", "Rasberry", "Orange" }));
         opsiMenu13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu13ActionPerformed(evt);
