@@ -362,11 +362,12 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu1">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="5">
+                        <StringItem index="0" value="Rare"/>
+                        <StringItem index="1" value="Medium rare"/>
+                        <StringItem index="2" value="Medium"/>
+                        <StringItem index="3" value="Medium well"/>
+                        <StringItem index="4" value="Welldone"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -477,11 +478,12 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu2">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="5">
+                        <StringItem index="0" value="Rare"/>
+                        <StringItem index="1" value="Medium rare"/>
+                        <StringItem index="2" value="Medium"/>
+                        <StringItem index="3" value="Medium well"/>
+                        <StringItem index="4" value="Welldone"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -591,11 +593,12 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu3">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="5">
+                        <StringItem index="0" value="Rare"/>
+                        <StringItem index="1" value="Medium rare"/>
+                        <StringItem index="2" value="Medium"/>
+                        <StringItem index="3" value="Medium well"/>
+                        <StringItem index="4" value="Welldone"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -706,11 +709,12 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu4">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="5">
+                        <StringItem index="0" value="Rare"/>
+                        <StringItem index="1" value="Medium rare"/>
+                        <StringItem index="2" value="Medium"/>
+                        <StringItem index="3" value="Medium well"/>
+                        <StringItem index="4" value="Welldone"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -821,11 +825,12 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu5">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="5">
+                        <StringItem index="0" value="Rare"/>
+                        <StringItem index="1" value="Medium rare"/>
+                        <StringItem index="2" value="Medium"/>
+                        <StringItem index="3" value="Medium well"/>
+                        <StringItem index="4" value="Welldone"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -936,11 +941,12 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu6">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="5">
+                        <StringItem index="0" value="Rare"/>
+                        <StringItem index="1" value="Medium rare"/>
+                        <StringItem index="2" value="Medium"/>
+                        <StringItem index="3" value="Medium well"/>
+                        <StringItem index="4" value="Welldone"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1052,11 +1058,12 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu7">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="5">
+                        <StringItem index="0" value="Rare"/>
+                        <StringItem index="1" value="Medium rare"/>
+                        <StringItem index="2" value="Medium"/>
+                        <StringItem index="3" value="Medium well"/>
+                        <StringItem index="4" value="Welldone"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1167,11 +1174,12 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu8">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="5">
+                        <StringItem index="0" value="Rare"/>
+                        <StringItem index="1" value="Medium rare"/>
+                        <StringItem index="2" value="Medium"/>
+                        <StringItem index="3" value="Medium well"/>
+                        <StringItem index="4" value="Welldone"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -2463,8 +2471,8 @@
                                               <Component id="inputTunai" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
-                                              <Component id="jLabel5" min="-2" pref="55" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                                              <Component id="jLabel5" min="-2" pref="64" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                                               <Component id="outputKembali" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -2510,7 +2518,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel4">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Poppins Medium" size="13" style="0"/>
+                          <Font name="Poppins SemiBold" size="13" style="0"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="text" type="java.lang.String" value="Tunai"/>
@@ -2522,7 +2530,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel5">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Poppins Medium" size="13" style="0"/>
+                          <Font name="Poppins SemiBold" size="13" style="0"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="text" type="java.lang.String" value="Kembali"/>
@@ -2537,13 +2545,16 @@
                           <Color blue="f5" green="f5" red="f5" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Poppins Medium" size="13" style="0"/>
+                          <Font name="Poppins SemiBold" size="13" style="0"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="null"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputTunaiActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="outputKembali">
                       <Properties>
@@ -2551,7 +2562,7 @@
                           <Color blue="f5" green="f5" red="f5" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Poppins Medium" size="13" style="0"/>
+                          <Font name="Poppins SemiBold" size="13" style="0"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2658,7 +2669,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel3">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Medium" size="13" style="0"/>
+                      <Font name="Poppins SemiBold" size="13" style="0"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="text" type="java.lang.String" value="Total"/>
@@ -2673,7 +2684,7 @@
                       <Color blue="f5" green="f5" red="f5" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Medium" size="13" style="0"/>
+                      <Font name="Poppins SemiBold" size="13" style="0"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
