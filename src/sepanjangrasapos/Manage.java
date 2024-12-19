@@ -8,6 +8,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import java.sql.*;
+import javax.swing.table.DefaultTableModel;
 
 public class Manage extends javax.swing.JFrame {
 
@@ -15,8 +17,9 @@ public class Manage extends javax.swing.JFrame {
         initComponents();
         setTime();
         setImg();
+        loadStaffData(); // Panggil metode untuk memuat data
         
-        setExtendedState(JFrame.MAXIMIZED_BOTH);// mengatur agar frame ditampilkan fullscreen 
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);// mengatur agar frame ditampilkan fullscreen 
         // setUndecorated(true);// untuk menghapus border dan title dari frame
     }
     
@@ -47,6 +50,40 @@ public class Manage extends javax.swing.JFrame {
         LogoTop.setIcon(new ImageIcon(img));
     }
 
+    // Metode untuk memuat data dari database ke JTable
+    private void loadStaffData() {
+        DefaultTableModel model = (DefaultTableModel) jTableManageStaff.getModel();
+        model.setRowCount(0); // Reset data tabel
+        
+        String query = "SELECT * FROM tb_staff"; // Query untuk mengambil semua data
+
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            
+            while (rs.next()) {
+                Object[] row = {
+                    rs.getInt("id_staff"),
+                    rs.getString("nama"),
+                    rs.getString("jabatan"),
+                    rs.getString("jk"),
+                    rs.getString("telpon"),
+                    rs.getString("email"),
+                    rs.getString("password"),
+                   // rs.getString("alamat")
+                };
+                model.addRow(row); // Tambahkan data ke JTable
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Error loading data: " + e.getMessage(),
+                "Database Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -57,30 +94,33 @@ public class Manage extends javax.swing.JFrame {
         Waktu = new javax.swing.JLabel();
         Tanggal = new javax.swing.JLabel();
         panelLeftOrderPage = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        manageStaff_Label = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        idstaff_Label = new javax.swing.JLabel();
+        idstaff_Field = new javax.swing.JTextField();
+        jeniskelamin_Label = new javax.swing.JLabel();
+        jeniskelamin_FieldCombo = new javax.swing.JComboBox<>();
+        alamat_Label = new javax.swing.JLabel();
+        alamat_Field = new javax.swing.JTextField();
+        telpon_Label = new javax.swing.JLabel();
+        telpon_Field = new javax.swing.JTextField();
+        jabatan_Label = new javax.swing.JLabel();
+        jabatan_FieldCombo = new javax.swing.JComboBox<>();
+        password_Label = new javax.swing.JLabel();
+        password_Field = new javax.swing.JPasswordField();
+        simpanButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
+        detailStaff_Label = new javax.swing.JLabel();
+        email_Field = new javax.swing.JTextField();
+        email_Label = new javax.swing.JLabel();
+        nama_Label = new javax.swing.JLabel();
+        nama_Field = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableManageStaff = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/BahanSteak/iconSR.jpg")).getImage());
 
         bgOrderPage.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -136,94 +176,116 @@ public class Manage extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jLabel1.setFont(new java.awt.Font("Poppins Black", 1, 28)); // NOI18N
-        jLabel1.setText("Manage Staff");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Id Staff", "Nama", "JK", "Alamat", "Telpon", "Email", "Jabatan", "Password"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        manageStaff_Label.setFont(new java.awt.Font("Poppins Black", 1, 28)); // NOI18N
+        manageStaff_Label.setText("Manage Staff");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(159, 159, 158), 2));
         jPanel1.setPreferredSize(new java.awt.Dimension(340, 500));
         jPanel1.setRequestFocusEnabled(false);
 
-        jLabel2.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
-        jLabel2.setText("Nama");
+        idstaff_Label.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        idstaff_Label.setText("ID Staff");
 
-        jTextField1.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        jTextField1.setPreferredSize(new java.awt.Dimension(64, 30));
+        idstaff_Field.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        idstaff_Field.setPreferredSize(new java.awt.Dimension(64, 30));
 
-        jLabel3.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
-        jLabel3.setText("Jenis kelamin");
+        jeniskelamin_Label.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        jeniskelamin_Label.setText("Jenis kelamin");
 
-        jComboBox1.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-laki", "Perempuan", "Undefined" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(150, 30));
-
-        jLabel4.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
-        jLabel4.setText("Alamat");
-
-        jTextField3.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        jTextField3.setPreferredSize(new java.awt.Dimension(64, 30));
-
-        jLabel5.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
-        jLabel5.setText("Telpon");
-
-        jTextField4.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        jTextField4.setPreferredSize(new java.awt.Dimension(64, 30));
-
-        jLabel6.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
-        jLabel6.setText("Email");
-
-        jTextField5.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        jTextField5.setPreferredSize(new java.awt.Dimension(314, 30));
-
-        jLabel7.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
-        jLabel7.setText("Jabatan");
-
-        jComboBox2.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manager", "Kepala koki", "Koki", "Kasir", "Cleaner" }));
-        jComboBox2.setPreferredSize(new java.awt.Dimension(150, 30));
-
-        jLabel8.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
-        jLabel8.setText("Password");
-
-        jPasswordField1.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        jPasswordField1.setPreferredSize(new java.awt.Dimension(314, 30));
-
-        jButton1.setBackground(new java.awt.Color(91, 121, 255));
-        jButton1.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jeniskelamin_FieldCombo.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        jeniskelamin_FieldCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-Laki", "Perempuan" }));
+        jeniskelamin_FieldCombo.setPreferredSize(new java.awt.Dimension(150, 30));
+        jeniskelamin_FieldCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jeniskelamin_FieldComboActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(9, 170, 41));
-        jButton2.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Update");
+        alamat_Label.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        alamat_Label.setText("Alamat");
 
-        jButton3.setBackground(new java.awt.Color(255, 9, 9));
-        jButton3.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Delete");
+        alamat_Field.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        alamat_Field.setPreferredSize(new java.awt.Dimension(64, 30));
+        alamat_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alamat_FieldActionPerformed(evt);
+            }
+        });
 
-        jLabel9.setFont(new java.awt.Font("Poppins", 1, 27)); // NOI18N
-        jLabel9.setText("Detail staff");
+        telpon_Label.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        telpon_Label.setText("Telpon");
+
+        telpon_Field.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        telpon_Field.setPreferredSize(new java.awt.Dimension(64, 30));
+        telpon_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telpon_FieldActionPerformed(evt);
+            }
+        });
+
+        jabatan_Label.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        jabatan_Label.setText("Jabatan");
+
+        jabatan_FieldCombo.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        jabatan_FieldCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manager", "Kepala koki", "Koki", "Kasir", "Cleaner" }));
+        jabatan_FieldCombo.setPreferredSize(new java.awt.Dimension(150, 30));
+        jabatan_FieldCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jabatan_FieldComboActionPerformed(evt);
+            }
+        });
+
+        password_Label.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        password_Label.setText("Password");
+
+        password_Field.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        password_Field.setPreferredSize(new java.awt.Dimension(314, 30));
+
+        simpanButton.setBackground(new java.awt.Color(91, 121, 255));
+        simpanButton.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        simpanButton.setForeground(new java.awt.Color(255, 255, 255));
+        simpanButton.setText("Save");
+        simpanButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpanButtonActionPerformed(evt);
+            }
+        });
+
+        updateButton.setBackground(new java.awt.Color(9, 170, 41));
+        updateButton.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(255, 255, 255));
+        updateButton.setText("Update");
+
+        deleteButton.setBackground(new java.awt.Color(255, 9, 9));
+        deleteButton.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
+        deleteButton.setForeground(new java.awt.Color(255, 255, 255));
+        deleteButton.setText("Delete");
+
+        detailStaff_Label.setFont(new java.awt.Font("Poppins", 1, 27)); // NOI18N
+        detailStaff_Label.setText("Detail staff");
+
+        email_Field.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        email_Field.setPreferredSize(new java.awt.Dimension(314, 30));
+        email_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                email_FieldActionPerformed(evt);
+            }
+        });
+
+        email_Label.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        email_Label.setText("Email");
+
+        nama_Label.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        nama_Label.setText("Nama");
+
+        nama_Field.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        nama_Field.setPreferredSize(new java.awt.Dimension(64, 30));
+        nama_Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nama_FieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -232,69 +294,122 @@ public class Manage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(alamat_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(alamat_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jeniskelamin_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jeniskelamin_FieldCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idstaff_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idstaff_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telpon_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telpon_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(simpanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(detailStaff_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nama_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nama_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jabatan_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jabatan_FieldCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(email_Field, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(email_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(password_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(password_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {nama_Field, nama_Label});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {idstaff_Field, idstaff_Label});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jeniskelamin_FieldCombo, jeniskelamin_Label});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {alamat_Field, alamat_Label, telpon_Field, telpon_Label});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {email_Field, email_Label, password_Field, password_Label});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(detailStaff_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(idstaff_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(idstaff_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nama_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nama_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jabatan_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jabatan_FieldCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jeniskelamin_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jeniskelamin_FieldCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(telpon_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(telpon_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(email_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(email_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addComponent(password_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(password_Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(alamat_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(alamat_Field, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                    .addComponent(simpanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {idstaff_Field, idstaff_Label});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {nama_Field, nama_Label});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jeniskelamin_FieldCombo, jeniskelamin_Label});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {alamat_Label, telpon_Field, telpon_Label});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {email_Field, email_Label, password_Field, password_Label});
+
+        jTableManageStaff.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID Staff", "Nama", "Jabatan", "Jenis Kelamin", "Telpon", "Email", "Password", "Alamat"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableManageStaff);
 
         javax.swing.GroupLayout bgOrderPageLayout = new javax.swing.GroupLayout(bgOrderPage);
         bgOrderPage.setLayout(bgOrderPageLayout);
@@ -304,7 +419,7 @@ public class Manage extends javax.swing.JFrame {
                 .addComponent(panelLeftOrderPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manageStaff_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(bgOrderPageLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1081, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -319,12 +434,12 @@ public class Manage extends javax.swing.JFrame {
                 .addGroup(bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgOrderPageLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(manageStaff_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)
                             .addComponent(jScrollPane1)))
-                    .addComponent(panelLeftOrderPage, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE))
+                    .addComponent(panelLeftOrderPage, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
 
@@ -344,48 +459,80 @@ public class Manage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_simpanButtonActionPerformed
+
+    private void jeniskelamin_FieldComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jeniskelamin_FieldComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jeniskelamin_FieldComboActionPerformed
+
+    private void alamat_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alamat_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alamat_FieldActionPerformed
+
+    private void nama_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nama_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nama_FieldActionPerformed
+
+    private void jabatan_FieldComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jabatan_FieldComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jabatan_FieldComboActionPerformed
+
+    private void telpon_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telpon_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telpon_FieldActionPerformed
+
+    private void email_FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email_FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_email_FieldActionPerformed
+
 
     public static void main(String args[]) {
-       
+               
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Manage().setVisible(true);
+                Manage manage = new Manage();
+                manage.pack(); // Menyusun ukuran jendela agar sesuai dengan komponen yang ada
+                manage.setLocationRelativeTo(null); // Menempatkan jendela di tengah layar
+                manage.setVisible(true); // Menampilkan jendela
             }
         });
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LogoTop;
     private javax.swing.JLabel Tanggal;
     private javax.swing.JLabel Waktu;
+    private javax.swing.JTextField alamat_Field;
+    private javax.swing.JLabel alamat_Label;
     private javax.swing.JPanel bgOrderPage;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton deleteButton;
+    private javax.swing.JLabel detailStaff_Label;
+    private javax.swing.JTextField email_Field;
+    private javax.swing.JLabel email_Label;
+    private javax.swing.JTextField idstaff_Field;
+    private javax.swing.JLabel idstaff_Label;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTable jTableManageStaff;
+    private javax.swing.JComboBox<String> jabatan_FieldCombo;
+    private javax.swing.JLabel jabatan_Label;
+    private javax.swing.JComboBox<String> jeniskelamin_FieldCombo;
+    private javax.swing.JLabel jeniskelamin_Label;
+    private javax.swing.JLabel manageStaff_Label;
+    private javax.swing.JTextField nama_Field;
+    private javax.swing.JLabel nama_Label;
     private javax.swing.JPanel panelLeftOrderPage;
     private javax.swing.JPanel panelTopOrderPage;
+    private javax.swing.JPasswordField password_Field;
+    private javax.swing.JLabel password_Label;
+    private javax.swing.JButton simpanButton;
+    private javax.swing.JTextField telpon_Field;
+    private javax.swing.JLabel telpon_Label;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

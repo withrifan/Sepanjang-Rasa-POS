@@ -9,6 +9,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class HomePage extends javax.swing.JFrame {
 
@@ -185,10 +189,10 @@ public class HomePage extends javax.swing.JFrame {
     
     //mencetak teks di JTextArea
     public void orderList(){
-        jTextAreaOrder.setText("************************ Sepanjang Rasa *************************\n"
-                + "Time: " + Waktu.getText()+ "\n" + "Date: " + Tanggal.getText()+ "\n"
+        jTextAreaOrder.setText("************************ Sepanjang Rasa ***********************\n"
+                + "Time: " + Waktu.getText()+ " Date: " + Tanggal.getText()+ "\n"
                 + "********************************************************************" + "\n"
-                + "Produk"+"\t\t"+"Jumlah"+"\t"+"Total"+"\n");
+                + "Produk"+"\t\t"+"jumlah"+"\t"+"Total"+"\n");
     }
     
 
@@ -1151,7 +1155,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian12.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian12.setText("Varian");
 
-        opsiMenu12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Classic", "Mint", "Sparkling" }));
+        opsiMenu12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clasic", "Mint", "Sparkling" }));
         opsiMenu12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu12ActionPerformed(evt);
@@ -1283,7 +1287,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian16.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian16.setText("Varian");
 
-        opsiMenu16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Classic", "White Choco", "Macha" }));
+        opsiMenu16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clasic", "White Choco", "Macha" }));
         opsiMenu16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu16ActionPerformed(evt);
@@ -1349,7 +1353,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian15.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian15.setText("Varian");
 
-        opsiMenu15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Classic", "Strawberry", "Blueberry", "Chocolate" }));
+        opsiMenu15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clasic", "Strawberry", "Blueberry", "Chocolate" }));
         opsiMenu15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu15ActionPerformed(evt);
@@ -1415,7 +1419,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian17.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian17.setText("Varian");
 
-        opsiMenu17.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Classic", "White Choco", "Macha" }));
+        opsiMenu17.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clasic", "White Choco", "Macha" }));
         opsiMenu17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu17ActionPerformed(evt);
@@ -1481,7 +1485,7 @@ public class HomePage extends javax.swing.JFrame {
         lblVarian14.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
         lblVarian14.setText("Varian");
 
-        opsiMenu14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Classic", "Caramel", "Spiced" }));
+        opsiMenu14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clasic", "Caramel", "Spiced" }));
         opsiMenu14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu14ActionPerformed(evt);
@@ -1907,7 +1911,7 @@ public class HomePage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-      
+
     private void addMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu1ActionPerformed
         int qty = Integer.parseInt(qtyMenu1.getValue().toString());
         if(qtyIsZero(qty) && addMenu1.isSelected()){ 
@@ -2283,7 +2287,7 @@ public class HomePage extends javax.swing.JFrame {
           btnBayar.setEnabled(false);
           jTextAreaOrder.setText(jTextAreaOrder.getText() + "\n\n********************************************************************\n" 
                   + "Subtotal: \t\t\t" + subtotal + "\nPajak 12%: \t\t\t" + pajak + "\nTotal: \t\t\t" + total + "\nTunai: \t\t\t" + tunai 
-                  + "\n*************************** Thank You ****************************\n");
+                  + "\n*************************** Thank You ***************************\n");
         } 
     }//GEN-LAST:event_btnBayarActionPerformed
 
@@ -2335,7 +2339,10 @@ public class HomePage extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new HomePage().setVisible(true);
+                HomePage homepage = new HomePage();
+                homepage.pack(); // Menyusun ukuran jendela agar sesuai dengan komponen yang ada
+                homepage.setLocationRelativeTo(null); // Menempatkan jendela di tengah layar
+                homepage.setVisible(true); // Menampilkan jendela
             }
         });
     }

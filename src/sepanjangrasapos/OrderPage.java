@@ -80,7 +80,6 @@ public class OrderPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/BahanSteak/iconSR.jpg")).getImage());
-        setPreferredSize(new java.awt.Dimension(1600, 900));
 
         bgOrderPage.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -385,11 +384,15 @@ public class OrderPage extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(OrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
+        
+         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new OrderPage().setVisible(true);
+                OrderPage orderpage = new OrderPage();
+                orderpage.pack(); // Menyusun ukuran jendela agar sesuai dengan komponen yang ada
+                orderpage.setLocationRelativeTo(null); // Menempatkan jendela di tengah layar
+                orderpage.setVisible(true); // Menampilkan jendela
             }
         });
     }

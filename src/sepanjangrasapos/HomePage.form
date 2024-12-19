@@ -1637,7 +1637,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
-                        <StringItem index="0" value="Classic"/>
+                        <StringItem index="0" value="Clasic"/>
                         <StringItem index="1" value="Mint"/>
                         <StringItem index="2" value="Sparkling"/>
                       </StringArray>
@@ -1865,7 +1865,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
-                        <StringItem index="0" value="Classic"/>
+                        <StringItem index="0" value="Clasic"/>
                         <StringItem index="1" value="White Choco"/>
                         <StringItem index="2" value="Macha"/>
                       </StringArray>
@@ -1979,7 +1979,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
-                        <StringItem index="0" value="Classic"/>
+                        <StringItem index="0" value="Clasic"/>
                         <StringItem index="1" value="Strawberry"/>
                         <StringItem index="2" value="Blueberry"/>
                         <StringItem index="3" value="Chocolate"/>
@@ -2094,7 +2094,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
-                        <StringItem index="0" value="Classic"/>
+                        <StringItem index="0" value="Clasic"/>
                         <StringItem index="1" value="White Choco"/>
                         <StringItem index="2" value="Macha"/>
                       </StringArray>
@@ -2208,7 +2208,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
-                        <StringItem index="0" value="Classic"/>
+                        <StringItem index="0" value="Clasic"/>
                         <StringItem index="1" value="Caramel"/>
                         <StringItem index="2" value="Spiced"/>
                       </StringArray>
