@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
@@ -48,41 +49,81 @@ public class Manage extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(getClass().getResource("/BahanSteak/LogoSepanjangRasa2.png"));
         Image img = icon.getImage().getScaledInstance(LogoTop.getWidth(),LogoTop.getHeight(), Image.SCALE_SMOOTH);
         LogoTop.setIcon(new ImageIcon(img));
-    }
-
+    }  
+    
     // Metode untuk memuat data dari database ke JTable
     private void loadStaffData() {
-        DefaultTableModel model = (DefaultTableModel) jTableManageStaff.getModel();
-        model.setRowCount(0); // Reset data tabel
+        //DefaultTableModel model = (DefaultTableModel) jTableManageStaff.getModel();
+        DefaultTableModel model = new DefaultTableModel(
+            new String[]{"ID Staff", "Nama", "Jabatan", "Jenis Kelamin", "Telpon", "Email", "Password", "Alamat"}, 0
+        );
+        jTableManageStaff.setModel(model);
         
-        String query = "SELECT * FROM tb_staff"; // Query untuk mengambil semua data
+        model.setRowCount(0); // Reset data tabel
+      
+        try {
+            String query = "SELECT * FROM tb_staff";
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
 
+        while (rs.next()) {
+            model.addRow(new Object[]{
+                rs.getInt("id_staff"),
+                rs.getString("nama"),
+                rs.getString("jabatan"),
+                rs.getString("jk"),
+                rs.getString("telpon"),
+                rs.getString("email"),
+                rs.getString("password"),
+                rs.getString("alamat")
+            });
+        }
+
+        rs.close();
+        pst.close();
+        conn.close();
+    } catch (SQLException e) {
+        System.err.println("Gagal memuat data: " + e.getMessage());
+    }
+}
+    
+    private void saveStaffData() {
+        String id = idstaff_Field.getText();
+        String nama = nama_Field.getText();
+        String jabatan = jabatan_FieldCombo.getSelectedItem().toString();
+        String jk = jeniskelamin_FieldCombo.getSelectedItem().toString();
+        String telpon = telpon_Field.getText();
+        String email = email_Field.getText();
+        String password = password_Field.getText();
+        String alamat = alamat_Field.getText();
+        
+        String query = "INSERT INTO tb_staff (id_staff, nama, jabatan, jk, telpon, email, password, alamat) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        
         try (Connection conn = DBConnection.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
             
-            while (rs.next()) {
-                Object[] row = {
-                    rs.getInt("id_staff"),
-                    rs.getString("nama"),
-                    rs.getString("jabatan"),
-                    rs.getString("jk"),
-                    rs.getString("telpon"),
-                    rs.getString("email"),
-                    rs.getString("password"),
-                   // rs.getString("alamat")
-                };
-                model.addRow(row); // Tambahkan data ke JTable
-            }
+            // Mengatur parameter dalam query
+            pstmt.setString(1, id);
+            pstmt.setString(2, nama);
+            pstmt.setString(3, jabatan);
+            pstmt.setString(4, jk);
+            pstmt.setString(5, telpon);
+            pstmt.setString(6, email);
+            pstmt.setString(7, password);
+            pstmt.setString(8, alamat);
+
+            pstmt.executeUpdate(); // Eksekusi query INSERT
+            JOptionPane.showMessageDialog(this, "Data berhasil disimpan!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadStaffData(); // Refresh JTable setelah menyimpan data
 
         } catch (SQLException e) {
             e.printStackTrace();
-            javax.swing.JOptionPane.showMessageDialog(this, 
-                "Error loading data: " + e.getMessage(),
-                "Database Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, 
+                "Error saving data: " + e.getMessage(),
+                "Database Error", JOptionPane.ERROR_MESSAGE);
         }
-    }
-    
+    }  
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -94,6 +135,9 @@ public class Manage extends javax.swing.JFrame {
         Waktu = new javax.swing.JLabel();
         Tanggal = new javax.swing.JLabel();
         panelLeftOrderPage = new javax.swing.JPanel();
+        btnHome = new javax.swing.JButton();
+        btnOrder = new javax.swing.JButton();
+        btnStaff = new javax.swing.JButton();
         manageStaff_Label = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         idstaff_Label = new javax.swing.JLabel();
@@ -121,6 +165,7 @@ public class Manage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/BahanSteak/iconSR.jpg")).getImage());
+        setPreferredSize(new java.awt.Dimension(1530, 845));
 
         bgOrderPage.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -165,15 +210,51 @@ public class Manage extends javax.swing.JFrame {
         panelLeftOrderPage.setBackground(new java.awt.Color(255, 255, 255));
         panelLeftOrderPage.setPreferredSize(new java.awt.Dimension(80, 710));
 
+        btnHome.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
+        btnHome.setText("Home");
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+
+        btnOrder.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
+        btnOrder.setText("Order");
+        btnOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrderActionPerformed(evt);
+            }
+        });
+
+        btnStaff.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
+        btnStaff.setText("Staff");
+        btnStaff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStaffActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLeftOrderPageLayout = new javax.swing.GroupLayout(panelLeftOrderPage);
         panelLeftOrderPage.setLayout(panelLeftOrderPageLayout);
         panelLeftOrderPageLayout.setHorizontalGroup(
             panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLeftOrderPageLayout.createSequentialGroup()
+                .addGroup(panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                    .addComponent(btnOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnStaff, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         panelLeftOrderPageLayout.setVerticalGroup(
             panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelLeftOrderPageLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(btnHome)
+                .addGap(40, 40, 40)
+                .addComponent(btnOrder)
+                .addGap(40, 40, 40)
+                .addComponent(btnStaff)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         manageStaff_Label.setFont(new java.awt.Font("Poppins Black", 1, 28)); // NOI18N
@@ -228,7 +309,7 @@ public class Manage extends javax.swing.JFrame {
         jabatan_Label.setText("Jabatan");
 
         jabatan_FieldCombo.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        jabatan_FieldCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manager", "Kepala koki", "Koki", "Kasir", "Cleaner" }));
+        jabatan_FieldCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manager", "Chef", "Kasir", "Cleaner", "Admin" }));
         jabatan_FieldCombo.setPreferredSize(new java.awt.Dimension(150, 30));
         jabatan_FieldCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,6 +337,11 @@ public class Manage extends javax.swing.JFrame {
         updateButton.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
         updateButton.setForeground(new java.awt.Color(255, 255, 255));
         updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         deleteButton.setBackground(new java.awt.Color(255, 9, 9));
         deleteButton.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
@@ -395,6 +481,19 @@ public class Manage extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
@@ -460,7 +559,7 @@ public class Manage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanButtonActionPerformed
-        // TODO add your handling code here:
+        saveStaffData();
     }//GEN-LAST:event_simpanButtonActionPerformed
 
     private void jeniskelamin_FieldComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jeniskelamin_FieldComboActionPerformed
@@ -487,6 +586,24 @@ public class Manage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_email_FieldActionPerformed
 
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        new HomePage().setVisible(true);   
+        dispose(); 
+    }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+        new OrderPage().setVisible(true);   
+        dispose();
+    }//GEN-LAST:event_btnOrderActionPerformed
+
+    private void btnStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStaffActionPerformed
+        
+    }//GEN-LAST:event_btnStaffActionPerformed
+
 
     public static void main(String args[]) {
                
@@ -510,6 +627,9 @@ public class Manage extends javax.swing.JFrame {
     private javax.swing.JTextField alamat_Field;
     private javax.swing.JLabel alamat_Label;
     private javax.swing.JPanel bgOrderPage;
+    private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnOrder;
+    private javax.swing.JButton btnStaff;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel detailStaff_Label;
     private javax.swing.JTextField email_Field;

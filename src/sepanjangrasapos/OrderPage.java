@@ -58,6 +58,9 @@ public class OrderPage extends javax.swing.JFrame {
         Waktu = new javax.swing.JLabel();
         Tanggal = new javax.swing.JLabel();
         panelLeftOrderPage = new javax.swing.JPanel();
+        btnHome = new javax.swing.JButton();
+        btnOrder = new javax.swing.JButton();
+        btnstaff = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -124,15 +127,51 @@ public class OrderPage extends javax.swing.JFrame {
         panelLeftOrderPage.setBackground(new java.awt.Color(255, 255, 255));
         panelLeftOrderPage.setPreferredSize(new java.awt.Dimension(80, 710));
 
+        btnHome.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
+        btnHome.setText("Home");
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+
+        btnOrder.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
+        btnOrder.setText("Order");
+        btnOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrderActionPerformed(evt);
+            }
+        });
+
+        btnstaff.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
+        btnstaff.setText("Staff");
+        btnstaff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnstaffActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLeftOrderPageLayout = new javax.swing.GroupLayout(panelLeftOrderPage);
         panelLeftOrderPage.setLayout(panelLeftOrderPageLayout);
         panelLeftOrderPageLayout.setHorizontalGroup(
             panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLeftOrderPageLayout.createSequentialGroup()
+                .addGroup(panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                    .addComponent(btnOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnstaff, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         panelLeftOrderPageLayout.setVerticalGroup(
             panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(panelLeftOrderPageLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(btnHome)
+                .addGap(40, 40, 40)
+                .addComponent(btnOrder)
+                .addGap(40, 40, 40)
+                .addComponent(btnstaff)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Poppins Black", 1, 28)); // NOI18N
@@ -358,6 +397,20 @@ public class OrderPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_outSubtotalActionPerformed
 
+    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOrderActionPerformed
+
+    private void btnstaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnstaffActionPerformed
+        new Manage().setVisible(true);   
+        dispose();
+    }//GEN-LAST:event_btnstaffActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        new HomePage().setVisible(true);   
+        dispose();
+    }//GEN-LAST:event_btnHomeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -402,6 +455,9 @@ public class OrderPage extends javax.swing.JFrame {
     private javax.swing.JLabel Tanggal;
     private javax.swing.JLabel Waktu;
     private javax.swing.JPanel bgOrderPage;
+    private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnOrder;
+    private javax.swing.JButton btnstaff;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

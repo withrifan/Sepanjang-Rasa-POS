@@ -206,6 +206,9 @@ public class HomePage extends javax.swing.JFrame {
         Tanggal = new javax.swing.JLabel();
         LogoTop = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
+        btnHome = new javax.swing.JButton();
+        btnOrder = new javax.swing.JButton();
+        btnStaff = new javax.swing.JButton();
         menuPanel = new javax.swing.JPanel();
         panelMenu1 = new javax.swing.JPanel();
         picMenu1 = new javax.swing.JLabel();
@@ -354,6 +357,11 @@ public class HomePage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sepanjang Rasa");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/BahanSteak/iconSR.jpg")).getImage());
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         layerDasarHome.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -383,10 +391,13 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(topPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(LogoTop, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1208, Short.MAX_VALUE)
-                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Waktu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Tanggal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(topPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1208, Short.MAX_VALUE)
+                        .addComponent(Waktu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(topPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10))
         );
         topPanelLayout.setVerticalGroup(
@@ -394,27 +405,63 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(topPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LogoTop, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(topPanelLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(Waktu, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
-                        .addComponent(Tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(LogoTop, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(8, 8, 8))
         );
 
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
         leftPanel.setPreferredSize(new java.awt.Dimension(80, 710));
 
+        btnHome.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
+        btnHome.setText("Home");
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+
+        btnOrder.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
+        btnOrder.setText("Order");
+        btnOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrderActionPerformed(evt);
+            }
+        });
+
+        btnStaff.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
+        btnStaff.setText("Staff");
+        btnStaff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStaffActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
+            .addGroup(leftPanelLayout.createSequentialGroup()
+                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                    .addComponent(btnOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnStaff, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(leftPanelLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(btnHome)
+                .addGap(40, 40, 40)
+                .addComponent(btnOrder)
+                .addGap(40, 40, 40)
+                .addComponent(btnStaff)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         menuPanel.setBackground(new java.awt.Color(245, 245, 245));
@@ -2311,6 +2358,24 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_topPanelMouseDragged
 
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formComponentShown
+
+    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+        new OrderPage().setVisible(true); // pindah ke frame OrderPage  
+        dispose(); // Menutup frame saat ini HomePage
+    }//GEN-LAST:event_btnOrderActionPerformed
+
+    private void btnStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStaffActionPerformed
+        new Manage().setVisible(true); // pindah ke frame OrderPage  
+        dispose(); // Menutup frame saat ini HomePage
+    }//GEN-LAST:event_btnStaffActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2370,8 +2435,11 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JCheckBox addMenu8;
     private javax.swing.JCheckBox addMenu9;
     private javax.swing.JButton btnBayar;
+    private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnOrder;
     private javax.swing.JButton btnPrint;
     private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnStaff;
     private javax.swing.JTextField inputTunai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
