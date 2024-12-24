@@ -16,23 +16,25 @@ import java.sql.SQLException;
 
 public class HomePage extends javax.swing.JFrame {
 
-    private double subtotal = 0.0;
-    private int x=0;
-    private double pajak = 0.0;
-    private double total = 0.0;
-    private double tunai = 0.0;
-    private double kembali = 0.0;
-    
-    
+    private int subtotal = 0;
+    private int x = 0;
+    private double pajak = 0;
+    int PPN = 0;
+    private int total = 0;
+    private int tunai = 0;
+    private int kembali = 0;
+    private int qty = 0;
+
     public HomePage() {
         initComponents();
         setTime();
         setImg();
+        setIconBtn();
     }
-    
+
     //mengecek nilai dari qty
-    public boolean qtyIsZero(int qty){
-        if(qty == 0){
+    public boolean qtyIsZero(int qty) {
+        if (qty == 0) {
             JOptionPane.showMessageDialog(null, "Tolong tambahkan jumlah produk terlebih dahulu");
             return false;
         }
@@ -40,74 +42,109 @@ public class HomePage extends javax.swing.JFrame {
     }
     
     //set gambar ke JLabel
-    public void setImg(){
+    public void setImg() {
         ImageIcon icon = new ImageIcon(getClass().getResource("/BahanSteak/LogoSepanjangRasa2.png"));
-        ImageIcon icon1 = new ImageIcon(getClass().getResource("/BahanSteak/1chickensteak.jpg"));
-        ImageIcon icon2 = new ImageIcon(getClass().getResource("/BahanSteak/1chickencombo.jpg"));
-        ImageIcon icon3 = new ImageIcon(getClass().getResource("/BahanSteak/1combomeals.jpg"));
-        ImageIcon icon4 = new ImageIcon(getClass().getResource("/BahanSteak/1Tbone.jpg"));
-        ImageIcon icon5 = new ImageIcon(getClass().getResource("/BahanSteak/1ribeye.jpg"));
-        ImageIcon icon6 = new ImageIcon(getClass().getResource("/BahanSteak/1steak.jpg"));
-        ImageIcon icon7 = new ImageIcon(getClass().getResource("/BahanSteak/1tenderloin.jpg"));
-        ImageIcon icon8 = new ImageIcon(getClass().getResource("/BahanSteak/1tomahwak.jpg"));
-        ImageIcon icon9 = new ImageIcon(getClass().getResource("/BahanSteak/2Expresso.jpg"));
-        ImageIcon icon10 = new ImageIcon(getClass().getResource("/BahanSteak/2Lemoncucumber.jpg"));
-        ImageIcon icon11 = new ImageIcon(getClass().getResource("/BahanSteak/2perrier.jpg"));
-        ImageIcon icon12 = new ImageIcon(getClass().getResource("/BahanSteak/2strawberrylemonade.jpeg"));
-        ImageIcon icon13 = new ImageIcon(getClass().getResource("/BahanSteak/2virginmojito.jpg"));
-        ImageIcon icon14 = new ImageIcon(getClass().getResource("/BahanSteak/3applecrumble.jpg"));
-        ImageIcon icon15 = new ImageIcon(getClass().getResource("/BahanSteak/3cheesecake.jpeg"));
-        ImageIcon icon16 = new ImageIcon(getClass().getResource("/BahanSteak/3chocolateLavaCake.jpg"));
-        ImageIcon icon17 = new ImageIcon(getClass().getResource("/BahanSteak/3tiramisu.jpg"));
-        ImageIcon icon18 = new ImageIcon(getClass().getResource("/BahanSteak/3cremebrulee.jpg"));
-       
-        Image img = icon.getImage().getScaledInstance(LogoTop.getWidth(),LogoTop.getHeight(), Image.SCALE_SMOOTH);
-        Image img1 = icon1.getImage().getScaledInstance(picMenu1.getWidth(),picMenu1.getHeight(), Image.SCALE_SMOOTH);
-        Image img2 = icon2.getImage().getScaledInstance(picMenu2.getWidth(),picMenu2.getHeight(), Image.SCALE_SMOOTH);
-        Image img3 = icon3.getImage().getScaledInstance(picMenu3.getWidth(),picMenu3.getHeight(), Image.SCALE_SMOOTH);
-        Image img4 = icon4.getImage().getScaledInstance(picMenu4.getWidth(),picMenu4.getHeight(), Image.SCALE_SMOOTH);
-        Image img5 = icon5.getImage().getScaledInstance(picMenu5.getWidth(),picMenu5.getHeight(), Image.SCALE_SMOOTH);
-        Image img6 = icon6.getImage().getScaledInstance(picMenu6.getWidth(),picMenu6.getHeight(), Image.SCALE_SMOOTH);
-        Image img7 = icon7.getImage().getScaledInstance(picMenu7.getWidth(),picMenu7.getHeight(), Image.SCALE_SMOOTH);
-        Image img8 = icon8.getImage().getScaledInstance(picMenu8.getWidth(),picMenu8.getHeight(), Image.SCALE_SMOOTH);
-        Image img9 = icon9.getImage().getScaledInstance(picMenu9.getWidth(),picMenu9.getHeight(), Image.SCALE_SMOOTH);
-        Image img10 = icon10.getImage().getScaledInstance(picMenu10.getWidth(),picMenu10.getHeight(), Image.SCALE_SMOOTH);
-        Image img11 = icon11.getImage().getScaledInstance(picMenu11.getWidth(),picMenu11.getHeight(), Image.SCALE_SMOOTH);
-        Image img12 = icon12.getImage().getScaledInstance(picMenu12.getWidth(),picMenu12.getHeight(), Image.SCALE_SMOOTH);
-        Image img13 = icon13.getImage().getScaledInstance(picMenu13.getWidth(),picMenu13.getHeight(), Image.SCALE_SMOOTH);
-        Image img14 = icon14.getImage().getScaledInstance(picMenu14.getWidth(),picMenu14.getHeight(), Image.SCALE_SMOOTH);
-        Image img15 = icon15.getImage().getScaledInstance(picMenu15.getWidth(),picMenu15.getHeight(), Image.SCALE_SMOOTH);
-        Image img16 = icon16.getImage().getScaledInstance(picMenu16.getWidth(),picMenu16.getHeight(), Image.SCALE_SMOOTH);
-        Image img17 = icon17.getImage().getScaledInstance(picMenu17.getWidth(),picMenu17.getHeight(), Image.SCALE_SMOOTH);
-        Image img18 = icon18.getImage().getScaledInstance(picMenu18.getWidth(),picMenu18.getHeight(), Image.SCALE_SMOOTH);
-        
+        Image img = icon.getImage().getScaledInstance(LogoTop.getWidth(), LogoTop.getHeight(), Image.SCALE_SMOOTH);
         LogoTop.setIcon(new ImageIcon(img));
+
+        ImageIcon icon1 = new ImageIcon(getClass().getResource("/BahanSteak/1chickensteak.jpg"));
+        Image img1 = icon1.getImage().getScaledInstance(picMenu1.getWidth(), picMenu1.getHeight(), Image.SCALE_SMOOTH);
         picMenu1.setIcon(new ImageIcon(img1));
+
+        ImageIcon icon2 = new ImageIcon(getClass().getResource("/BahanSteak/1chickencombo.jpg"));
+        Image img2 = icon2.getImage().getScaledInstance(picMenu2.getWidth(), picMenu2.getHeight(), Image.SCALE_SMOOTH);
         picMenu2.setIcon(new ImageIcon(img2));
+
+        ImageIcon icon3 = new ImageIcon(getClass().getResource("/BahanSteak/1combomeals.jpg"));
+        Image img3 = icon3.getImage().getScaledInstance(picMenu3.getWidth(), picMenu3.getHeight(), Image.SCALE_SMOOTH);
         picMenu3.setIcon(new ImageIcon(img3));
+
+        ImageIcon icon4 = new ImageIcon(getClass().getResource("/BahanSteak/1Tbone.jpg"));
+        Image img4 = icon4.getImage().getScaledInstance(picMenu4.getWidth(), picMenu4.getHeight(), Image.SCALE_SMOOTH);
         picMenu4.setIcon(new ImageIcon(img4));
+
+        ImageIcon icon5 = new ImageIcon(getClass().getResource("/BahanSteak/1ribeye.jpg"));
+        Image img5 = icon5.getImage().getScaledInstance(picMenu5.getWidth(), picMenu5.getHeight(), Image.SCALE_SMOOTH);
         picMenu5.setIcon(new ImageIcon(img5));
+        
+        ImageIcon icon6 = new ImageIcon(getClass().getResource("/BahanSteak/1steak.jpg"));
+        Image img6 = icon6.getImage().getScaledInstance(picMenu6.getWidth(), picMenu6.getHeight(), Image.SCALE_SMOOTH);
         picMenu6.setIcon(new ImageIcon(img6));
+
+        ImageIcon icon7 = new ImageIcon(getClass().getResource("/BahanSteak/1tenderloin.jpg"));
+        Image img7 = icon7.getImage().getScaledInstance(picMenu7.getWidth(), picMenu7.getHeight(), Image.SCALE_SMOOTH);
         picMenu7.setIcon(new ImageIcon(img7));
+        
+        ImageIcon icon8 = new ImageIcon(getClass().getResource("/BahanSteak/1tomahwak.jpg"));
+        Image img8 = icon8.getImage().getScaledInstance(picMenu8.getWidth(), picMenu8.getHeight(), Image.SCALE_SMOOTH);
         picMenu8.setIcon(new ImageIcon(img8));
+       
+        ImageIcon icon9 = new ImageIcon(getClass().getResource("/BahanSteak/2Expresso.jpg"));
+        Image img9 = icon9.getImage().getScaledInstance(picMenu9.getWidth(), picMenu9.getHeight(), Image.SCALE_SMOOTH);
         picMenu9.setIcon(new ImageIcon(img9));
+      
+        ImageIcon icon10 = new ImageIcon(getClass().getResource("/BahanSteak/2Lemoncucumber.jpg"));
+        Image img10 = icon10.getImage().getScaledInstance(picMenu10.getWidth(), picMenu10.getHeight(), Image.SCALE_SMOOTH);
         picMenu10.setIcon(new ImageIcon(img10));
+       
+        ImageIcon icon11 = new ImageIcon(getClass().getResource("/BahanSteak/2perrier.jpg"));
+        Image img11 = icon11.getImage().getScaledInstance(picMenu11.getWidth(), picMenu11.getHeight(), Image.SCALE_SMOOTH);
         picMenu11.setIcon(new ImageIcon(img11));
+       
+        ImageIcon icon12 = new ImageIcon(getClass().getResource("/BahanSteak/2strawberrylemonade.jpeg"));
+        Image img12 = icon12.getImage().getScaledInstance(picMenu12.getWidth(), picMenu12.getHeight(), Image.SCALE_SMOOTH);
         picMenu12.setIcon(new ImageIcon(img12));
+        
+        ImageIcon icon13 = new ImageIcon(getClass().getResource("/BahanSteak/2virginmojito.jpg"));
+        Image img13 = icon13.getImage().getScaledInstance(picMenu13.getWidth(), picMenu13.getHeight(), Image.SCALE_SMOOTH);
         picMenu13.setIcon(new ImageIcon(img13));
+        
+        ImageIcon icon14 = new ImageIcon(getClass().getResource("/BahanSteak/3applecrumble.jpg"));
+        Image img14 = icon14.getImage().getScaledInstance(picMenu14.getWidth(), picMenu14.getHeight(), Image.SCALE_SMOOTH);
         picMenu14.setIcon(new ImageIcon(img14));
+        
+        ImageIcon icon15 = new ImageIcon(getClass().getResource("/BahanSteak/3cheesecake.jpeg"));
+        Image img15 = icon15.getImage().getScaledInstance(picMenu15.getWidth(), picMenu15.getHeight(), Image.SCALE_SMOOTH);
         picMenu15.setIcon(new ImageIcon(img15));
+        
+        ImageIcon icon16 = new ImageIcon(getClass().getResource("/BahanSteak/3chocolateLavaCake.jpg"));
+        Image img16 = icon16.getImage().getScaledInstance(picMenu16.getWidth(), picMenu16.getHeight(), Image.SCALE_SMOOTH);
         picMenu16.setIcon(new ImageIcon(img16));
+        
+        ImageIcon icon17 = new ImageIcon(getClass().getResource("/BahanSteak/3tiramisu.jpg"));
+        Image img17 = icon17.getImage().getScaledInstance(picMenu17.getWidth(), picMenu17.getHeight(), Image.SCALE_SMOOTH);
         picMenu17.setIcon(new ImageIcon(img17));
+        
+        ImageIcon icon18 = new ImageIcon(getClass().getResource("/BahanSteak/3cremebrulee.jpg"));
+        Image img18 = icon18.getImage().getScaledInstance(picMenu18.getWidth(), picMenu18.getHeight(), Image.SCALE_SMOOTH);
         picMenu18.setIcon(new ImageIcon(img18));
+    }
+
+    public void setIconBtn(){
+        //Set icon homePageBtn
+        ImageIcon icon1 = new ImageIcon(getClass().getResource("/BahanSteak/logoHome1.png"));
+        Image img1 = icon1.getImage().getScaledInstance(HomePageBtn.getWidth(),HomePageBtn.getHeight(), Image.SCALE_SMOOTH);
+        HomePageBtn.setIcon(new ImageIcon(img1));
+        //Set icon orderPageBtn
+        ImageIcon icon2 = new ImageIcon(getClass().getResource("/BahanSteak/logoOrder2.png"));
+        Image img2 = icon2.getImage().getScaledInstance(OrderPageBtn.getWidth(),OrderPageBtn.getHeight(), Image.SCALE_SMOOTH);
+        OrderPageBtn.setIcon(new ImageIcon(img2));
+        //Set icon reportsPageBtn
+        ImageIcon icon3 = new ImageIcon(getClass().getResource("/BahanSteak/logoReport2.png"));
+        Image img3 = icon3.getImage().getScaledInstance(ReportsPageBtn.getWidth(),ReportsPageBtn.getHeight(), Image.SCALE_SMOOTH);
+        ReportsPageBtn.setIcon(new ImageIcon(img3));
+        //Set icon mngStaffPagebtn
+        ImageIcon icon4 = new ImageIcon(getClass().getResource("/BahanSteak/logoStaff2.png"));
+        Image img4 = icon4.getImage().getScaledInstance(ManagePageBtn.getWidth(),ManagePageBtn.getHeight(), Image.SCALE_SMOOTH);
+        ManagePageBtn.setIcon(new ImageIcon(img4));
     }
     
     //mengatur waktu dan tanggal
-    public void setTime(){
-        new Thread(new Runnable(){
+    public void setTime() {
+        new Thread(new Runnable() {
             @Override
-            public void run(){
-                while (true){
+            public void run() {
+                while (true) {
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException ex) {
@@ -117,30 +154,32 @@ public class HomePage extends javax.swing.JFrame {
                     SimpleDateFormat tf = new SimpleDateFormat("h:mm:ss aa");
                     SimpleDateFormat df = new SimpleDateFormat("EEEE, dd-MM-yyyy");
                     String time = tf.format(date);
-                    Waktu.setText(time.split(" ")[0]+" "+time.split(" ")[1]);
+                    Waktu.setText(time.split(" ")[0] + " " + time.split(" ")[1]);
                     Tanggal.setText(df.format(date));
                 }
             }
         }).start();
     }
-    
+
     //menghitung nilai dari subtotal, pajak, dan total
-    public void hitung(){
-        pajak = subtotal*0.12;
-        total = subtotal+pajak;
-        outputSubtotal.setText("Rp. "+ String.valueOf(subtotal));
-        outputPPN.setText("Rp. "+ String.valueOf(pajak));
-        outputTotal.setText("Rp. "+ String.valueOf(total));
+    public void hitung() {
+        pajak = subtotal * 0.12;
+        PPN = (int) Math.round(pajak);
+        total = subtotal + PPN;
+        outputSubtotal.setText("Rp. " + String.valueOf(subtotal));
+        outputPPN.setText("Rp. " + String.valueOf(PPN));
+        outputTotal.setText("Rp. " + String.valueOf(total));
     }
-    
+
     //mereset semua nilai yang ada
-    public void reset(){
+    public void reset() {
         x = 0;
-        subtotal = 0.0;
+        subtotal = 0;
         pajak = 0.0;
-        total = 0.0;
-        tunai = 0.0;
-        kembali = 0.0;
+        PPN = 0;
+        total = 0;
+        tunai = 0;
+        kembali = 0;
         qtyMenu1.setValue(0);
         qtyMenu2.setValue(0);
         qtyMenu3.setValue(0);
@@ -186,15 +225,14 @@ public class HomePage extends javax.swing.JFrame {
         btnBayar.setEnabled(true);
         btnPrint.setEnabled(true);
     }
-    
+
     //mencetak teks di JTextArea
-    public void orderList(){
+    public void orderList() {
         jTextAreaOrder.setText("************************ Sepanjang Rasa ***********************\n"
-                + "Time: " + Waktu.getText()+ " Date: " + Tanggal.getText()+ "\n"
-                + "********************************************************************" + "\n"
-                + "Produk"+"\t\t"+"jumlah"+"\t"+"Total"+"\n");
+                + "Time: " + Waktu.getText() + " Date: " + Tanggal.getText() + "\n"
+                + "*******************************************************************" + "\n"
+                + "Produk" + "\t\t" + "jumlah" + "\t" + "Total" + "\n");
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -206,9 +244,14 @@ public class HomePage extends javax.swing.JFrame {
         Tanggal = new javax.swing.JLabel();
         LogoTop = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
-        btnHome = new javax.swing.JButton();
-        btnOrder = new javax.swing.JButton();
-        btnStaff = new javax.swing.JButton();
+        HomePageBtn = new button.custom();
+        OrderPageBtn = new button.custom();
+        ReportsPageBtn = new button.custom();
+        ManagePageBtn = new button.custom();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         menuPanel = new javax.swing.JPanel();
         panelMenu1 = new javax.swing.JPanel();
         picMenu1 = new javax.swing.JLabel();
@@ -391,13 +434,10 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(topPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(LogoTop, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1208, Short.MAX_VALUE)
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(topPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1208, Short.MAX_VALUE)
-                        .addComponent(Waktu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(topPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(Waktu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10))
         );
         topPanelLayout.setVerticalGroup(
@@ -417,50 +457,98 @@ public class HomePage extends javax.swing.JFrame {
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
         leftPanel.setPreferredSize(new java.awt.Dimension(80, 710));
 
-        btnHome.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
-        btnHome.setText("Home");
-        btnHome.addActionListener(new java.awt.event.ActionListener() {
+        HomePageBtn.setColorBorder(new java.awt.Color(255, 255, 255));
+        HomePageBtn.setColorClick(new java.awt.Color(204, 204, 204));
+        HomePageBtn.setColorOver(new java.awt.Color(245, 245, 245));
+        HomePageBtn.setIconTextGap(8);
+        HomePageBtn.setRadius(8);
+
+        OrderPageBtn.setColorBorder(new java.awt.Color(255, 255, 255));
+        OrderPageBtn.setColorClick(new java.awt.Color(204, 204, 204));
+        OrderPageBtn.setColorOver(new java.awt.Color(245, 245, 245));
+        OrderPageBtn.setIconTextGap(8);
+        OrderPageBtn.setRadius(8);
+        OrderPageBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHomeActionPerformed(evt);
+                OrderPageBtnActionPerformed(evt);
             }
         });
 
-        btnOrder.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
-        btnOrder.setText("Order");
-        btnOrder.addActionListener(new java.awt.event.ActionListener() {
+        ReportsPageBtn.setColorBorder(new java.awt.Color(255, 255, 255));
+        ReportsPageBtn.setColorClick(new java.awt.Color(204, 204, 204));
+        ReportsPageBtn.setColorOver(new java.awt.Color(245, 245, 245));
+        ReportsPageBtn.setIconTextGap(8);
+        ReportsPageBtn.setRadius(8);
+        ReportsPageBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrderActionPerformed(evt);
+                ReportsPageBtnActionPerformed(evt);
             }
         });
 
-        btnStaff.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
-        btnStaff.setText("Staff");
-        btnStaff.addActionListener(new java.awt.event.ActionListener() {
+        ManagePageBtn.setColorBorder(new java.awt.Color(255, 255, 255));
+        ManagePageBtn.setColorClick(new java.awt.Color(204, 204, 204));
+        ManagePageBtn.setColorOver(new java.awt.Color(245, 245, 245));
+        ManagePageBtn.setIconTextGap(8);
+        ManagePageBtn.setRadius(8);
+        ManagePageBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStaffActionPerformed(evt);
+                ManagePageBtnActionPerformed(evt);
             }
         });
+
+        jLabel6.setFont(new java.awt.Font("Poppins SemiBold", 0, 11)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(252, 128, 25));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Home");
+
+        jLabel7.setFont(new java.awt.Font("Poppins SemiBold", 0, 11)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Order");
+
+        jLabel8.setFont(new java.awt.Font("Poppins SemiBold", 0, 11)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Report");
+
+        jLabel9.setFont(new java.awt.Font("Poppins SemiBold", 0, 11)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Staff");
 
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                    .addComponent(btnOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnStaff, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, 0))
+                    .addComponent(ManagePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(HomePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(OrderPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ReportsPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(btnHome)
-                .addGap(40, 40, 40)
-                .addComponent(btnOrder)
-                .addGap(40, 40, 40)
-                .addComponent(btnStaff)
+                .addComponent(HomePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel6)
+                .addGap(30, 30, 30)
+                .addComponent(OrderPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel7)
+                .addGap(30, 30, 30)
+                .addComponent(ReportsPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel8)
+                .addGap(30, 30, 30)
+                .addComponent(ManagePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel9)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -485,6 +573,11 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu1.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                qtyMenu1StateChanged(evt);
+            }
+        });
 
         addMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1961,16 +2054,17 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu1ActionPerformed
         int qty = Integer.parseInt(qtyMenu1.getValue().toString());
-        if(qtyIsZero(qty) && addMenu1.isSelected()){ 
+
+        if (qtyIsZero(qty) && addMenu1.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*69000;
+            int price = qty * 69000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu1.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu1.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu1.getText() + "\t" + qty + "\t" + price + "\n     " + opsiMenu1.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu1.setSelected(false);
         }
     }//GEN-LAST:event_addMenu1ActionPerformed
@@ -1985,16 +2079,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu2ActionPerformed
         int qty = Integer.parseInt(qtyMenu2.getValue().toString());
-        if(qtyIsZero(qty) && addMenu2.isSelected()){
+        if (qtyIsZero(qty) && addMenu2.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*108000;
+            int price = qty * 108000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu2.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu2.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu2.getText() + "\t" + qty + "\t" + price + "\n     " + opsiMenu2.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu2.setSelected(false);
         }
     }//GEN-LAST:event_addMenu2ActionPerformed
@@ -2005,16 +2099,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu3ActionPerformed
         int qty = Integer.parseInt(qtyMenu3.getValue().toString());
-        if(qtyIsZero(qty) && addMenu3.isSelected()){
+        if (qtyIsZero(qty) && addMenu3.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*241000;
+            int price = qty * 241000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu3.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu3.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu3.getText() + "\t" + qty + "\t" + price + "\n     " + opsiMenu3.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu3.setSelected(false);
         }
     }//GEN-LAST:event_addMenu3ActionPerformed
@@ -2025,16 +2119,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu4ActionPerformed
         int qty = Integer.parseInt(qtyMenu4.getValue().toString());
-        if(qtyIsZero(qty) && addMenu4.isSelected()){
+        if (qtyIsZero(qty) && addMenu4.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*150000;
+            int price = qty * 150000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu4.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu4.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu4.getText() + "\t" + qty + "\t" + price + "\n     " + opsiMenu4.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu4.setSelected(false);
         }
     }//GEN-LAST:event_addMenu4ActionPerformed
@@ -2045,16 +2139,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu5ActionPerformed
         int qty = Integer.parseInt(qtyMenu5.getValue().toString());
-        if(qtyIsZero(qty) && addMenu5.isSelected()){
+        if (qtyIsZero(qty) && addMenu5.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*119000;
+            int price = qty * 119000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu5.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu5.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu5.getText() + "\t" + qty + "\t" + price + "\n     " + opsiMenu5.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu5.setSelected(false);
         }
     }//GEN-LAST:event_addMenu5ActionPerformed
@@ -2065,16 +2159,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu6ActionPerformed
         int qty = Integer.parseInt(qtyMenu6.getValue().toString());
-        if(qtyIsZero(qty) && addMenu6.isSelected()){
+        if (qtyIsZero(qty) && addMenu6.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*116000;
+            int price = qty * 116000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu6.getText()+"\t\t"+qty+"\t"+price+"\n     "+opsiMenu6.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu6.getText() + "\t\t" + qty + "\t" + price + "\n     " + opsiMenu6.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu6.setSelected(false);
         }
     }//GEN-LAST:event_addMenu6ActionPerformed
@@ -2085,16 +2179,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu7ActionPerformed
         int qty = Integer.parseInt(qtyMenu7.getValue().toString());
-        if(qtyIsZero(qty) && addMenu7.isSelected()){
+        if (qtyIsZero(qty) && addMenu7.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*141000;
+            int price = qty * 141000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu7.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu7.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu7.getText() + "\t" + qty + "\t" + price + "\n     " + opsiMenu7.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu7.setSelected(false);
         }
     }//GEN-LAST:event_addMenu7ActionPerformed
@@ -2105,16 +2199,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu8ActionPerformed
         int qty = Integer.parseInt(qtyMenu8.getValue().toString());
-        if(qtyIsZero(qty) && addMenu8.isSelected()){
+        if (qtyIsZero(qty) && addMenu8.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*176000;
+            int price = qty * 176000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu8.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu8.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu8.getText() + "\t" + qty + "\t" + price + "\n     " + opsiMenu8.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu8.setSelected(false);
         }
     }//GEN-LAST:event_addMenu8ActionPerformed
@@ -2125,16 +2219,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu9ActionPerformed
         int qty = Integer.parseInt(qtyMenu9.getValue().toString());
-        if(qtyIsZero(qty) && addMenu9.isSelected()){
+        if (qtyIsZero(qty) && addMenu9.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*45000;
+            int price = qty * 45000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu9.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu9.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu9.getText() + "\t" + qty + "\t" + price + "\n     " + opsiMenu9.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu9.setSelected(false);
         }
     }//GEN-LAST:event_addMenu9ActionPerformed
@@ -2145,16 +2239,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu10ActionPerformed
         int qty = Integer.parseInt(qtyMenu10.getValue().toString());
-        if(qtyIsZero(qty) && addMenu10.isSelected()){
+        if (qtyIsZero(qty) && addMenu10.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*55000;
+            int price = qty * 55000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu10.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu10.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu10.getText() + "\t" + qty + "\t" + price + "\n     " + opsiMenu10.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu10.setSelected(false);
         }
     }//GEN-LAST:event_addMenu10ActionPerformed
@@ -2165,16 +2259,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu11ActionPerformed
         int qty = Integer.parseInt(qtyMenu11.getValue().toString());
-        if(qtyIsZero(qty) && addMenu11.isSelected()){
+        if (qtyIsZero(qty) && addMenu11.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*69000;
+            int price = qty * 69000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu11.getText()+"\t\t"+qty+"\t"+price+"\n     "+opsiMenu11.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu11.getText() + "\t\t" + qty + "\t" + price + "\n     " + opsiMenu11.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu11.setSelected(false);
         }
     }//GEN-LAST:event_addMenu11ActionPerformed
@@ -2185,16 +2279,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu12ActionPerformed
         int qty = Integer.parseInt(qtyMenu12.getValue().toString());
-        if(qtyIsZero(qty) && addMenu12.isSelected()){
+        if (qtyIsZero(qty) && addMenu12.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*57000;
+            int price = qty * 57000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu12.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu11.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu12.getText() + "\t" + qty + "\t" + price + "\n     " + opsiMenu11.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu12.setSelected(false);
         }
     }//GEN-LAST:event_addMenu12ActionPerformed
@@ -2205,16 +2299,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu18ActionPerformed
         int qty = Integer.parseInt(qtyMenu18.getValue().toString());
-        if(qtyIsZero(qty) && addMenu18.isSelected()){
+        if (qtyIsZero(qty) && addMenu18.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*130000;
+            int price = qty * 130000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu18.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu18.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu18.getText() + "\t" + qty + "\t" + price + "\n     " + opsiMenu18.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu18.setSelected(false);
         }
     }//GEN-LAST:event_addMenu18ActionPerformed
@@ -2225,16 +2319,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu16ActionPerformed
         int qty = Integer.parseInt(qtyMenu16.getValue().toString());
-        if(qtyIsZero(qty) && addMenu16.isSelected()){
+        if (qtyIsZero(qty) && addMenu16.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*97000;
+            int price = qty * 97000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu16.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu16.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu16.getText() + "\t" + qty + "\t" + price + "\n     " + opsiMenu16.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu16.setSelected(false);
         }
     }//GEN-LAST:event_addMenu16ActionPerformed
@@ -2245,16 +2339,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu15ActionPerformed
         int qty = Integer.parseInt(qtyMenu15.getValue().toString());
-        if(qtyIsZero(qty) && addMenu15.isSelected()){
+        if (qtyIsZero(qty) && addMenu15.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*81000;
+            int price = qty * 81000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu15.getText()+"\t\t"+qty+"\t"+price+"\n     "+opsiMenu15.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu15.getText() + "\t\t" + qty + "\t" + price + "\n     " + opsiMenu15.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu15.setSelected(false);
         }
     }//GEN-LAST:event_addMenu15ActionPerformed
@@ -2265,16 +2359,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu17ActionPerformed
         int qty = Integer.parseInt(qtyMenu17.getValue().toString());
-        if(qtyIsZero(qty) && addMenu17.isSelected()){
+        if (qtyIsZero(qty) && addMenu17.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*93000;
+            int price = qty * 93000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu17.getText()+"\t\t"+qty+"\t"+price+"\n     "+opsiMenu17.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu17.getText() + "\t\t" + qty + "\t" + price + "\n     " + opsiMenu17.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu17.setSelected(false);
         }
     }//GEN-LAST:event_addMenu17ActionPerformed
@@ -2285,16 +2379,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu14ActionPerformed
         int qty = Integer.parseInt(qtyMenu14.getValue().toString());
-        if(qtyIsZero(qty) && addMenu14.isSelected()){
+        if (qtyIsZero(qty) && addMenu14.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*110000;
+            int price = qty * 110000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu14.getText()+"\t"+qty+"\t"+price+"\n     "+opsiMenu14.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu14.getText() + "\t" + qty + "\t" + price + "\n     " + opsiMenu14.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu14.setSelected(false);
         }
     }//GEN-LAST:event_addMenu14ActionPerformed
@@ -2305,16 +2399,16 @@ public class HomePage extends javax.swing.JFrame {
 
     private void addMenu13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu13ActionPerformed
         int qty = Integer.parseInt(qtyMenu13.getValue().toString());
-        if(qtyIsZero(qty) && addMenu13.isSelected()){
+        if (qtyIsZero(qty) && addMenu13.isSelected()) {
             x++;
-            if(x==1){
+            if (x == 1) {
                 orderList();
             }
-            double price = qty*55000;
+            int price = qty * 55000;
             subtotal += price;
-            jTextAreaOrder.setText(jTextAreaOrder.getText()+x+". "+lblMenu13.getText()+"\t\t"+qty+"\t"+price+"\n     "+opsiMenu13.getSelectedItem()+"\n");
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + x + ". " + lblMenu13.getText() + "\t\t" + qty + "\t" + price + "\n     " + opsiMenu13.getSelectedItem() + "\n");
             hitung();
-        }else{
+        } else {
             addMenu13.setSelected(false);
         }
     }//GEN-LAST:event_addMenu13ActionPerformed
@@ -2324,18 +2418,18 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
-        tunai = Double.parseDouble(inputTunai.getText());
+        tunai = Integer.parseInt(inputTunai.getText());
         kembali = tunai - total;
-        
-        if(tunai==0.0){
-            JOptionPane.showMessageDialog(null,("Masukkan nominal tunai"));
-        }else{
-          outputKembali.setText(outputKembali.getText()+"Rp. "+kembali); 
-          btnBayar.setEnabled(false);
-          jTextAreaOrder.setText(jTextAreaOrder.getText() + "\n\n********************************************************************\n" 
-                  + "Subtotal: \t\t\t" + subtotal + "\nPajak 12%: \t\t\t" + pajak + "\nTotal: \t\t\t" + total + "\nTunai: \t\t\t" + tunai 
-                  + "\n*************************** Thank You ***************************\n");
-        } 
+
+        if (tunai == 0.0) {
+            JOptionPane.showMessageDialog(null, ("Masukkan nominal tunai"));
+        } else {
+            outputKembali.setText(outputKembali.getText() + "Rp. " + kembali);
+            btnBayar.setEnabled(false);
+            jTextAreaOrder.setText(jTextAreaOrder.getText() + "\n\n*******************************************************************\n"
+                    + "Subtotal: \t\t\t" + subtotal + "\nPajak 12%: \t\t\t" + PPN + "\nTotal: \t\t\t" + total + "\nTunai: \t\t\t" + tunai
+                    + "\n*************************** Thank You ***************************\n");
+        }
     }//GEN-LAST:event_btnBayarActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
@@ -2358,23 +2452,28 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_topPanelMouseDragged
 
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnHomeActionPerformed
-
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        // TODO add your handling code here:
+        setExtendedState(HomePage.MAXIMIZED_BOTH);
     }//GEN-LAST:event_formComponentShown
 
-    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-        new OrderPage().setVisible(true); // pindah ke frame OrderPage  
-        dispose(); // Menutup frame saat ini HomePage
-    }//GEN-LAST:event_btnOrderActionPerformed
+    private void qtyMenu1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu1StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_qtyMenu1StateChanged
 
-    private void btnStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStaffActionPerformed
-        new Manage().setVisible(true); // pindah ke frame OrderPage  
-        dispose(); // Menutup frame saat ini HomePage
-    }//GEN-LAST:event_btnStaffActionPerformed
+    private void OrderPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderPageBtnActionPerformed
+        new OrderPage().setVisible(true);   
+        dispose();
+    }//GEN-LAST:event_OrderPageBtnActionPerformed
+
+    private void ReportsPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportsPageBtnActionPerformed
+        new Reports().setVisible(true);   
+        dispose();
+    }//GEN-LAST:event_ReportsPageBtnActionPerformed
+
+    private void ManagePageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagePageBtnActionPerformed
+        new Manage().setVisible(true);   
+        dispose();
+    }//GEN-LAST:event_ManagePageBtnActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2413,7 +2512,11 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private button.custom HomePageBtn;
     private javax.swing.JLabel LogoTop;
+    private button.custom ManagePageBtn;
+    private button.custom OrderPageBtn;
+    private button.custom ReportsPageBtn;
     private javax.swing.JLabel Tanggal;
     private javax.swing.JLabel Waktu;
     private javax.swing.JCheckBox addMenu1;
@@ -2435,17 +2538,18 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JCheckBox addMenu8;
     private javax.swing.JCheckBox addMenu9;
     private javax.swing.JButton btnBayar;
-    private javax.swing.JButton btnHome;
-    private javax.swing.JButton btnOrder;
     private javax.swing.JButton btnPrint;
     private javax.swing.JButton btnReset;
-    private javax.swing.JButton btnStaff;
     private javax.swing.JTextField inputTunai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaOrder;
