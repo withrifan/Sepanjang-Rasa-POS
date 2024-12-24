@@ -9,6 +9,10 @@
 <!-- in the project's Project Properties dialog box.-->
 <project name="SepanjangRasaPOS" default="default" basedir=".">
     <description>Builds, tests, and runs the project SepanjangRasaPOS.</description>
+    <target name="clean"> 
+        <delete dir="build"/> 
+        <delete dir="dist"/> 
+    </target>
     <import file="nbproject/build-impl.xml"/>
     <!--
 
