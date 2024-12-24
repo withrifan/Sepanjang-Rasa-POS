@@ -1,13 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package sepanjangrasapos;
-
-/**
- *
- * @author achmadrifan
- */
 
 import java.sql.*;
 
@@ -20,3 +11,12 @@ public class DBConnection {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }
+  
+    
+ //   public static ResultSet getStaffData() throws Exception { 
+  //      Connection conn = getConnection(); 
+  //      Statement stmt = conn.createStatement(); 
+  //      String query = "SELECT * FROM tb_staff"; 
+   //     return stmt.executeQuery(query); 
+    //}
+//}
