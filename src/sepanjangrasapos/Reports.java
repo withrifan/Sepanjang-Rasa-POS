@@ -1,13 +1,7 @@
 package sepanjangrasapos;
 
 import java.awt.Image;
-import java.awt.Menu;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 
 public class Reports extends javax.swing.JFrame {
 
@@ -18,49 +12,23 @@ public class Reports extends javax.swing.JFrame {
         setIconBtn();
     }
     
-    public void setTime(){
-        new Thread(() -> {
-            while (true){
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                Date date = new Date();
-                SimpleDateFormat tf = new SimpleDateFormat("h:mm:ss aa");
-                SimpleDateFormat df = new SimpleDateFormat("EEEE, dd-MM-yyyy");
-                String time = tf.format(date);
-                Waktu.setText(time.split(" ")[0]+" "+time.split(" ")[1]);
-                Tanggal.setText(df.format(date));
-            }
-        }).start();
+    public void setTime() {
+        // Menggunakan MethodClass untuk memperbarui waktu dan tanggal secara real-time
+        MethodClass.setTime(Waktu, Tanggal);
     }
     
     public void setImg(){
-        ImageIcon icon = new ImageIcon(getClass().getResource("/BahanSteak/LogoSepanjangRasa2.png"));
-        Image img = icon.getImage().getScaledInstance(LogoTop.getWidth(),LogoTop.getHeight(), Image.SCALE_SMOOTH);
-        LogoTop.setIcon(new ImageIcon(img));
+        MethodClass.setIconLabel(LogoTop, "/BahanSteak/LogoSepanjangRasa2.png");
     }
     
-    public void setIconBtn(){
-        //Set icon homePageBtn
-        ImageIcon icon1 = new ImageIcon(getClass().getResource("/BahanSteak/logoHome2.png"));
-        Image img1 = icon1.getImage().getScaledInstance(HomePageBtn.getWidth(),HomePageBtn.getHeight(), Image.SCALE_SMOOTH);
-        HomePageBtn.setIcon(new ImageIcon(img1));
-        //Set icon orderPageBtn
-        ImageIcon icon2 = new ImageIcon(getClass().getResource("/BahanSteak/logoOrder2.png"));
-        Image img2 = icon2.getImage().getScaledInstance(OrderPageBtn.getWidth(),OrderPageBtn.getHeight(), Image.SCALE_SMOOTH);
-        OrderPageBtn.setIcon(new ImageIcon(img2));
-        //Set icon reportsPageBtn
-        ImageIcon icon3 = new ImageIcon(getClass().getResource("/BahanSteak/logoReport1.png"));
-        Image img3 = icon3.getImage().getScaledInstance(ReportsPageBtn.getWidth(),ReportsPageBtn.getHeight(), Image.SCALE_SMOOTH);
-        ReportsPageBtn.setIcon(new ImageIcon(img3));
-        //Set icon ManagePageBtn
-        ImageIcon icon4 = new ImageIcon(getClass().getResource("/BahanSteak/logoStaff2.png"));
-        Image img4 = icon4.getImage().getScaledInstance(ManagePageBtn.getWidth(),ManagePageBtn.getHeight(), Image.SCALE_SMOOTH);
-        ManagePageBtn.setIcon(new ImageIcon(img4));
+    private void setIconBtn() {
+        // Menggunakan MethodClass untuk mengatur ikon pada tombol
+        MethodClass.setIconBtn(HomePageBtn, "/BahanSteak/logoHome2.png");
+        MethodClass.setIconBtn(OrderPageBtn, "/BahanSteak/logoOrder2.png");
+        MethodClass.setIconBtn(ReportsPageBtn, "/BahanSteak/logoReport1.png");
+        MethodClass.setIconBtn(ManagePageBtn, "/BahanSteak/logoStaff2.png");  
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -203,11 +171,10 @@ public class Reports extends javax.swing.JFrame {
                         .addContainerGap(17, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLeftOrderPageLayout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(17, 17, 17))))
-            .addGroup(panelLeftOrderPageLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(HomePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(17, 17, 17))
+                    .addGroup(panelLeftOrderPageLayout.createSequentialGroup()
+                        .addComponent(HomePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         panelLeftOrderPageLayout.setVerticalGroup(
             panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,7 +211,6 @@ public class Reports extends javax.swing.JFrame {
             bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgOrderPageLayout.createSequentialGroup()
                 .addComponent(panelTopOrderPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
                 .addComponent(panelLeftOrderPage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

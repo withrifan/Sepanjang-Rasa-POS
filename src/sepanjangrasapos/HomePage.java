@@ -1,13 +1,8 @@
 package sepanjangrasapos;
 
-import java.awt.Image;
-import java.awt.Menu;
 import java.awt.print.PrinterException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,122 +38,39 @@ public class HomePage extends javax.swing.JFrame {
     
     //set gambar ke JLabel
     public void setImg() {
-        ImageIcon icon = new ImageIcon(getClass().getResource("/BahanSteak/LogoSepanjangRasa2.png"));
-        Image img = icon.getImage().getScaledInstance(LogoTop.getWidth(), LogoTop.getHeight(), Image.SCALE_SMOOTH);
-        LogoTop.setIcon(new ImageIcon(img));
-
-        ImageIcon icon1 = new ImageIcon(getClass().getResource("/BahanSteak/1chickensteak.jpg"));
-        Image img1 = icon1.getImage().getScaledInstance(picMenu1.getWidth(), picMenu1.getHeight(), Image.SCALE_SMOOTH);
-        picMenu1.setIcon(new ImageIcon(img1));
-
-        ImageIcon icon2 = new ImageIcon(getClass().getResource("/BahanSteak/1chickencombo.jpg"));
-        Image img2 = icon2.getImage().getScaledInstance(picMenu2.getWidth(), picMenu2.getHeight(), Image.SCALE_SMOOTH);
-        picMenu2.setIcon(new ImageIcon(img2));
-
-        ImageIcon icon3 = new ImageIcon(getClass().getResource("/BahanSteak/1combomeals.jpg"));
-        Image img3 = icon3.getImage().getScaledInstance(picMenu3.getWidth(), picMenu3.getHeight(), Image.SCALE_SMOOTH);
-        picMenu3.setIcon(new ImageIcon(img3));
-
-        ImageIcon icon4 = new ImageIcon(getClass().getResource("/BahanSteak/1Tbone.jpg"));
-        Image img4 = icon4.getImage().getScaledInstance(picMenu4.getWidth(), picMenu4.getHeight(), Image.SCALE_SMOOTH);
-        picMenu4.setIcon(new ImageIcon(img4));
-
-        ImageIcon icon5 = new ImageIcon(getClass().getResource("/BahanSteak/1ribeye.jpg"));
-        Image img5 = icon5.getImage().getScaledInstance(picMenu5.getWidth(), picMenu5.getHeight(), Image.SCALE_SMOOTH);
-        picMenu5.setIcon(new ImageIcon(img5));
-        
-        ImageIcon icon6 = new ImageIcon(getClass().getResource("/BahanSteak/1steak.jpg"));
-        Image img6 = icon6.getImage().getScaledInstance(picMenu6.getWidth(), picMenu6.getHeight(), Image.SCALE_SMOOTH);
-        picMenu6.setIcon(new ImageIcon(img6));
-
-        ImageIcon icon7 = new ImageIcon(getClass().getResource("/BahanSteak/1tenderloin.jpg"));
-        Image img7 = icon7.getImage().getScaledInstance(picMenu7.getWidth(), picMenu7.getHeight(), Image.SCALE_SMOOTH);
-        picMenu7.setIcon(new ImageIcon(img7));
-        
-        ImageIcon icon8 = new ImageIcon(getClass().getResource("/BahanSteak/1tomahwak.jpg"));
-        Image img8 = icon8.getImage().getScaledInstance(picMenu8.getWidth(), picMenu8.getHeight(), Image.SCALE_SMOOTH);
-        picMenu8.setIcon(new ImageIcon(img8));
-       
-        ImageIcon icon9 = new ImageIcon(getClass().getResource("/BahanSteak/2Expresso.jpg"));
-        Image img9 = icon9.getImage().getScaledInstance(picMenu9.getWidth(), picMenu9.getHeight(), Image.SCALE_SMOOTH);
-        picMenu9.setIcon(new ImageIcon(img9));
-      
-        ImageIcon icon10 = new ImageIcon(getClass().getResource("/BahanSteak/2Lemoncucumber.jpg"));
-        Image img10 = icon10.getImage().getScaledInstance(picMenu10.getWidth(), picMenu10.getHeight(), Image.SCALE_SMOOTH);
-        picMenu10.setIcon(new ImageIcon(img10));
-       
-        ImageIcon icon11 = new ImageIcon(getClass().getResource("/BahanSteak/2perrier.jpg"));
-        Image img11 = icon11.getImage().getScaledInstance(picMenu11.getWidth(), picMenu11.getHeight(), Image.SCALE_SMOOTH);
-        picMenu11.setIcon(new ImageIcon(img11));
-       
-        ImageIcon icon12 = new ImageIcon(getClass().getResource("/BahanSteak/2strawberrylemonade.jpeg"));
-        Image img12 = icon12.getImage().getScaledInstance(picMenu12.getWidth(), picMenu12.getHeight(), Image.SCALE_SMOOTH);
-        picMenu12.setIcon(new ImageIcon(img12));
-        
-        ImageIcon icon13 = new ImageIcon(getClass().getResource("/BahanSteak/2virginmojito.jpg"));
-        Image img13 = icon13.getImage().getScaledInstance(picMenu13.getWidth(), picMenu13.getHeight(), Image.SCALE_SMOOTH);
-        picMenu13.setIcon(new ImageIcon(img13));
-        
-        ImageIcon icon14 = new ImageIcon(getClass().getResource("/BahanSteak/3applecrumble.jpg"));
-        Image img14 = icon14.getImage().getScaledInstance(picMenu14.getWidth(), picMenu14.getHeight(), Image.SCALE_SMOOTH);
-        picMenu14.setIcon(new ImageIcon(img14));
-        
-        ImageIcon icon15 = new ImageIcon(getClass().getResource("/BahanSteak/3cheesecake.jpeg"));
-        Image img15 = icon15.getImage().getScaledInstance(picMenu15.getWidth(), picMenu15.getHeight(), Image.SCALE_SMOOTH);
-        picMenu15.setIcon(new ImageIcon(img15));
-        
-        ImageIcon icon16 = new ImageIcon(getClass().getResource("/BahanSteak/3chocolateLavaCake.jpg"));
-        Image img16 = icon16.getImage().getScaledInstance(picMenu16.getWidth(), picMenu16.getHeight(), Image.SCALE_SMOOTH);
-        picMenu16.setIcon(new ImageIcon(img16));
-        
-        ImageIcon icon17 = new ImageIcon(getClass().getResource("/BahanSteak/3tiramisu.jpg"));
-        Image img17 = icon17.getImage().getScaledInstance(picMenu17.getWidth(), picMenu17.getHeight(), Image.SCALE_SMOOTH);
-        picMenu17.setIcon(new ImageIcon(img17));
-        
-        ImageIcon icon18 = new ImageIcon(getClass().getResource("/BahanSteak/3cremebrulee.jpg"));
-        Image img18 = icon18.getImage().getScaledInstance(picMenu18.getWidth(), picMenu18.getHeight(), Image.SCALE_SMOOTH);
-        picMenu18.setIcon(new ImageIcon(img18));
+        MethodClass.setIconLabel(LogoTop, "/BahanSteak/LogoSepanjangRasa2.png");
+        MethodClass.setIconLabel(picMenu1, "/BahanSteak/1chickensteak.jpg");
+        MethodClass.setIconLabel(picMenu2, "/BahanSteak/1chickencombo.jpg");
+        MethodClass.setIconLabel(picMenu3, "/BahanSteak/1combomeals.jpg");
+        MethodClass.setIconLabel(picMenu4, "/BahanSteak/1Tbone.jpg");
+        MethodClass.setIconLabel(picMenu5, "/BahanSteak/1ribeye.jpg");
+        MethodClass.setIconLabel(picMenu6, "/BahanSteak/1steak.jpg");
+        MethodClass.setIconLabel(picMenu7, "/BahanSteak/1tenderloin.jpg");
+        MethodClass.setIconLabel(picMenu8, "/BahanSteak/1tomahwak.jpg");
+        MethodClass.setIconLabel(picMenu9, "/BahanSteak/2Expresso.jpg");
+        MethodClass.setIconLabel(picMenu10, "/BahanSteak/2Lemoncucumber.jpg");
+        MethodClass.setIconLabel(picMenu11, "/BahanSteak/2perrier.jpg");
+        MethodClass.setIconLabel(picMenu12, "/BahanSteak/2strawberrylemonade.jpeg");
+        MethodClass.setIconLabel(picMenu13, "/BahanSteak/2virginmojito.jpg");
+        MethodClass.setIconLabel(picMenu14, "/BahanSteak/3applecrumble.jpg");
+        MethodClass.setIconLabel(picMenu15, "/BahanSteak/3cheesecake.jpeg");
+        MethodClass.setIconLabel(picMenu16, "/BahanSteak/3chocolateLavaCake.jpg");
+        MethodClass.setIconLabel(picMenu17, "/BahanSteak/3tiramisu.jpg");
+        MethodClass.setIconLabel(picMenu18, "/BahanSteak/3cremebrulee.jpg");
     }
 
-    public void setIconBtn(){
-        //Set icon homePageBtn
-        ImageIcon icon1 = new ImageIcon(getClass().getResource("/BahanSteak/logoHome1.png"));
-        Image img1 = icon1.getImage().getScaledInstance(HomePageBtn.getWidth(),HomePageBtn.getHeight(), Image.SCALE_SMOOTH);
-        HomePageBtn.setIcon(new ImageIcon(img1));
-        //Set icon orderPageBtn
-        ImageIcon icon2 = new ImageIcon(getClass().getResource("/BahanSteak/logoOrder2.png"));
-        Image img2 = icon2.getImage().getScaledInstance(OrderPageBtn.getWidth(),OrderPageBtn.getHeight(), Image.SCALE_SMOOTH);
-        OrderPageBtn.setIcon(new ImageIcon(img2));
-        //Set icon reportsPageBtn
-        ImageIcon icon3 = new ImageIcon(getClass().getResource("/BahanSteak/logoReport2.png"));
-        Image img3 = icon3.getImage().getScaledInstance(ReportsPageBtn.getWidth(),ReportsPageBtn.getHeight(), Image.SCALE_SMOOTH);
-        ReportsPageBtn.setIcon(new ImageIcon(img3));
-        //Set icon mngStaffPagebtn
-        ImageIcon icon4 = new ImageIcon(getClass().getResource("/BahanSteak/logoStaff2.png"));
-        Image img4 = icon4.getImage().getScaledInstance(ManagePageBtn.getWidth(),ManagePageBtn.getHeight(), Image.SCALE_SMOOTH);
-        ManagePageBtn.setIcon(new ImageIcon(img4));
+    private void setIconBtn() {
+        // Menggunakan MethodClass untuk mengatur ikon pada tombol
+        MethodClass.setIconBtn(HomePageBtn, "/BahanSteak/logoHome1.png");
+        MethodClass.setIconBtn(OrderPageBtn, "/BahanSteak/logoOrder2.png");
+        MethodClass.setIconBtn(ReportsPageBtn, "/BahanSteak/logoReport2.png");
+        MethodClass.setIconBtn(ManagePageBtn, "/BahanSteak/logoStaff2.png");  
     }
     
     //mengatur waktu dan tanggal
     public void setTime() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    Date date = new Date();
-                    SimpleDateFormat tf = new SimpleDateFormat("h:mm:ss aa");
-                    SimpleDateFormat df = new SimpleDateFormat("EEEE, dd-MM-yyyy");
-                    String time = tf.format(date);
-                    Waktu.setText(time.split(" ")[0] + " " + time.split(" ")[1]);
-                    Tanggal.setText(df.format(date));
-                }
-            }
-        }).start();
+        // Menggunakan MethodClass untuk memperbarui waktu dan tanggal secara real-time
+        MethodClass.setTime(Waktu, Tanggal);
     }
 
     //menghitung nilai dari subtotal, pajak, dan total
@@ -432,9 +344,9 @@ public class HomePage extends javax.swing.JFrame {
         topPanelLayout.setHorizontalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(LogoTop, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1208, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
+                .addComponent(LogoTop, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1222, Short.MAX_VALUE)
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Waktu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -443,15 +355,12 @@ public class HomePage extends javax.swing.JFrame {
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LogoTop, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(topPanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(Waktu, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(Tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(8, 8, 8))
+                .addGap(9, 9, 9)
+                .addComponent(Waktu, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(Tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(LogoTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         leftPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -2671,5 +2580,4 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JPanel rightPanel;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
-
 }
