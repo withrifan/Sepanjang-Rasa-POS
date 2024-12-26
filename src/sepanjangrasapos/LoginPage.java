@@ -16,9 +16,7 @@ public class LoginPage extends javax.swing.JFrame {
     }
     
     public void setImg(){
-        ImageIcon icon = new ImageIcon(getClass().getResource("/BahanSteak/LogoSepanjangRasa1.png"));
-        Image img = icon.getImage().getScaledInstance(logoLogin.getWidth(),logoLogin.getHeight(), Image.SCALE_SMOOTH);
-        logoLogin.setIcon(new ImageIcon(img));
+        MethodClass.setIconLabel(logoLogin, "/BahanSteak/LogoSepanjangRasa1.png");
     }
 
     @SuppressWarnings("unchecked")

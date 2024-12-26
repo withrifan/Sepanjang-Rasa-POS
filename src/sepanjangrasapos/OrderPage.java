@@ -1,11 +1,6 @@
 package sepanjangrasapos;
 
 import java.awt.Image;
-import java.awt.Menu;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 public class OrderPage extends javax.swing.JFrame {
@@ -17,50 +12,21 @@ public class OrderPage extends javax.swing.JFrame {
         setIconBtn();
     }
     
-    public void setTime(){
-        new Thread(new Runnable(){
-            @Override
-            public void run(){
-                while (true){
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    Date date = new Date();
-                    SimpleDateFormat tf = new SimpleDateFormat("h:mm:ss aa");
-                    SimpleDateFormat df = new SimpleDateFormat("EEEE, dd-MM-yyyy");
-                    String time = tf.format(date);
-                    Waktu.setText(time.split(" ")[0]+" "+time.split(" ")[1]);
-                    Tanggal.setText(df.format(date));
-                }
-            }
-        }).start();
+    public void setTime() {
+        // Menggunakan MethodClass untuk memperbarui waktu dan tanggal secara real-time
+        MethodClass.setTime(Waktu, Tanggal);
     }
     
     public void setImg(){
-        ImageIcon icon = new ImageIcon(getClass().getResource("/BahanSteak/LogoSepanjangRasa2.png"));
-        Image img = icon.getImage().getScaledInstance(LogoTop.getWidth(),LogoTop.getHeight(), Image.SCALE_SMOOTH);
-        LogoTop.setIcon(new ImageIcon(img));
+        MethodClass.setIconLabel(LogoTop, "/BahanSteak/LogoSepanjangRasa2.png");
     }
 
-    public void setIconBtn(){
-        //Set icon homePageBtn
-        ImageIcon icon1 = new ImageIcon(getClass().getResource("/BahanSteak/logoHome2.png"));
-        Image img1 = icon1.getImage().getScaledInstance(HomePageBtn.getWidth(),HomePageBtn.getHeight(), Image.SCALE_SMOOTH);
-        HomePageBtn.setIcon(new ImageIcon(img1));
-        //Set icon orderPageBtn
-        ImageIcon icon2 = new ImageIcon(getClass().getResource("/BahanSteak/logoOrder1.png"));
-        Image img2 = icon2.getImage().getScaledInstance(OrderPageBtn.getWidth(),OrderPageBtn.getHeight(), Image.SCALE_SMOOTH);
-        OrderPageBtn.setIcon(new ImageIcon(img2));
-        //Set icon reportsPageBtn
-        ImageIcon icon3 = new ImageIcon(getClass().getResource("/BahanSteak/logoReport2.png"));
-        Image img3 = icon3.getImage().getScaledInstance(ReportsPageBtn.getWidth(),ReportsPageBtn.getHeight(), Image.SCALE_SMOOTH);
-        ReportsPageBtn.setIcon(new ImageIcon(img3));
-        //Set icon mngStaffPagebtn
-        ImageIcon icon4 = new ImageIcon(getClass().getResource("/BahanSteak/logoStaff2.png"));
-        Image img4 = icon4.getImage().getScaledInstance(ManagePageBtn.getWidth(),ManagePageBtn.getHeight(), Image.SCALE_SMOOTH);
-        ManagePageBtn.setIcon(new ImageIcon(img4));
+    private void setIconBtn() {
+        // Menggunakan MethodClass untuk mengatur ikon pada tombol
+        MethodClass.setIconBtn(HomePageBtn, "/BahanSteak/logoHome2.png");
+        MethodClass.setIconBtn(OrderPageBtn, "/BahanSteak/logoOrder1.png");
+        MethodClass.setIconBtn(ReportsPageBtn, "/BahanSteak/logoReport2.png");
+        MethodClass.setIconBtn(ManagePageBtn, "/BahanSteak/logoStaff2.png");  
     }
     
     @SuppressWarnings("unchecked")
@@ -86,8 +52,6 @@ public class OrderPage extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        outIdPesanan = new javax.swing.JTextField();
-        outJenis_Meja = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
@@ -100,6 +64,9 @@ public class OrderPage extends javax.swing.JFrame {
         outTotal = new javax.swing.JTextField();
         outTunai = new javax.swing.JTextField();
         outStatus = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/BahanSteak/iconSR.jpg")).getImage());
@@ -217,17 +184,17 @@ public class OrderPage extends javax.swing.JFrame {
         panelLeftOrderPageLayout.setHorizontalGroup(
             panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLeftOrderPageLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(HomePageBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(OrderPageBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ReportsPageBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ManagePageBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(17, 17, 17))
+                .addGap(17, 17, 17)
+                .addGroup(panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(HomePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(OrderPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ReportsPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ManagePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         panelLeftOrderPageLayout.setVerticalGroup(
             panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,7 +203,7 @@ public class OrderPage extends javax.swing.JFrame {
                 .addComponent(HomePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel8)
-                .addGap(30, 30, 30)
+                .addGap(24, 24, 24)
                 .addComponent(OrderPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel9)
@@ -248,7 +215,7 @@ public class OrderPage extends javax.swing.JFrame {
                 .addComponent(ManagePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(440, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Poppins Black", 1, 28)); // NOI18N
@@ -278,24 +245,8 @@ public class OrderPage extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(159, 159, 158), 2));
 
-        jLabel2.setFont(new java.awt.Font("Poppins Medium", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Poppins Medium", 1, 24)); // NOI18N
         jLabel2.setText("Detail Pesanan");
-
-        outIdPesanan.setText("#121224003");
-        outIdPesanan.setPreferredSize(new java.awt.Dimension(60, 22));
-        outIdPesanan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                outIdPesananActionPerformed(evt);
-            }
-        });
-
-        outJenis_Meja.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        outJenis_Meja.setText("Dine-in, T-23");
-        outJenis_Meja.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                outJenis_MejaActionPerformed(evt);
-            }
-        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -343,20 +294,48 @@ public class OrderPage extends javax.swing.JFrame {
         outStatus.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         outStatus.setText("Selesai");
 
+        jTextField1.setFont(new java.awt.Font("Poppins SemiBold", 0, 13)); // NOI18N
+        jTextField1.setText("ID : 261224001");
+        jTextField1.setBorder(null);
+        jTextField1.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextField1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        jTextField1.setDoubleBuffered(true);
+
+        jTextField2.setFont(new java.awt.Font("Poppins SemiBold", 0, 13)); // NOI18N
+        jTextField2.setText("Take way");
+        jTextField2.setBorder(null);
+        jTextField2.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextField2.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        jTextField2.setDoubleBuffered(true);
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.setFont(new java.awt.Font("Poppins Medium", 0, 13)); // NOI18N
+        jTextField3.setText("41");
+        jTextField3.setBorder(null);
+        jTextField3.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextField3.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        jTextField3.setDoubleBuffered(true);
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(outIdPesanan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(66, 66, 66)
-                        .addComponent(outJenis_Meja, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                        .addContainerGap(41, Short.MAX_VALUE))
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,27 +344,33 @@ public class OrderPage extends javax.swing.JFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(outPajak, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(outSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(outTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(outTunai, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(outStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34))))
-            .addComponent(jScrollPane2)
+                        .addGap(34, 34, 34))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(outIdPesanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(outJenis_Meja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(outSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -414,16 +399,19 @@ public class OrderPage extends javax.swing.JFrame {
         bgOrderPageLayout.setHorizontalGroup(
             bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgOrderPageLayout.createSequentialGroup()
-                .addComponent(panelLeftOrderPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
                     .addGroup(bgOrderPageLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(panelTopOrderPage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelLeftOrderPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                        .addGroup(bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1038, Short.MAX_VALUE)
+                            .addGroup(bgOrderPageLayout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(15, 15, 15)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelTopOrderPage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         bgOrderPageLayout.setVerticalGroup(
             bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -432,7 +420,7 @@ public class OrderPage extends javax.swing.JFrame {
                 .addGroup(bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgOrderPageLayout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addGap(0, 0, 0))
                     .addGroup(bgOrderPageLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -440,8 +428,8 @@ public class OrderPage extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
                         .addGap(6, 6, 6))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgOrderPageLayout.createSequentialGroup()
-                        .addComponent(panelLeftOrderPage, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(panelLeftOrderPage, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
+                        .addGap(0, 0, 0))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -459,14 +447,6 @@ public class OrderPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void outIdPesananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outIdPesananActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_outIdPesananActionPerformed
-
-    private void outJenis_MejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outJenis_MejaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_outJenis_MejaActionPerformed
 
     private void outSubtotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outSubtotalActionPerformed
         // TODO add your handling code here:
@@ -490,6 +470,14 @@ public class OrderPage extends javax.swing.JFrame {
         new HomePage().setVisible(true);   
         dispose();
     }//GEN-LAST:event_HomePageBtnActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -555,8 +543,9 @@ public class OrderPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField outIdPesanan;
-    private javax.swing.JTextField outJenis_Meja;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField outPajak;
     private javax.swing.JTextField outStatus;
     private javax.swing.JTextField outSubtotal;
