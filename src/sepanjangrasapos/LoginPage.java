@@ -186,8 +186,9 @@ public class LoginPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Login berhasil! Selamat datang, " + rs.getString("nama"), "Login Berhasil", JOptionPane.INFORMATION_MESSAGE);
             
             // Berpindah ke halaman berikutnya
-            new HomePage().setVisible(true); // Contoh nama frame berikutnya
-            this.dispose(); // Menutup halaman login
+            new HomePage().setVisible(true);   
+            dispose();
+
         } else {
             JOptionPane.showMessageDialog(this, "Email atau Password salah!", "Login Gagal", JOptionPane.ERROR_MESSAGE);
         }

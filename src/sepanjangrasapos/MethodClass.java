@@ -8,13 +8,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MethodClass {
+
     // Metode untuk mengatur ikon pada JButton
     public static void setIconBtn(JButton button, String resourcePath) {
         ImageIcon icon = new ImageIcon(MethodClass.class.getResource(resourcePath));
         Image img = icon.getImage().getScaledInstance(button.getWidth(), button.getHeight(), Image.SCALE_SMOOTH);
         button.setIcon(new ImageIcon(img));
     }
-    
+
     // Metode untuk memasukkan gambar ke dalam label dengan ukuran yang disesuaikan
     public static void setIconLabel(JLabel label, String imagePath) {
         ImageIcon icon = new ImageIcon(MethodClass.class.getResource(imagePath));
