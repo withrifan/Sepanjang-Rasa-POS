@@ -105,6 +105,51 @@ public class Manage extends javax.swing.JFrame {
         }
     }  
     
+private void jTableManageStaffMouseClicked(java.awt.event.MouseEvent evt) {
+    int selectedRow = jTableManageStaff.getSelectedRow();
+    DefaultTableModel model = (DefaultTableModel) jTableManageStaff.getModel();
+
+    idstaff_Field.setText(model.getValueAt(selectedRow, 0).toString());
+    nama_Field.setText(model.getValueAt(selectedRow, 1).toString());
+    jabatan_FieldCombo.setSelectedItem(model.getValueAt(selectedRow, 2).toString());
+    telpon_Field.setText(model.getValueAt(selectedRow, 3).toString());
+    email_Field.setText(model.getValueAt(selectedRow, 4).toString());
+    password_Field.setText(model.getValueAt(selectedRow, 5).toString());
+    jeniskelamin_FieldCombo.setSelectedItem(model.getValueAt(selectedRow, 6).toString());
+    alamat_Field.setText(model.getValueAt(selectedRow, 7).toString());
+}
+
+
+private void updateStaffData() {
+    try {
+        String query = "UPDATE tb_staff SET nama = ?, jabatan = ?, telpon = ?, email = ?, password = ?, jk = ?, alamat = ? WHERE id_staff = ?";
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement pst = conn.prepareStatement(query);
+
+        pst.setString(1, nama_Field.getText());
+        pst.setString(2, jabatan_FieldCombo.getSelectedItem().toString());
+        pst.setString(3, telpon_Field.getText());
+        pst.setString(4, email_Field.getText());
+        pst.setString(5, password_Field.getText());
+        pst.setString(6, jeniskelamin_FieldCombo.getSelectedItem().toString());
+        pst.setString(7, alamat_Field.getText());
+        pst.setInt(8, Integer.parseInt(idstaff_Field.getText()));
+
+        int rowsUpdated = pst.executeUpdate();
+        if (rowsUpdated > 0) {
+            JOptionPane.showMessageDialog(this, "Data berhasil diupdate.");
+            loadStaffData(); // Refresh tabel setelah update
+        }
+        pst.close();
+        conn.close();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Gagal mengupdate data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "ID Staff harus berupa angka: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -531,9 +576,16 @@ public class Manage extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(jTableManageStaff);
@@ -620,7 +672,7 @@ public class Manage extends javax.swing.JFrame {
     }//GEN-LAST:event_email_FieldActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        // TODO add your handling code here:
+        updateStaffData();
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void bgOrderPageComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_bgOrderPageComponentShown
