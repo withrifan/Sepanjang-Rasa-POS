@@ -1,8 +1,5 @@
 package sepanjangrasapos;
 
-import java.awt.Image;
-import javax.swing.ImageIcon;
-
 public class Reports extends javax.swing.JFrame {
 
     public Reports() {
@@ -11,24 +8,24 @@ public class Reports extends javax.swing.JFrame {
         setImg();
         setIconBtn();
     }
-    
+
     public void setTime() {
         // Menggunakan MethodClass untuk memperbarui waktu dan tanggal secara real-time
         MethodClass.setTime(Waktu, Tanggal);
     }
-    
-    public void setImg(){
+
+    public void setImg() {
         MethodClass.setIconLabel(LogoTop, "/BahanSteak/LogoSepanjangRasa2.png");
     }
-    
+
     private void setIconBtn() {
         // Menggunakan MethodClass untuk mengatur ikon pada tombol
         MethodClass.setIconBtn(HomePageBtn, "/BahanSteak/logoHome2.png");
         MethodClass.setIconBtn(OrderPageBtn, "/BahanSteak/logoOrder2.png");
         MethodClass.setIconBtn(ReportsPageBtn, "/BahanSteak/logoReport1.png");
-        MethodClass.setIconBtn(ManagePageBtn, "/BahanSteak/logoStaff2.png");  
+        MethodClass.setIconBtn(ManagePageBtn, "/BahanSteak/logoStaff2.png");
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -76,7 +73,7 @@ public class Reports extends javax.swing.JFrame {
             .addGroup(panelTopOrderPageLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(LogoTop, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1169, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelTopOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Tanggal, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(Waktu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -204,7 +201,7 @@ public class Reports extends javax.swing.JFrame {
             bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgOrderPageLayout.createSequentialGroup()
                 .addComponent(panelLeftOrderPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 1456, Short.MAX_VALUE))
             .addComponent(panelTopOrderPage, javax.swing.GroupLayout.DEFAULT_SIZE, 1536, Short.MAX_VALUE)
         );
         bgOrderPageLayout.setVerticalGroup(
@@ -218,9 +215,7 @@ public class Reports extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(bgOrderPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(bgOrderPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,13 +230,11 @@ public class Reports extends javax.swing.JFrame {
     }//GEN-LAST:event_formComponentShown
 
     private void homePageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homePageBtnActionPerformed
-        new HomePage().setVisible(true); // pindah ke frame HomePage  
-        dispose(); // Menutup frame saat ini Report
+
     }//GEN-LAST:event_homePageBtnActionPerformed
 
     private void orderPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderPageBtnActionPerformed
-        new OrderPage().setVisible(true); // pindah ke frame OrderPage 
-        dispose(); // Menutup frame saat ini Report
+
     }//GEN-LAST:event_orderPageBtnActionPerformed
 
     private void reportsPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportsPageBtnActionPerformed
@@ -249,8 +242,7 @@ public class Reports extends javax.swing.JFrame {
     }//GEN-LAST:event_reportsPageBtnActionPerformed
 
     private void mngStaffPagebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mngStaffPagebtnActionPerformed
-//        new ManageStaffPage().setVisible(true); // pindah ke frame ManageStaffPage  
-//        dispose(); // Menutup frame saat ini Report
+
     }//GEN-LAST:event_mngStaffPagebtnActionPerformed
 
     private void ReportsPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportsPageBtnActionPerformed
@@ -258,22 +250,22 @@ public class Reports extends javax.swing.JFrame {
     }//GEN-LAST:event_ReportsPageBtnActionPerformed
 
     private void HomePageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomePageBtnActionPerformed
-        new HomePage().setVisible(true);   
+        new HomePage().setVisible(true);
         dispose();
     }//GEN-LAST:event_HomePageBtnActionPerformed
 
     private void OrderPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderPageBtnActionPerformed
-        new OrderPage().setVisible(true);   
+        new OrderPage().setVisible(true);
         dispose();
     }//GEN-LAST:event_OrderPageBtnActionPerformed
 
     private void ManagePageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagePageBtnActionPerformed
-        new Manage().setVisible(true);   
+        new Manage().setVisible(true);
         dispose();
     }//GEN-LAST:event_ManagePageBtnActionPerformed
 
     public static void main(String args[]) {
-       
+
         java.awt.EventQueue.invokeLater(() -> {
             new Reports().setVisible(true);
         });
