@@ -48,7 +48,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Component id="panelLeftOrderPage" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="1456" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
               <Component id="panelTopOrderPage" alignment="0" pref="1536" max="32767" attributes="0"/>
           </Group>
@@ -57,6 +57,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="panelTopOrderPage" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="panelLeftOrderPage" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -86,7 +87,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Component id="LogoTop" min="-2" pref="135" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="1169" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="Tanggal" pref="200" max="32767" attributes="0"/>
                           <Component id="Waktu" max="32767" attributes="0"/>

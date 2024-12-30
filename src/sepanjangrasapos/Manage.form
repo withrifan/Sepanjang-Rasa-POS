@@ -84,7 +84,7 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                   <Component id="manageStaff_Label" min="-2" pref="38" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="677" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="711" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
@@ -93,8 +93,8 @@
                           </Group>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="panelLeftOrderPage" pref="731" max="32767" attributes="0"/>
-                      <Component id="jPanel1" pref="731" max="32767" attributes="0"/>
+                      <Component id="panelLeftOrderPage" pref="765" max="32767" attributes="0"/>
+                      <Component id="jPanel1" pref="765" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -376,15 +376,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="alamat_Label" linkSize="10" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
-                          <Component id="alamat_Field" linkSize="10" alignment="0" min="-2" pref="314" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="alamat_Label" linkSize="10" alignment="0" pref="90" max="32767" attributes="0"/>
                           <Component id="jeniskelamin_Label" linkSize="5" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
                           <Component id="jeniskelamin_FieldCombo" linkSize="5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="idstaff_Label" linkSize="2" min="-2" pref="90" max="-2" attributes="0"/>
-                          <Component id="idstaff_Field" linkSize="2" min="-2" pref="314" max="-2" attributes="0"/>
-                          <Component id="telpon_Label" linkSize="10" min="-2" pref="90" max="-2" attributes="0"/>
-                          <Component id="telpon_Field" linkSize="10" min="-2" pref="314" max="-2" attributes="0"/>
+                          <Component id="idstaff_Label" linkSize="2" pref="90" max="32767" attributes="0"/>
+                          <Component id="idstaff_Field" linkSize="2" pref="314" max="32767" attributes="0"/>
+                          <Component id="telpon_Label" linkSize="10" pref="90" max="32767" attributes="0"/>
+                          <Component id="telpon_Field" linkSize="10" pref="314" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="simpanButton" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -393,18 +392,19 @@
                               <Component id="deleteButton" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <Component id="detailStaff_Label" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
-                          <Component id="nama_Label" linkSize="1" min="-2" pref="90" max="-2" attributes="0"/>
-                          <Component id="nama_Field" linkSize="1" min="-2" pref="314" max="-2" attributes="0"/>
+                          <Component id="nama_Label" linkSize="1" pref="90" max="32767" attributes="0"/>
+                          <Component id="nama_Field" linkSize="1" pref="314" max="32767" attributes="0"/>
                           <Component id="jabatan_Label" min="-2" pref="90" max="-2" attributes="0"/>
                           <Component id="jabatan_FieldCombo" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="email_Field" linkSize="12" min="-2" pref="314" max="-2" attributes="0"/>
-                              <Component id="email_Label" linkSize="12" min="-2" pref="90" max="-2" attributes="0"/>
+                              <Component id="email_Field" linkSize="12" pref="314" max="32767" attributes="0"/>
+                              <Component id="email_Label" linkSize="12" pref="90" max="32767" attributes="0"/>
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="password_Label" linkSize="12" min="-2" pref="90" max="-2" attributes="0"/>
-                                  <Component id="password_Field" linkSize="12" min="-2" max="-2" attributes="0"/>
+                                  <Component id="password_Label" linkSize="12" pref="90" max="32767" attributes="0"/>
+                                  <Component id="password_Field" linkSize="12" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="11" max="32767" attributes="0"/>
                   </Group>
@@ -446,7 +446,7 @@
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="alamat_Label" min="-2" pref="24" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="alamat_Field" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="simpanButton" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
@@ -514,19 +514,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Alamat"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="alamat_Field">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="13" style="0"/>
-                </Property>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[64, 30]"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alamat_FieldActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="telpon_Label">
               <Properties>
@@ -647,6 +634,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Delete"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="detailStaff_Label">
               <Properties>
@@ -698,6 +688,22 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nama_FieldActionPerformed"/>
               </Events>
             </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="alamat_Field">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="lineWrap" type="boolean" value="true"/>
+                    <Property name="rows" type="int" value="5"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -769,6 +775,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableManageStaffMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
