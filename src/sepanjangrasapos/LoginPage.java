@@ -59,7 +59,7 @@ public class LoginPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBackground(new java.awt.Color(255, 242, 232));
 
         jLabel1.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(252, 128, 25));
@@ -69,6 +69,7 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel2.setText("Username");
 
         usernameInput.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        usernameInput.setBorder(null);
         usernameInput.setPreferredSize(new java.awt.Dimension(64, 33));
         usernameInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +80,7 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Poppins", 0, 15)); // NOI18N
         jLabel3.setText("Password");
 
+        passwordInput.setBorder(null);
         passwordInput.setPreferredSize(new java.awt.Dimension(64, 33));
         passwordInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
