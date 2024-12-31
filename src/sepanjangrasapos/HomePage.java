@@ -215,6 +215,8 @@ public class HomePage extends javax.swing.JFrame {
         outputPPN = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         outputTotal = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         PanelMenu1 = new button.panel();
         addMenu1 = new javax.swing.JCheckBox();
         qtyMenu1 = new javax.swing.JSpinner();
@@ -490,15 +492,10 @@ public class HomePage extends javax.swing.JFrame {
                     .addGroup(leftPanelLayout.createSequentialGroup()
                         .addGap(0, 2, Short.MAX_VALUE)
                         .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
-                                .addComponent(OrderPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
-                                .addComponent(ReportsPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14))))
-                    .addGroup(leftPanelLayout.createSequentialGroup()
-                        .addComponent(ManagePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14))))
+                            .addComponent(OrderPageBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ReportsPageBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(ManagePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -647,10 +644,11 @@ public class HomePage extends javax.swing.JFrame {
                     .addComponent(outputKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -681,6 +679,10 @@ public class HomePage extends javax.swing.JFrame {
         outputTotal.setBorder(null);
         outputTotal.setPreferredSize(new java.awt.Dimension(181, 25));
 
+        jLabel10.setText("jLabel10");
+
+        jLabel11.setText("jLabel11");
+
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
         rightPanel.setLayout(rightPanelLayout);
         rightPanelLayout.setHorizontalGroup(
@@ -703,11 +705,21 @@ public class HomePage extends javax.swing.JFrame {
                             .addComponent(outputSubtotal)
                             .addComponent(outputTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))))
                 .addContainerGap())
+            .addGroup(rightPanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
         );
         rightPanelLayout.setVerticalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(26, 26, 26)
+                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2668,8 +2680,6 @@ public class HomePage extends javax.swing.JFrame {
     private button.panel PanelMenu3;
     private button.panel PanelMenu4;
     private button.panel PanelMenu5;
-    private button.panel PanelMenu6;
-    private button.panel PanelMenu7;
     private button.panel PanelMenu8;
     private button.panel PanelMenu9;
     private button.custom ReportsPageBtn;
@@ -2691,8 +2701,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JCheckBox addMenu3;
     private javax.swing.JCheckBox addMenu4;
     private javax.swing.JCheckBox addMenu5;
-    private javax.swing.JCheckBox addMenu6;
-    private javax.swing.JCheckBox addMenu7;
     private javax.swing.JCheckBox addMenu8;
     private javax.swing.JCheckBox addMenu9;
     private button.custom btnBayar;
@@ -2700,6 +2708,8 @@ public class HomePage extends javax.swing.JFrame {
     private button.custom btnReset;
     private javax.swing.JTextField inputTunai;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -2728,8 +2738,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel lblMenu3;
     private javax.swing.JLabel lblMenu4;
     private javax.swing.JLabel lblMenu5;
-    private javax.swing.JLabel lblMenu6;
-    private javax.swing.JLabel lblMenu7;
     private javax.swing.JLabel lblMenu8;
     private javax.swing.JLabel lblMenu9;
     private javax.swing.JLabel lblVarian1;
@@ -2748,8 +2756,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel lblVarian3;
     private javax.swing.JLabel lblVarian4;
     private javax.swing.JLabel lblVarian5;
-    private javax.swing.JLabel lblVarian6;
-    private javax.swing.JLabel lblVarian7;
     private javax.swing.JLabel lblVarian8;
     private javax.swing.JLabel lblVarian9;
     private javax.swing.JPanel leftPanel;
@@ -2770,8 +2776,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> opsiMenu3;
     private javax.swing.JComboBox<String> opsiMenu4;
     private javax.swing.JComboBox<String> opsiMenu5;
-    private javax.swing.JComboBox<String> opsiMenu6;
-    private javax.swing.JComboBox<String> opsiMenu7;
     private javax.swing.JComboBox<String> opsiMenu8;
     private javax.swing.JComboBox<String> opsiMenu9;
     private javax.swing.JTextField outputKembali;
@@ -2794,8 +2798,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel picMenu3;
     private javax.swing.JLabel picMenu4;
     private javax.swing.JLabel picMenu5;
-    private javax.swing.JLabel picMenu6;
-    private javax.swing.JLabel picMenu7;
     private javax.swing.JLabel picMenu8;
     private javax.swing.JLabel picMenu9;
     private javax.swing.JSpinner qtyMenu1;
@@ -2814,8 +2816,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JSpinner qtyMenu3;
     private javax.swing.JSpinner qtyMenu4;
     private javax.swing.JSpinner qtyMenu5;
-    private javax.swing.JSpinner qtyMenu6;
-    private javax.swing.JSpinner qtyMenu7;
     private javax.swing.JSpinner qtyMenu8;
     private javax.swing.JSpinner qtyMenu9;
     private javax.swing.JPanel rightPanel;

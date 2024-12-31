@@ -1,5 +1,7 @@
 package sepanjangrasapos;
 
+import button.jchartLine;
+
 public class Reports extends javax.swing.JFrame {
 
     public Reports() {
@@ -25,6 +27,7 @@ public class Reports extends javax.swing.JFrame {
         MethodClass.setIconBtn(ReportsPageBtn, "/BahanSteak/logoReport1.png");
         MethodClass.setIconBtn(ManagePageBtn, "/BahanSteak/logoStaff2.png");
     }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -52,7 +55,7 @@ public class Reports extends javax.swing.JFrame {
             }
         });
 
-        bgOrderPage.setBackground(new java.awt.Color(245, 245, 245));
+        bgOrderPage.setBackground(new java.awt.Color(255, 242, 232));
 
         panelTopOrderPage.setBackground(new java.awt.Color(255, 255, 255));
         panelTopOrderPage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(159, 159, 158)));
@@ -208,7 +211,6 @@ public class Reports extends javax.swing.JFrame {
             bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgOrderPageLayout.createSequentialGroup()
                 .addComponent(panelTopOrderPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
                 .addComponent(panelLeftOrderPage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
