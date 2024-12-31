@@ -39,14 +39,14 @@ public class OrderPage extends javax.swing.JFrame {
         Waktu = new javax.swing.JLabel();
         Tanggal = new javax.swing.JLabel();
         panelLeftOrderPage = new javax.swing.JPanel();
-        HomePageBtn = new button.custom();
+        HomePageBtn = new custom.Button();
         jLabel8 = new javax.swing.JLabel();
-        OrderPageBtn = new button.custom();
+        OrderPageBtn = new custom.Button();
         jLabel9 = new javax.swing.JLabel();
-        ReportsPageBtn = new button.custom();
+        ReportsPageBtn = new custom.Button();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        ManagePageBtn = new button.custom();
+        ManagePageBtn = new custom.Button();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -69,6 +69,7 @@ public class OrderPage extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Order - Sepanjang Rasa");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/BahanSteak/iconSR.jpg")).getImage());
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -457,6 +458,8 @@ public class OrderPage extends javax.swing.JFrame {
             .addComponent(bgOrderPage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        getAccessibleContext().setAccessibleName("Order - Sepanjang Rasa");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -535,11 +538,11 @@ public class OrderPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private button.custom HomePageBtn;
+    private custom.Button HomePageBtn;
     private javax.swing.JLabel LogoTop;
-    private button.custom ManagePageBtn;
-    private button.custom OrderPageBtn;
-    private button.custom ReportsPageBtn;
+    private custom.Button ManagePageBtn;
+    private custom.Button OrderPageBtn;
+    private custom.Button ReportsPageBtn;
     private javax.swing.JLabel Tanggal;
     private javax.swing.JLabel Waktu;
     private javax.swing.JPanel bgOrderPage;

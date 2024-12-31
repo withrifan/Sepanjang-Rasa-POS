@@ -1,4 +1,4 @@
-package button;
+package custom;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
 
-public class custom extends JButton {
+public class Button extends JButton {
     private boolean over;
     private boolean clicked;
     private Color color;
@@ -19,7 +19,7 @@ public class custom extends JButton {
     private Color colorDisabled; // Warna untuk tombol yang dinonaktifkan
     private int radius = 0;
 
-    public custom() {
+    public Button() {
         setColor(Color.WHITE);
         colorOver = new Color(159, 159, 158);
         colorClick = new Color(255, 98, 25);

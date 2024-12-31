@@ -190,14 +190,14 @@ public class Manage extends javax.swing.JFrame {
         Waktu = new javax.swing.JLabel();
         Tanggal = new javax.swing.JLabel();
         panelLeftOrderPage = new javax.swing.JPanel();
-        HomePageBtn = new button.custom();
+        HomePageBtn = new custom.Button();
         jLabel1 = new javax.swing.JLabel();
-        OrderPageBtn = new button.custom();
+        OrderPageBtn = new custom.Button();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        ReportsPageBtn = new button.custom();
+        ReportsPageBtn = new custom.Button();
         jLabel4 = new javax.swing.JLabel();
-        ManagePageBtn = new button.custom();
+        ManagePageBtn = new custom.Button();
         manageStaff_Label = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         idstaff_Label = new javax.swing.JLabel();
@@ -225,6 +225,7 @@ public class Manage extends javax.swing.JFrame {
         jTableManageStaff = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Staff - Sepanjang Rasa");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/BahanSteak/iconSR.jpg")).getImage());
         setPreferredSize(new java.awt.Dimension(1530, 845));
 
@@ -762,11 +763,11 @@ public class Manage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private button.custom HomePageBtn;
+    private custom.Button HomePageBtn;
     private javax.swing.JLabel LogoTop;
-    private button.custom ManagePageBtn;
-    private button.custom OrderPageBtn;
-    private button.custom ReportsPageBtn;
+    private custom.Button ManagePageBtn;
+    private custom.Button OrderPageBtn;
+    private custom.Button ReportsPageBtn;
     private javax.swing.JLabel Tanggal;
     private javax.swing.JLabel Waktu;
     private javax.swing.JTextArea alamat_Field;

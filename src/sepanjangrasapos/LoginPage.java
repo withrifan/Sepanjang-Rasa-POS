@@ -35,7 +35,8 @@ public class LoginPage extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sepanjang Rasa");
+        setTitle("Login - Sepanjang Rasa");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/BahanSteak/iconSR.jpg")).getImage());
         setPreferredSize(new java.awt.Dimension(750, 450));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
