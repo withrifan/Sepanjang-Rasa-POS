@@ -37,12 +37,12 @@ public class Reports extends javax.swing.JFrame {
         Tanggal = new javax.swing.JLabel();
         panelLeftOrderPage = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        HomePageBtn = new custom.Button();
+        HomePageBtn = new custom.button();
         jLabel5 = new javax.swing.JLabel();
-        OrderPageBtn = new custom.Button();
-        ReportsPageBtn = new custom.Button();
+        OrderPageBtn = new custom.button();
+        ReportsPageBtn = new custom.button();
         jLabel6 = new javax.swing.JLabel();
-        ManagePageBtn = new custom.Button();
+        ManagePageBtn = new custom.button();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -275,11 +275,11 @@ public class Reports extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private custom.Button HomePageBtn;
+    private custom.button HomePageBtn;
     private javax.swing.JLabel LogoTop;
-    private custom.Button ManagePageBtn;
-    private custom.Button OrderPageBtn;
-    private custom.Button ReportsPageBtn;
+    private custom.button ManagePageBtn;
+    private custom.button OrderPageBtn;
+    private custom.button ReportsPageBtn;
     private javax.swing.JLabel Tanggal;
     private javax.swing.JLabel Waktu;
     private javax.swing.JPanel bgOrderPage;

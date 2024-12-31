@@ -213,7 +213,7 @@
                 <Property name="text" type="java.lang.String" value="Home"/>
               </Properties>
             </Component>
-            <Component class="custom.Button" name="HomePageBtn">
+            <Component class="custom.button" name="HomePageBtn">
               <Properties>
                 <Property name="colorBorder" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -239,7 +239,7 @@
                 <Property name="text" type="java.lang.String" value="Order"/>
               </Properties>
             </Component>
-            <Component class="custom.Button" name="OrderPageBtn">
+            <Component class="custom.button" name="OrderPageBtn">
               <Properties>
                 <Property name="colorBorder" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -256,7 +256,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrderPageBtnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="custom.Button" name="ReportsPageBtn">
+            <Component class="custom.button" name="ReportsPageBtn">
               <Properties>
                 <Property name="colorBorder" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -285,7 +285,7 @@
                 <Property name="text" type="java.lang.String" value="Report"/>
               </Properties>
             </Component>
-            <Component class="custom.Button" name="ManagePageBtn">
+            <Component class="custom.button" name="ManagePageBtn">
               <Properties>
                 <Property name="colorBorder" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>

@@ -190,14 +190,14 @@ public class Manage extends javax.swing.JFrame {
         Waktu = new javax.swing.JLabel();
         Tanggal = new javax.swing.JLabel();
         panelLeftOrderPage = new javax.swing.JPanel();
-        HomePageBtn = new custom.Button();
+        HomePageBtn = new custom.button();
         jLabel1 = new javax.swing.JLabel();
-        OrderPageBtn = new custom.Button();
+        OrderPageBtn = new custom.button();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        ReportsPageBtn = new custom.Button();
+        ReportsPageBtn = new custom.button();
         jLabel4 = new javax.swing.JLabel();
-        ManagePageBtn = new custom.Button();
+        ManagePageBtn = new custom.button();
         manageStaff_Label = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         idstaff_Label = new javax.swing.JLabel();
@@ -763,11 +763,11 @@ public class Manage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private custom.Button HomePageBtn;
+    private custom.button HomePageBtn;
     private javax.swing.JLabel LogoTop;
-    private custom.Button ManagePageBtn;
-    private custom.Button OrderPageBtn;
-    private custom.Button ReportsPageBtn;
+    private custom.button ManagePageBtn;
+    private custom.button OrderPageBtn;
+    private custom.button ReportsPageBtn;
     private javax.swing.JLabel Tanggal;
     private javax.swing.JLabel Waktu;
     private javax.swing.JTextArea alamat_Field;

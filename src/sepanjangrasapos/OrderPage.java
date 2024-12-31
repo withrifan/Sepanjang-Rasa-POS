@@ -39,14 +39,14 @@ public class OrderPage extends javax.swing.JFrame {
         Waktu = new javax.swing.JLabel();
         Tanggal = new javax.swing.JLabel();
         panelLeftOrderPage = new javax.swing.JPanel();
-        HomePageBtn = new custom.Button();
+        HomePageBtn = new custom.button();
         jLabel8 = new javax.swing.JLabel();
-        OrderPageBtn = new custom.Button();
+        OrderPageBtn = new custom.button();
         jLabel9 = new javax.swing.JLabel();
-        ReportsPageBtn = new custom.Button();
+        ReportsPageBtn = new custom.button();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        ManagePageBtn = new custom.Button();
+        ManagePageBtn = new custom.button();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -538,11 +538,11 @@ public class OrderPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private custom.Button HomePageBtn;
+    private custom.button HomePageBtn;
     private javax.swing.JLabel LogoTop;
-    private custom.Button ManagePageBtn;
-    private custom.Button OrderPageBtn;
-    private custom.Button ReportsPageBtn;
+    private custom.button ManagePageBtn;
+    private custom.button OrderPageBtn;
+    private custom.button ReportsPageBtn;
     private javax.swing.JLabel Tanggal;
     private javax.swing.JLabel Waktu;
     private javax.swing.JPanel bgOrderPage;

@@ -234,7 +234,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="custom.Button" name="HomePageBtn">
+            <Component class="custom.button" name="HomePageBtn">
               <Properties>
                 <Property name="colorBorder" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -252,7 +252,7 @@
                 <Property name="radius" type="int" value="8"/>
               </Properties>
             </Component>
-            <Component class="custom.Button" name="OrderPageBtn">
+            <Component class="custom.button" name="OrderPageBtn">
               <Properties>
                 <Property name="colorBorder" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -273,7 +273,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrderPageBtnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="custom.Button" name="ReportsPageBtn">
+            <Component class="custom.button" name="ReportsPageBtn">
               <Properties>
                 <Property name="colorBorder" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -294,7 +294,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ReportsPageBtnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="custom.Button" name="ManagePageBtn">
+            <Component class="custom.button" name="ManagePageBtn">
               <Properties>
                 <Property name="colorBorder" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -709,7 +709,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="outputKembaliActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="custom.Button" name="btnReset">
+                    <Component class="custom.button" name="btnReset">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -744,7 +744,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="custom.Button" name="btnPrint">
+                    <Component class="custom.button" name="btnPrint">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -779,7 +779,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrintActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="custom.Button" name="btnBayar">
+                    <Component class="custom.button" name="btnBayar">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="19" green="80" red="fc" type="rgb"/>
@@ -950,7 +950,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu1">
+            <Container class="custom.panel" name="PanelMenu1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1089,7 +1089,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu2">
+            <Container class="custom.panel" name="PanelMenu2">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1228,7 +1228,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu3">
+            <Container class="custom.panel" name="PanelMenu3">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1367,7 +1367,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu4">
+            <Container class="custom.panel" name="PanelMenu4">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1506,7 +1506,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu5">
+            <Container class="custom.panel" name="PanelMenu5">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1645,7 +1645,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu8">
+            <Container class="custom.panel" name="PanelMenu8">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1784,7 +1784,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu9">
+            <Container class="custom.panel" name="PanelMenu9">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1923,7 +1923,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu10">
+            <Container class="custom.panel" name="PanelMenu10">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2062,7 +2062,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu11">
+            <Container class="custom.panel" name="PanelMenu11">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2198,7 +2198,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu12">
+            <Container class="custom.panel" name="PanelMenu12">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2334,7 +2334,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu13">
+            <Container class="custom.panel" name="PanelMenu13">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2470,7 +2470,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu14">
+            <Container class="custom.panel" name="PanelMenu14">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2606,7 +2606,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu15">
+            <Container class="custom.panel" name="PanelMenu15">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2742,7 +2742,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu16">
+            <Container class="custom.panel" name="PanelMenu16">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2878,7 +2878,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu17">
+            <Container class="custom.panel" name="PanelMenu17">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -3014,7 +3014,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu18">
+            <Container class="custom.panel" name="PanelMenu18">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -3150,7 +3150,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu19">
+            <Container class="custom.panel" name="PanelMenu19">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -3286,7 +3286,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="custom.Panel" name="PanelMenu20">
+            <Container class="custom.panel" name="PanelMenu20">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
