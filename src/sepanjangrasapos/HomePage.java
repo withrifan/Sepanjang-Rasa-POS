@@ -244,6 +244,8 @@ public class HomePage extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         inputMeja = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        inputIDStaff = new javax.swing.JTextField();
         PanelMenu1 = new custom.panel();
         addMenu1 = new javax.swing.JCheckBox();
         qtyMenu1 = new javax.swing.JSpinner();
@@ -434,6 +436,11 @@ public class HomePage extends javax.swing.JFrame {
         HomePageBtn.setIconTextGap(8);
         HomePageBtn.setPreferredSize(new java.awt.Dimension(35, 35));
         HomePageBtn.setRadius(8);
+        HomePageBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HomePageBtnActionPerformed(evt);
+            }
+        });
 
         OrderPageBtn.setColorBorder(new java.awt.Color(255, 255, 255));
         OrderPageBtn.setColorClick(new java.awt.Color(204, 204, 204));
@@ -543,7 +550,7 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(ManagePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel9)
-                .addContainerGap(436, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         menuPanel.setBackground(new java.awt.Color(255, 242, 232));
@@ -670,13 +677,13 @@ public class HomePage extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(outputKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -734,6 +741,20 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
+        jLabel12.setFont(new java.awt.Font("Poppins Medium", 1, 13)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel12.setText("ID Staff");
+        jLabel12.setPreferredSize(new java.awt.Dimension(55, 25));
+
+        inputIDStaff.setFont(new java.awt.Font("Poppins Medium", 1, 13)); // NOI18N
+        inputIDStaff.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        inputIDStaff.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(159, 159, 158), 1, true));
+        inputIDStaff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputIDStaffActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
         rightPanel.setLayout(rightPanelLayout);
         rightPanelLayout.setHorizontalGroup(
@@ -759,30 +780,40 @@ public class HomePage extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(rightPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(inputMeja, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(77, 77, 77))
-                            .addGroup(rightPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(inputNamaPel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(inputNamaPel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(rightPanelLayout.createSequentialGroup()
+                                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(rightPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(inputMeja, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(rightPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(inputIDStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(77, 77, 77)))))
                 .addContainerGap())
         );
         rightPanelLayout.setVerticalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightPanelLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(inputNamaPel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(inputMeja, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputIDStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(outputSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -794,8 +825,9 @@ public class HomePage extends javax.swing.JFrame {
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(outputTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         PanelMenu1.setBackground(new java.awt.Color(255, 255, 255));
@@ -2340,7 +2372,6 @@ public class HomePage extends javax.swing.JFrame {
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rightPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(menuPanelLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2366,7 +2397,10 @@ public class HomePage extends javax.swing.JFrame {
                     .addComponent(PanelMenu18, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PanelMenu19, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PanelMenu20, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addComponent(rightPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layerDasarHomeLayout = new javax.swing.GroupLayout(layerDasarHome);
@@ -2388,9 +2422,9 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(layerDasarHomeLayout.createSequentialGroup()
                 .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layerDasarHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(leftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE)
-                    .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(leftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE))
+                .addGap(0, 21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -2626,42 +2660,138 @@ public class HomePage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPrintActionPerformed
 
-    
+
     private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
         int tunai = Integer.parseInt(inputTunai.getText());
         kembali = tunai - total;
 
         if (tunai == 0) {
-            JOptionPane.showMessageDialog(null, ("Masukkan nominal tunai"));
+            JOptionPane.showMessageDialog(null, "Masukkan nominal tunai");
+            return;
         } else if (kembali < 0) {
-            JOptionPane.showMessageDialog(null, ("Uang tunai tidak mencukupi"));
-        } else {
-            outputKembali.setText("Rp. " + kembali);
+            JOptionPane.showMessageDialog(null, "Uang tunai tidak mencukupi");
+            return;
+        }
 
-            // Kurangi stok di database untuk setiap pesanan
-            try (Connection conn = DBConnection.getConnection()) {
+        String inputMeja = this.inputMeja.getText().trim(); // Ambil input No Meja
+        String inputIDStaff = this.inputIDStaff.getText().trim(); // Ambil input ID Staff
+        String namaPelanggan = this.inputNamaPel.getText().trim(); // Ambil input Nama Pelanggan
+
+        if (inputMeja.isEmpty() || inputIDStaff.isEmpty() || namaPelanggan.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Harap lengkapi semua input (ID Staff, No Meja, Nama Pelanggan)!");
+            return;
+        }
+
+        try (Connection conn = DBConnection.getConnection()) {
+            // Validasi ID Staff
+            String queryStaff = "SELECT * FROM tb_staff WHERE id_staff = ?";
+            PreparedStatement stmtStaff = conn.prepareStatement(queryStaff);
+            stmtStaff.setString(1, inputIDStaff);
+
+            ResultSet rsStaff = stmtStaff.executeQuery();
+            if (!rsStaff.next()) {
+                JOptionPane.showMessageDialog(null, "ID Staff tidak valid!");
+                return;
+            }
+            String namaStaff = rsStaff.getString("nama");
+
+            // Validasi Meja
+            String queryMeja = "SELECT * FROM tb_meja WHERE id_meja = ?";
+            PreparedStatement stmtMeja = conn.prepareStatement(queryMeja);
+            stmtMeja.setString(1, inputMeja);
+
+            ResultSet rsMeja = stmtMeja.executeQuery();
+
+            if (rsMeja.next()) {
+                int statusMeja = rsMeja.getInt("status");
+                String namaMeja = rsMeja.getString("nama");
+
+                if (statusMeja == 0) {
+                    JOptionPane.showMessageDialog(null, "Meja tidak tersedia!");
+                    return;
+                }
+
+                // Totalkan qty untuk semua pesanan
+                int totalQty = 0;
                 for (Map<String, Object> order : orders) {
-                    String queryUpdate = "UPDATE tb_produk SET stok = ? WHERE id_produk = ?";
-                    PreparedStatement stmtUpdate = conn.prepareStatement(queryUpdate);
-                    stmtUpdate.setInt(1, (int) order.get("stok_akhir"));
-                    stmtUpdate.setInt(2, (int) order.get("id_produk"));
-                    stmtUpdate.executeUpdate();
+                    totalQty += (int) order.get("qty");
+                }
+                
+                
+
+                // Hitung total qty dari semua produk yang dipesan
+                //int totalQty = orders.stream().mapToInt(order -> (int) order.get("qty")).sum();
+
+                // Tambahkan transaksi ke database tb_transaksi untuk setiap produk
+                String queryInsertTransaksi = "INSERT INTO tb_transaksi (id_staff, id_produk, id_meja, nama_pel, tgl_transaksi, qty, subtotal, ppn, total_harga, tunai, kembalian, status) VALUES (?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement stmtInsertTransaksi = conn.prepareStatement(queryInsertTransaksi);
+
+                for (Map<String, Object> order : orders) {
+                    stmtInsertTransaksi.setString(1, inputIDStaff); // ID Staff
+                    stmtInsertTransaksi.setInt(2, (int) order.get("id_produk")); // ID Produk
+                    stmtInsertTransaksi.setString(3, inputMeja); // ID Meja
+                    stmtInsertTransaksi.setString(4, namaPelanggan); // Nama Pelanggan
+                    stmtInsertTransaksi.setInt(5, (int) order.get("qty")); // Qty untuk setiap produk
+                    stmtInsertTransaksi.setInt(6, subtotal); // Subtotal
+                    stmtInsertTransaksi.setInt(7, PPN); // PPN
+                    stmtInsertTransaksi.setInt(8, total); // Total Harga
+                    stmtInsertTransaksi.setInt(9, tunai); // Tunai
+                    stmtInsertTransaksi.setInt(10, kembali); // Kembalian
+                    stmtInsertTransaksi.setInt(11, 0); // Status
+                    stmtInsertTransaksi.executeUpdate();
+                }
+
+                // Update status meja menjadi tidak tersedia
+                String queryUpdateMeja = "UPDATE tb_meja SET status = 0 WHERE id_meja = ?";
+                PreparedStatement stmtUpdateMeja = conn.prepareStatement(queryUpdateMeja);
+                stmtUpdateMeja.setString(1, inputMeja);
+                stmtUpdateMeja.executeUpdate();
+
+                // Update status menjadi "Selesai" (1) setelah pembayaran
+                String queryUpdateStatus = "UPDATE tb_transaksi SET status = 1, tunai = ?, kembalian = ? WHERE id_meja = ? AND status = 0";
+                PreparedStatement stmtUpdateStatus = conn.prepareStatement(queryUpdateStatus);
+                stmtUpdateStatus.setInt(1, tunai); // Tunai yang diterima
+                stmtUpdateStatus.setInt(2, kembali); // Kembalian
+                stmtUpdateStatus.setString(3, inputMeja); // ID Meja terkait transaksi
+                stmtUpdateStatus.executeUpdate();
+
+                // Tampilkan informasi di jTextAreaOrder
+                jTextAreaOrder.setText(jTextAreaOrder.getText() + "\nMeja: " + inputMeja + " (" + namaMeja + ")\n"
+                        + "Staff: " + namaStaff + "\n"
+                        + "Pelanggan: " + namaPelanggan + "\n"
+                        + "Total Qty: " + totalQty + "\n");
+
+                // Kurangi stok produk di database
+                for (Map<String, Object> order : orders) {
+                    String queryUpdateStok = "UPDATE tb_produk SET stok = ? WHERE id_produk = ?";
+                    PreparedStatement stmtUpdateStok = conn.prepareStatement(queryUpdateStok);
+                    stmtUpdateStok.setInt(1, (int) order.get("stok_akhir"));
+                    stmtUpdateStok.setInt(2, (int) order.get("id_produk"));
+                    stmtUpdateStok.executeUpdate();
                 }
 
                 JOptionPane.showMessageDialog(null, "Transaksi berhasil!");
-            } catch (SQLException e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat mengurangi stok di database: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+
+                // Reset pesanan setelah pembayaran
+                orders.clear();
+                jTextAreaOrder.setText(jTextAreaOrder.getText() + "\n\n******************************************************\n"
+                        + "Subtotal: \t\t\t\t" + subtotal + "\nPajak 12%: \t\t\t\t" + PPN + "\nTotal: \t\t\t\t\t" + total + "\nTunai: \t\t\t\t\t" + tunai
+                        + "\n********************** Thank You *********************\n");
+                btnBayar.setEnabled(false);
+                btnPrint.setEnabled(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Nomor meja tidak ditemukan!");
             }
 
-            // Reset orders setelah pembayaran
-            orders.clear();
+            rsStaff.close();
+            stmtStaff.close();
+            rsMeja.close();
+            stmtMeja.close();
 
-            jTextAreaOrder.setText(jTextAreaOrder.getText() + "\n\n******************************************************\n"
-                    + "Subtotal: \t\t\t\t" + subtotal + "\nPajak 12%: \t\t\t\t" + PPN + "\nTotal: \t\t\t\t\t" + total + "\nTunai: \t\t\t\t\t" + tunai
-                    + "\n********************** Thank You *********************\n");
-            btnBayar.setEnabled(false);
-            btnPrint.setEnabled(true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat memproses transaksi: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnBayarActionPerformed
 
@@ -2712,6 +2842,14 @@ public class HomePage extends javax.swing.JFrame {
     private void inputMejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMejaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputMejaActionPerformed
+
+    private void HomePageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomePageBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HomePageBtnActionPerformed
+
+    private void inputIDStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputIDStaffActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputIDStaffActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2796,12 +2934,14 @@ public class HomePage extends javax.swing.JFrame {
     private custom.button btnBayar;
     private custom.button btnPrint;
     private custom.button btnReset;
+    private javax.swing.JTextField inputIDStaff;
     private javax.swing.JTextField inputMeja;
     private javax.swing.JTextField inputNamaPel;
     private javax.swing.JTextField inputTunai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
