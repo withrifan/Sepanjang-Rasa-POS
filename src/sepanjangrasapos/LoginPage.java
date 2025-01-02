@@ -9,13 +9,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginPage extends javax.swing.JFrame {
-    
+
     public LoginPage() {
         initComponents();
         setImg();
     }
-    
-    public void setImg(){
+
+    public void setImg() {
         MethodClass.setIconLabel(logoLogin, "/components/LogoSepanjangRasa1.png");
     }
 
@@ -29,7 +29,7 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        usernameInput = new javax.swing.JTextField();
+        emailInput = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         passwordInput = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
@@ -67,14 +67,14 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel1.setText("Login Admin");
 
         jLabel2.setFont(new java.awt.Font("Poppins", 0, 15)); // NOI18N
-        jLabel2.setText("Username");
+        jLabel2.setText("Email");
 
-        usernameInput.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        usernameInput.setBorder(null);
-        usernameInput.setPreferredSize(new java.awt.Dimension(64, 33));
-        usernameInput.addActionListener(new java.awt.event.ActionListener() {
+        emailInput.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        emailInput.setBorder(null);
+        emailInput.setPreferredSize(new java.awt.Dimension(64, 33));
+        emailInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameInputActionPerformed(evt);
+                emailInputActionPerformed(evt);
             }
         });
 
@@ -112,7 +112,7 @@ public class LoginPage extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(usernameInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(emailInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(passwordInput, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)))
@@ -129,7 +129,7 @@ public class LoginPage extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel2)
                 .addGap(0, 0, 0)
-                .addComponent(usernameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(emailInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(jLabel3)
                 .addGap(0, 0, 0)
@@ -169,7 +169,7 @@ public class LoginPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        String email = usernameInput.getText().trim(); // Ambil input email
+        String email = emailInput.getText().trim(); // Ambil input email
         String password = String.valueOf(passwordInput.getPassword()).trim(); // Ambil input password
 
         if (email.isEmpty() || password.isEmpty()) {
@@ -184,28 +184,35 @@ public class LoginPage extends javax.swing.JFrame {
             pst.setString(2, password);
 
             ResultSet rs = pst.executeQuery();
-        
-        if (rs.next()) {
-            JOptionPane.showMessageDialog(this, "Login berhasil! Selamat datang, " + rs.getString("nama"), "Login Berhasil", JOptionPane.INFORMATION_MESSAGE);
-            
-            // Berpindah ke halaman berikutnya
-            new HomePage().setVisible(true);   
-            dispose();
 
-        } else {
-            JOptionPane.showMessageDialog(this, "Email atau Password salah!", "Login Gagal", JOptionPane.ERROR_MESSAGE);
-        }
+            if (rs.next()) {
+                String idStaff = rs.getString("id_staff"); // Ambil ID staff yang berhasil login
+                String namaStaff = rs.getString("nama");   // Ambil nama staff
 
-        rs.close();
-        pst.close();
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(this, "Koneksi database gagal: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                // Simpan ID staff ke session
+                Session.setLoggedInStaffID(idStaff);
+
+                JOptionPane.showMessageDialog(this, "Login berhasil! Selamat datang, " + namaStaff, "Login Berhasil", JOptionPane.INFORMATION_MESSAGE);
+
+                // Berpindah ke halaman berikutnya (HomePage)
+                HomePage homePage = new HomePage();
+                homePage.setVisible(true);
+                dispose();
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Email atau Password salah!", "Login Gagal", JOptionPane.ERROR_MESSAGE);
+            }
+
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Koneksi database gagal: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void usernameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameInputActionPerformed
-             
-    }//GEN-LAST:event_usernameInputActionPerformed
+    private void emailInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailInputActionPerformed
+
+    }//GEN-LAST:event_emailInputActionPerformed
 
     private void passwordInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordInputActionPerformed
         // TODO add your handling code here:
@@ -249,6 +256,7 @@ public class LoginPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JTextField emailInput;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -257,6 +265,5 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel logoLogin;
     private javax.swing.JPasswordField passwordInput;
-    private javax.swing.JTextField usernameInput;
     // End of variables declaration//GEN-END:variables
 }

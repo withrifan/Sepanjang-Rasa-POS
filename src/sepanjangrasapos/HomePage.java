@@ -28,8 +28,10 @@ public class HomePage extends javax.swing.JFrame {
     private int tunai = 0;
     private int kembali = 0;
     private int qty = 0;
+    //private int idStaff; // Simpan ID Staff yang login
 
     public HomePage() {
+        // this.idStaff = idStaff; // Simpan ID Staff
         initComponents();
         setTime();
         setImg();
@@ -245,7 +247,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         inputMeja = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        inputIDStaff = new javax.swing.JTextField();
+        sesiIDStaff = new javax.swing.JTextField();
         PanelMenu1 = new custom.panel();
         addMenu1 = new javax.swing.JCheckBox();
         qtyMenu1 = new javax.swing.JSpinner();
@@ -585,6 +587,7 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
+        outputKembali.setEditable(false);
         outputKembali.setFont(new java.awt.Font("Poppins Medium", 1, 13)); // NOI18N
         outputKembali.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         outputKembali.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(159, 159, 158), 1, true));
@@ -746,12 +749,13 @@ public class HomePage extends javax.swing.JFrame {
         jLabel12.setText("ID Staff");
         jLabel12.setPreferredSize(new java.awt.Dimension(55, 25));
 
-        inputIDStaff.setFont(new java.awt.Font("Poppins Medium", 1, 13)); // NOI18N
-        inputIDStaff.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        inputIDStaff.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(159, 159, 158), 1, true));
-        inputIDStaff.addActionListener(new java.awt.event.ActionListener() {
+        sesiIDStaff.setEditable(false);
+        sesiIDStaff.setFont(new java.awt.Font("Poppins Medium", 1, 13)); // NOI18N
+        sesiIDStaff.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        sesiIDStaff.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(159, 159, 158), 1, true));
+        sesiIDStaff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputIDStaffActionPerformed(evt);
+                sesiIDStaffActionPerformed(evt);
             }
         });
 
@@ -792,7 +796,7 @@ public class HomePage extends javax.swing.JFrame {
                                     .addGroup(rightPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(inputIDStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(sesiIDStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(77, 77, 77)))))
                 .addContainerGap())
         );
@@ -810,7 +814,7 @@ public class HomePage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputIDStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sesiIDStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2674,13 +2678,23 @@ public class HomePage extends javax.swing.JFrame {
         }
 
         String inputMeja = this.inputMeja.getText().trim(); // Ambil input No Meja
-        String inputIDStaff = this.inputIDStaff.getText().trim(); // Ambil input ID Staff
         String namaPelanggan = this.inputNamaPel.getText().trim(); // Ambil input Nama Pelanggan
 
-        if (inputMeja.isEmpty() || inputIDStaff.isEmpty() || namaPelanggan.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Harap lengkapi semua input (ID Staff, No Meja, Nama Pelanggan)!");
+        if (inputMeja.isEmpty() || namaPelanggan.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Harap lengkapi semua input (No Meja, Nama Pelanggan)!");
             return;
         }
+
+        // Ambil ID Staff dari session
+        String inputIDStaff = Session.getLoggedInStaffID();
+        
+        if (inputIDStaff == null || inputIDStaff.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Sesi ID Staff tidak ditemukan. Harap login ulang.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+                // Set nilai ID Staff ke kolom output
+        sesiIDStaff.setText(String.valueOf(inputIDStaff));
 
         try (Connection conn = DBConnection.getConnection()) {
             // Validasi ID Staff
@@ -2716,18 +2730,13 @@ public class HomePage extends javax.swing.JFrame {
                 for (Map<String, Object> order : orders) {
                     totalQty += (int) order.get("qty");
                 }
-                
-                
-
-                // Hitung total qty dari semua produk yang dipesan
-                //int totalQty = orders.stream().mapToInt(order -> (int) order.get("qty")).sum();
 
                 // Tambahkan transaksi ke database tb_transaksi untuk setiap produk
                 String queryInsertTransaksi = "INSERT INTO tb_transaksi (id_staff, id_produk, id_meja, nama_pel, tgl_transaksi, qty, subtotal, ppn, total_harga, tunai, kembalian, status) VALUES (?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement stmtInsertTransaksi = conn.prepareStatement(queryInsertTransaksi);
 
                 for (Map<String, Object> order : orders) {
-                    stmtInsertTransaksi.setString(1, inputIDStaff); // ID Staff
+                    stmtInsertTransaksi.setString(1, inputIDStaff); // ID Staff dari sesi
                     stmtInsertTransaksi.setInt(2, (int) order.get("id_produk")); // ID Produk
                     stmtInsertTransaksi.setString(3, inputMeja); // ID Meja
                     stmtInsertTransaksi.setString(4, namaPelanggan); // Nama Pelanggan
@@ -2755,11 +2764,8 @@ public class HomePage extends javax.swing.JFrame {
                 stmtUpdateStatus.setString(3, inputMeja); // ID Meja terkait transaksi
                 stmtUpdateStatus.executeUpdate();
 
-                // Tampilkan informasi di jTextAreaOrder
-                jTextAreaOrder.setText(jTextAreaOrder.getText() + "\nMeja: " + inputMeja + " (" + namaMeja + ")\n"
-                        + "Staff: " + namaStaff + "\n"
-                        + "Pelanggan: " + namaPelanggan + "\n"
-                        + "Total Qty: " + totalQty + "\n");
+                // Set nilai kembalian ke kolom output
+                outputKembali.setText(String.valueOf(kembali));
 
                 // Kurangi stok produk di database
                 for (Map<String, Object> order : orders) {
@@ -2774,8 +2780,12 @@ public class HomePage extends javax.swing.JFrame {
 
                 // Reset pesanan setelah pembayaran
                 orders.clear();
-                jTextAreaOrder.setText(jTextAreaOrder.getText() + "\n\n******************************************************\n"
-                        + "Subtotal: \t\t\t\t" + subtotal + "\nPajak 12%: \t\t\t\t" + PPN + "\nTotal: \t\t\t\t\t" + total + "\nTunai: \t\t\t\t\t" + tunai
+                jTextAreaOrder.setText(jTextAreaOrder.getText() + "\n\n******************************************************\n" +
+                        "Meja: " + inputMeja + " (" + namaMeja + ")\n"
+                        + "Staff: " + namaStaff + "\n"
+                        + "Pelanggan: " + namaPelanggan + "\n"
+                        + "Total Qty: " + totalQty + "\n"
+                        + "\nSubtotal: \t\t\t\t" + subtotal + "\nPajak 12%: \t\t\t\t" + PPN + "\nTotal: \t\t\t\t\t" + total + "\nTunai: \t\t\t\t\t" + tunai + "\nKembali: \t\t\t\t" + kembali
                         + "\n********************** Thank You *********************\n");
                 btnBayar.setEnabled(false);
                 btnPrint.setEnabled(true);
@@ -2847,9 +2857,9 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_HomePageBtnActionPerformed
 
-    private void inputIDStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputIDStaffActionPerformed
+    private void sesiIDStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sesiIDStaffActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputIDStaffActionPerformed
+    }//GEN-LAST:event_sesiIDStaffActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2934,7 +2944,6 @@ public class HomePage extends javax.swing.JFrame {
     private custom.button btnBayar;
     private custom.button btnPrint;
     private custom.button btnReset;
-    private javax.swing.JTextField inputIDStaff;
     private javax.swing.JTextField inputMeja;
     private javax.swing.JTextField inputNamaPel;
     private javax.swing.JTextField inputTunai;
@@ -3051,6 +3060,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JSpinner qtyMenu8;
     private javax.swing.JSpinner qtyMenu9;
     private javax.swing.JPanel rightPanel;
+    private javax.swing.JTextField sesiIDStaff;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
 }
