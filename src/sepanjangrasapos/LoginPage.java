@@ -16,7 +16,7 @@ public class LoginPage extends javax.swing.JFrame {
     }
     
     public void setImg(){
-        MethodClass.setIconLabel(logoLogin, "/BahanSteak/LogoSepanjangRasa1.png");
+        MethodClass.setIconLabel(logoLogin, "/components/LogoSepanjangRasa1.png");
     }
 
     @SuppressWarnings("unchecked")
@@ -36,7 +36,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login - Sepanjang Rasa");
-        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/BahanSteak/iconSR.jpg")).getImage());
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/components/iconSR.jpg")).getImage());
         setPreferredSize(new java.awt.Dimension(750, 450));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));

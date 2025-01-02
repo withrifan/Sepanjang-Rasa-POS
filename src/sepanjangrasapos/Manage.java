@@ -21,15 +21,15 @@ public class Manage extends javax.swing.JFrame {
     }
 
     public void setImg() {
-        MethodClass.setIconLabel(LogoTop, "/BahanSteak/LogoSepanjangRasa2.png");
+        MethodClass.setIconLabel(LogoTop, "/components/LogoSepanjangRasa2.png");
     }
 
     private void setIconBtn() {
         // Menggunakan MethodClass untuk mengatur ikon pada tombol
-        MethodClass.setIconBtn(HomePageBtn, "/BahanSteak/logoHome2.png");
-        MethodClass.setIconBtn(OrderPageBtn, "/BahanSteak/logoOrder2.png");
-        MethodClass.setIconBtn(ReportsPageBtn, "/BahanSteak/logoReport2.png");
-        MethodClass.setIconBtn(ManagePageBtn, "/BahanSteak/logoStaff1.png");
+        MethodClass.setIconBtn(HomePageBtn, "/components/logoHome2.png");
+        MethodClass.setIconBtn(OrderPageBtn, "/components/logoOrder2.png");
+        MethodClass.setIconBtn(ReportsPageBtn, "/components/logoReport2.png");
+        MethodClass.setIconBtn(ManagePageBtn, "/components/logoStaff1.png");
     }
     
     public void resetField(){
@@ -226,7 +226,7 @@ public class Manage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Staff - Sepanjang Rasa");
-        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/BahanSteak/iconSR.jpg")).getImage());
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/components/iconSR.jpg")).getImage());
         setPreferredSize(new java.awt.Dimension(1530, 845));
 
         bgOrderPage.setBackground(new java.awt.Color(245, 245, 245));

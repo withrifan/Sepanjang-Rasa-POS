@@ -15,15 +15,15 @@ public class Reports extends javax.swing.JFrame {
     }
 
     public void setImg() {
-        MethodClass.setIconLabel(LogoTop, "/BahanSteak/LogoSepanjangRasa2.png");
+        MethodClass.setIconLabel(LogoTop, "/components/LogoSepanjangRasa2.png");
     }
 
     private void setIconBtn() {
         // Menggunakan MethodClass untuk mengatur ikon pada tombol
-        MethodClass.setIconBtn(HomePageBtn, "/BahanSteak/logoHome2.png");
-        MethodClass.setIconBtn(OrderPageBtn, "/BahanSteak/logoOrder2.png");
-        MethodClass.setIconBtn(ReportsPageBtn, "/BahanSteak/logoReport1.png");
-        MethodClass.setIconBtn(ManagePageBtn, "/BahanSteak/logoStaff2.png");
+        MethodClass.setIconBtn(HomePageBtn, "/components/logoHome2.png");
+        MethodClass.setIconBtn(OrderPageBtn, "/components/logoOrder2.png");
+        MethodClass.setIconBtn(ReportsPageBtn, "/components/logoReport1.png");
+        MethodClass.setIconBtn(ManagePageBtn, "/components/logoStaff2.png");
     }
 
     @SuppressWarnings("unchecked")
@@ -47,7 +47,7 @@ public class Reports extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Reports - Sepanjang Rasa");
-        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/BahanSteak/iconSR.jpg")).getImage());
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/components/iconSR.jpg")).getImage());
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);

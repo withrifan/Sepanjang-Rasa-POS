@@ -38,33 +38,33 @@ public class HomePage extends javax.swing.JFrame {
 
     public void setImg() {
         // Menggunakan MethodClass untuk mengatur ikon pada JLabel
-        MethodClass.setIconLabel(LogoTop, "/BahanSteak/LogoSepanjangRasa2.png");
-        MethodClass.setIconLabel(picMenu1, "/BahanSteak/1chickensteak.jpg");
-        MethodClass.setIconLabel(picMenu2, "/BahanSteak/1chickencombo.jpg");
-        MethodClass.setIconLabel(picMenu3, "/BahanSteak/1combomeals.jpg");
-        MethodClass.setIconLabel(picMenu4, "/BahanSteak/1Tbone.jpg");
-        MethodClass.setIconLabel(picMenu5, "/BahanSteak/1ribeye.jpg");
-        MethodClass.setIconLabel(picMenu8, "/BahanSteak/1steak.jpg");
-        MethodClass.setIconLabel(picMenu9, "/BahanSteak/1tenderloin.jpg");
-        MethodClass.setIconLabel(picMenu10, "/BahanSteak/1tomahwak.jpg");
-        MethodClass.setIconLabel(picMenu11, "/BahanSteak/2Expresso.jpg");
-        MethodClass.setIconLabel(picMenu12, "/BahanSteak/2Lemoncucumber.jpg");
-        MethodClass.setIconLabel(picMenu13, "/BahanSteak/2perrier.jpg");
-        MethodClass.setIconLabel(picMenu14, "/BahanSteak/2strawberrylemonade.jpeg");
-        MethodClass.setIconLabel(picMenu15, "/BahanSteak/2virginmojito.jpg");
-        MethodClass.setIconLabel(picMenu16, "/BahanSteak/3applecrumble.jpg");
-        MethodClass.setIconLabel(picMenu17, "/BahanSteak/3cheesecake.jpeg");
-        MethodClass.setIconLabel(picMenu18, "/BahanSteak/3chocolateLavaCake.jpg");
-        MethodClass.setIconLabel(picMenu19, "/BahanSteak/3tiramisu.jpg");
-        MethodClass.setIconLabel(picMenu20, "/BahanSteak/3cremebrulee.jpg");
+        MethodClass.setIconLabel(LogoTop, "/components/LogoSepanjangRasa2.png");
+        MethodClass.setIconLabel(picMenu1, "/components/1chickensteak.jpg");
+        MethodClass.setIconLabel(picMenu2, "/components/1chickencombo.jpg");
+        MethodClass.setIconLabel(picMenu3, "/components/1combomeals.jpg");
+        MethodClass.setIconLabel(picMenu4, "/components/1Tbone.jpg");
+        MethodClass.setIconLabel(picMenu5, "/components/1ribeye.jpg");
+        MethodClass.setIconLabel(picMenu8, "/components/1steak.jpg");
+        MethodClass.setIconLabel(picMenu9, "/components/1tenderloin.jpg");
+        MethodClass.setIconLabel(picMenu10, "/components/1tomahwak.jpg");
+        MethodClass.setIconLabel(picMenu11, "/components/2Expresso.jpg");
+        MethodClass.setIconLabel(picMenu12, "/components/2Lemoncucumber.jpg");
+        MethodClass.setIconLabel(picMenu13, "/components/2perrier.jpg");
+        MethodClass.setIconLabel(picMenu14, "/components/2strawberrylemonade.jpeg");
+        MethodClass.setIconLabel(picMenu15, "/components/2virginmojito.jpg");
+        MethodClass.setIconLabel(picMenu16, "/components/3applecrumble.jpg");
+        MethodClass.setIconLabel(picMenu17, "/components/3cheesecake.jpeg");
+        MethodClass.setIconLabel(picMenu18, "/components/3chocolateLavaCake.jpg");
+        MethodClass.setIconLabel(picMenu19, "/components/3tiramisu.jpg");
+        MethodClass.setIconLabel(picMenu20, "/components/3cremebrulee.jpg");
     }
 
     private void setIconBtn() {
         // Menggunakan MethodClass untuk mengatur ikon pada JButton
-        MethodClass.setIconBtn(HomePageBtn, "/BahanSteak/logoHome1.png");
-        MethodClass.setIconBtn(OrderPageBtn, "/BahanSteak/logoOrder2.png");
-        MethodClass.setIconBtn(ReportsPageBtn, "/BahanSteak/logoReport2.png");
-        MethodClass.setIconBtn(ManagePageBtn, "/BahanSteak/logoStaff2.png");
+        MethodClass.setIconBtn(HomePageBtn, "/components/logoHome1.png");
+        MethodClass.setIconBtn(OrderPageBtn, "/components/logoOrder2.png");
+        MethodClass.setIconBtn(ReportsPageBtn, "/components/logoReport2.png");
+        MethodClass.setIconBtn(ManagePageBtn, "/components/logoStaff2.png");
     }
 
     public void setTime() {
@@ -375,7 +375,7 @@ public class HomePage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home - Sepanjang Rasa");
-        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/BahanSteak/iconSR.jpg")).getImage());
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/components/iconSR.jpg")).getImage());
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
