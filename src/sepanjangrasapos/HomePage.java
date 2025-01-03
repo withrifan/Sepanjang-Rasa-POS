@@ -561,7 +561,7 @@ public class HomePage extends javax.swing.JFrame {
         rightPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(159, 159, 158)));
 
         jTextAreaOrder.setColumns(20);
-        jTextAreaOrder.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        jTextAreaOrder.setFont(new java.awt.Font("Consolas", 0, 10)); // NOI18N
         jTextAreaOrder.setRows(5);
         jTextAreaOrder.setBorder(null);
         jScrollPane1.setViewportView(jTextAreaOrder);
@@ -2664,7 +2664,7 @@ public class HomePage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPrintActionPerformed
 
-
+    
     private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
         int tunai = Integer.parseInt(inputTunai.getText());
         kembali = tunai - total;
@@ -2687,13 +2687,13 @@ public class HomePage extends javax.swing.JFrame {
 
         // Ambil ID Staff dari session
         String inputIDStaff = Session.getLoggedInStaffID();
-        
+
         if (inputIDStaff == null || inputIDStaff.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Sesi ID Staff tidak ditemukan. Harap login ulang.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
-                // Set nilai ID Staff ke kolom output
+
+        // Set nilai ID Staff ke kolom output
         sesiIDStaff.setText(String.valueOf(inputIDStaff));
 
         try (Connection conn = DBConnection.getConnection()) {
@@ -2780,13 +2780,13 @@ public class HomePage extends javax.swing.JFrame {
 
                 // Reset pesanan setelah pembayaran
                 orders.clear();
-                jTextAreaOrder.setText(jTextAreaOrder.getText() + "\n\n******************************************************\n" +
-                        "Meja: " + inputMeja + " (" + namaMeja + ")\n"
+                jTextAreaOrder.setText(jTextAreaOrder.getText() + "\n\n****************************************************\n"
+                        + "Meja: " + inputMeja + " (" + namaMeja + ")\n"
                         + "Staff: " + namaStaff + "\n"
                         + "Pelanggan: " + namaPelanggan + "\n"
                         + "Total Qty: " + totalQty + "\n"
                         + "\nSubtotal: \t\t\t\t" + subtotal + "\nPajak 12%: \t\t\t\t" + PPN + "\nTotal: \t\t\t\t\t" + total + "\nTunai: \t\t\t\t\t" + tunai + "\nKembali: \t\t\t\t" + kembali
-                        + "\n********************** Thank You *********************\n");
+                        + "\n********************* Thank You *********************\n");
                 btnBayar.setEnabled(false);
                 btnPrint.setEnabled(true);
 
@@ -2858,7 +2858,7 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_HomePageBtnActionPerformed
 
     private void sesiIDStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sesiIDStaffActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_sesiIDStaffActionPerformed
 
     public static void main(String args[]) {
