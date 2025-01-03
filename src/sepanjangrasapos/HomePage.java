@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class HomePage extends javax.swing.JFrame {
 
@@ -2664,7 +2666,7 @@ public class HomePage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPrintActionPerformed
 
-    
+
     private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
         int tunai = Integer.parseInt(inputTunai.getText());
         kembali = tunai - total;
@@ -2731,22 +2733,28 @@ public class HomePage extends javax.swing.JFrame {
                     totalQty += (int) order.get("qty");
                 }
 
+                // Format tanggal dan waktu untuk ID Transaksi
+                SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmm");
+                Date date = new Date(); // Tanggal dan waktu saat ini
+                String idTransaksi = "TRX" + formatter.format(date); // Gabungkan prefix dengan tanggal-waktu
+
                 // Tambahkan transaksi ke database tb_transaksi untuk setiap produk
-                String queryInsertTransaksi = "INSERT INTO tb_transaksi (id_staff, id_produk, id_meja, nama_pel, tgl_transaksi, qty, subtotal, ppn, total_harga, tunai, kembalian, status) VALUES (?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?)";
+                String queryInsertTransaksi = "INSERT INTO tb_transaksi (id_transaksi, id_staff, id_produk, id_meja, nama_pel, tgl_transaksi, qty, subtotal, ppn, total_harga, tunai, kembalian, status) VALUES (?, ?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement stmtInsertTransaksi = conn.prepareStatement(queryInsertTransaksi);
 
                 for (Map<String, Object> order : orders) {
-                    stmtInsertTransaksi.setString(1, inputIDStaff); // ID Staff dari sesi
-                    stmtInsertTransaksi.setInt(2, (int) order.get("id_produk")); // ID Produk
-                    stmtInsertTransaksi.setString(3, inputMeja); // ID Meja
-                    stmtInsertTransaksi.setString(4, namaPelanggan); // Nama Pelanggan
-                    stmtInsertTransaksi.setInt(5, (int) order.get("qty")); // Qty untuk setiap produk
-                    stmtInsertTransaksi.setInt(6, subtotal); // Subtotal
-                    stmtInsertTransaksi.setInt(7, PPN); // PPN
-                    stmtInsertTransaksi.setInt(8, total); // Total Harga
-                    stmtInsertTransaksi.setInt(9, tunai); // Tunai
-                    stmtInsertTransaksi.setInt(10, kembali); // Kembalian
-                    stmtInsertTransaksi.setInt(11, 0); // Status
+                    stmtInsertTransaksi.setString(1, idTransaksi); // Menggunakan ID Transaksi yang sama
+                    stmtInsertTransaksi.setString(2, inputIDStaff); // ID Staff dari sesi
+                    stmtInsertTransaksi.setInt(3, (int) order.get("id_produk")); // ID Produk
+                    stmtInsertTransaksi.setString(4, inputMeja); // ID Meja
+                    stmtInsertTransaksi.setString(5, namaPelanggan); // Nama Pelanggan
+                    stmtInsertTransaksi.setInt(6, (int) order.get("qty")); // Qty
+                    stmtInsertTransaksi.setInt(7, subtotal); // Subtotal
+                    stmtInsertTransaksi.setInt(8, PPN); // PPN
+                    stmtInsertTransaksi.setInt(9, total); // Total Harga
+                    stmtInsertTransaksi.setInt(10, tunai); // Tunai
+                    stmtInsertTransaksi.setInt(11, kembali); // Kembalian
+                    stmtInsertTransaksi.setInt(12, 0); // Status
                     stmtInsertTransaksi.executeUpdate();
                 }
 
@@ -2756,12 +2764,10 @@ public class HomePage extends javax.swing.JFrame {
                 stmtUpdateMeja.setString(1, inputMeja);
                 stmtUpdateMeja.executeUpdate();
 
-                // Update status menjadi "Selesai" (1) setelah pembayaran
-                String queryUpdateStatus = "UPDATE tb_transaksi SET status = 1, tunai = ?, kembalian = ? WHERE id_meja = ? AND status = 0";
+                // Update status transaksi menjadi selesai
+                String queryUpdateStatus = "UPDATE tb_transaksi SET status = 1 WHERE id_transaksi = ?";
                 PreparedStatement stmtUpdateStatus = conn.prepareStatement(queryUpdateStatus);
-                stmtUpdateStatus.setInt(1, tunai); // Tunai yang diterima
-                stmtUpdateStatus.setInt(2, kembali); // Kembalian
-                stmtUpdateStatus.setString(3, inputMeja); // ID Meja terkait transaksi
+                stmtUpdateStatus.setString(1, idTransaksi);
                 stmtUpdateStatus.executeUpdate();
 
                 // Set nilai kembalian ke kolom output
@@ -2781,6 +2787,7 @@ public class HomePage extends javax.swing.JFrame {
                 // Reset pesanan setelah pembayaran
                 orders.clear();
                 jTextAreaOrder.setText(jTextAreaOrder.getText() + "\n\n****************************************************\n"
+                        + "id: " + idTransaksi + "\n"
                         + "Meja: " + inputMeja + " (" + namaMeja + ")\n"
                         + "Staff: " + namaStaff + "\n"
                         + "Pelanggan: " + namaPelanggan + "\n"
