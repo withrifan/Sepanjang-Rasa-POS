@@ -21,15 +21,15 @@ public class Manage extends javax.swing.JFrame {
     }
 
     public void setImg() {
-        MethodClass.setIconLabel(LogoTop, "/BahanSteak/LogoSepanjangRasa2.png");
+        MethodClass.setIconLabel(LogoTop, "/components/LogoSepanjangRasa2.png");
     }
 
     private void setIconBtn() {
         // Menggunakan MethodClass untuk mengatur ikon pada tombol
-        MethodClass.setIconBtn(HomePageBtn, "/BahanSteak/logoHome2.png");
-        MethodClass.setIconBtn(OrderPageBtn, "/BahanSteak/logoOrder2.png");
-        MethodClass.setIconBtn(ReportsPageBtn, "/BahanSteak/logoReport2.png");
-        MethodClass.setIconBtn(ManagePageBtn, "/BahanSteak/logoStaff1.png");
+        MethodClass.setIconBtn(HomePageBtn, "/components/logoHome2.png");
+        MethodClass.setIconBtn(OrderPageBtn, "/components/logoOrder2.png");
+        MethodClass.setIconBtn(ReportsPageBtn, "/components/logoReport2.png");
+        MethodClass.setIconBtn(ManagePageBtn, "/components/logoStaff1.png");
     }
     
     public void resetField(){
@@ -190,14 +190,14 @@ public class Manage extends javax.swing.JFrame {
         Waktu = new javax.swing.JLabel();
         Tanggal = new javax.swing.JLabel();
         panelLeftOrderPage = new javax.swing.JPanel();
-        HomePageBtn = new button.custom();
+        HomePageBtn = new custom.button();
         jLabel1 = new javax.swing.JLabel();
-        OrderPageBtn = new button.custom();
+        OrderPageBtn = new custom.button();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        ReportsPageBtn = new button.custom();
+        ReportsPageBtn = new custom.button();
         jLabel4 = new javax.swing.JLabel();
-        ManagePageBtn = new button.custom();
+        ManagePageBtn = new custom.button();
         manageStaff_Label = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         idstaff_Label = new javax.swing.JLabel();
@@ -225,7 +225,8 @@ public class Manage extends javax.swing.JFrame {
         jTableManageStaff = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/BahanSteak/iconSR.jpg")).getImage());
+        setTitle("Staff - Sepanjang Rasa");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/components/iconSR.jpg")).getImage());
         setPreferredSize(new java.awt.Dimension(1530, 845));
 
         bgOrderPage.setBackground(new java.awt.Color(245, 245, 245));
@@ -774,11 +775,11 @@ public class Manage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private button.custom HomePageBtn;
+    private custom.button HomePageBtn;
     private javax.swing.JLabel LogoTop;
-    private button.custom ManagePageBtn;
-    private button.custom OrderPageBtn;
-    private button.custom ReportsPageBtn;
+    private custom.button ManagePageBtn;
+    private custom.button OrderPageBtn;
+    private custom.button ReportsPageBtn;
     private javax.swing.JLabel Tanggal;
     private javax.swing.JLabel Waktu;
     private javax.swing.JTextArea alamat_Field;

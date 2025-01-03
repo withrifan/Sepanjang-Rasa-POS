@@ -13,6 +13,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class HomePage extends javax.swing.JFrame {
 
@@ -24,60 +30,45 @@ public class HomePage extends javax.swing.JFrame {
     private int tunai = 0;
     private int kembali = 0;
     private int qty = 0;
+    //private int idStaff; // Simpan ID Staff yang login
 
     public HomePage() {
+        // this.idStaff = idStaff; // Simpan ID Staff
         initComponents();
         setTime();
         setImg();
         setIconBtn();
-        setbtnPrint();
-        
-    }
-    
-    public void setbtnPrint(){
-        btnPrint.setEnabled(false);
-        btnPrint.setColorDisabled(new Color(180, 180, 180));
-        btnPrint.setColorBorder(new Color (180,180,180));
-    }
-
-    public boolean qtyIsZero(int qty) {
-        //Method yang digunakan untuk mengecek nilai dari qty
-        if (qty == 0) {
-            JOptionPane.showMessageDialog(null, "Tolong tambahkan jumlah produk terlebih dahulu");
-            return false;
-        }
-        return true;
     }
 
     public void setImg() {
         // Menggunakan MethodClass untuk mengatur ikon pada JLabel
-        MethodClass.setIconLabel(LogoTop, "/BahanSteak/LogoSepanjangRasa2.png");
-        MethodClass.setIconLabel(picMenu1, "/BahanSteak/1chickensteak.jpg");
-        MethodClass.setIconLabel(picMenu2, "/BahanSteak/1chickencombo.jpg");
-        MethodClass.setIconLabel(picMenu3, "/BahanSteak/1combomeals.jpg");
-        MethodClass.setIconLabel(picMenu4, "/BahanSteak/1Tbone.jpg");
-        MethodClass.setIconLabel(picMenu5, "/BahanSteak/1ribeye.jpg");
-        MethodClass.setIconLabel(picMenu8, "/BahanSteak/1steak.jpg");
-        MethodClass.setIconLabel(picMenu9, "/BahanSteak/1tenderloin.jpg");
-        MethodClass.setIconLabel(picMenu10, "/BahanSteak/1tomahwak.jpg");
-        MethodClass.setIconLabel(picMenu11, "/BahanSteak/2Expresso.jpg");
-        MethodClass.setIconLabel(picMenu12, "/BahanSteak/2Lemoncucumber.jpg");
-        MethodClass.setIconLabel(picMenu13, "/BahanSteak/2perrier.jpg");
-        MethodClass.setIconLabel(picMenu14, "/BahanSteak/2strawberrylemonade.jpeg");
-        MethodClass.setIconLabel(picMenu15, "/BahanSteak/2virginmojito.jpg");
-        MethodClass.setIconLabel(picMenu16, "/BahanSteak/3applecrumble.jpg");
-        MethodClass.setIconLabel(picMenu17, "/BahanSteak/3cheesecake.jpeg");
-        MethodClass.setIconLabel(picMenu18, "/BahanSteak/3chocolateLavaCake.jpg");
-        MethodClass.setIconLabel(picMenu19, "/BahanSteak/3tiramisu.jpg");
-        MethodClass.setIconLabel(picMenu20, "/BahanSteak/3cremebrulee.jpg");
+        MethodClass.setIconLabel(LogoTop, "/components/LogoSepanjangRasa2.png");
+        MethodClass.setIconLabel(picMenu1, "/components/1chickensteak.jpg");
+        MethodClass.setIconLabel(picMenu2, "/components/1chickencombo.jpg");
+        MethodClass.setIconLabel(picMenu3, "/components/1combomeals.jpg");
+        MethodClass.setIconLabel(picMenu4, "/components/1Tbone.jpg");
+        MethodClass.setIconLabel(picMenu5, "/components/1ribeye.jpg");
+        MethodClass.setIconLabel(picMenu8, "/components/1steak.jpg");
+        MethodClass.setIconLabel(picMenu9, "/components/1tenderloin.jpg");
+        MethodClass.setIconLabel(picMenu10, "/components/1tomahwak.jpg");
+        MethodClass.setIconLabel(picMenu11, "/components/2Expresso.jpg");
+        MethodClass.setIconLabel(picMenu12, "/components/2Lemoncucumber.jpg");
+        MethodClass.setIconLabel(picMenu13, "/components/2perrier.jpg");
+        MethodClass.setIconLabel(picMenu14, "/components/2strawberrylemonade.jpeg");
+        MethodClass.setIconLabel(picMenu15, "/components/2virginmojito.jpg");
+        MethodClass.setIconLabel(picMenu16, "/components/3applecrumble.jpg");
+        MethodClass.setIconLabel(picMenu17, "/components/3cheesecake.jpeg");
+        MethodClass.setIconLabel(picMenu18, "/components/3chocolateLavaCake.jpg");
+        MethodClass.setIconLabel(picMenu19, "/components/3tiramisu.jpg");
+        MethodClass.setIconLabel(picMenu20, "/components/3cremebrulee.jpg");
     }
 
     private void setIconBtn() {
         // Menggunakan MethodClass untuk mengatur ikon pada JButton
-        MethodClass.setIconBtn(HomePageBtn, "/BahanSteak/logoHome1.png");
-        MethodClass.setIconBtn(OrderPageBtn, "/BahanSteak/logoOrder2.png");
-        MethodClass.setIconBtn(ReportsPageBtn, "/BahanSteak/logoReport2.png");
-        MethodClass.setIconBtn(ManagePageBtn, "/BahanSteak/logoStaff2.png");
+        MethodClass.setIconBtn(HomePageBtn, "/components/logoHome1.png");
+        MethodClass.setIconBtn(OrderPageBtn, "/components/logoOrder2.png");
+        MethodClass.setIconBtn(ReportsPageBtn, "/components/logoReport2.png");
+        MethodClass.setIconBtn(ManagePageBtn, "/components/logoStaff2.png");
     }
 
     public void setTime() {
@@ -147,7 +138,6 @@ public class HomePage extends javax.swing.JFrame {
         addMenu19.setSelected(false);
         addMenu20.setSelected(false);
         btnBayar.setEnabled(true);
-        setbtnPrint();
     }
 
     public void orderList() {
@@ -158,22 +148,61 @@ public class HomePage extends javax.swing.JFrame {
                 + String.format("%-25s%5s%15s", "   Produk", "jumlah", "Total") + "\n");
     }
 
-    public void prosesOrder(JSpinner qtyMenu, JCheckBox addMenu, JLabel lblMenu, JComboBox<String> opsiMenu, int harga) {
-        //Method yang digunakan untuk memproses setiap menu, memasukkan ke list pesanan, menambahkan menu ke subtotal dan lain lain
-        // Ambil nilai qty sebagai string String qtyStr = qtyMenu.getValue().toString(); // Pastikan qtyStr tidak kosong sebelum mengonversi menjadi integer if (!qtyStr.isEmpty()) { int qty = Integer.parseInt(qtyStr);
+    private List<Map<String, Object>> orders = new ArrayList<>();
+
+    public void prosesOrder(JSpinner qtyMenu, JCheckBox addMenu, JLabel lblMenu, JComboBox<String> opsiMenu, int idProduk) {
         int qty = Integer.parseInt(qtyMenu.getValue().toString());
 
-        if (qtyIsZero(qty) && addMenu.isSelected()) {
-            x++;
-            if (x == 1) {
-                orderList();
-            }
-            int price = qty * harga;
-            subtotal += price;
-            String formattedText = String.format("%-3d%-22s%4d%17d\n %3s\n", x, lblMenu.getText(), qty, price, "  " + opsiMenu.getSelectedItem());
-            jTextAreaOrder.setText(jTextAreaOrder.getText() + formattedText);
+        if (qty > 0 && addMenu.isSelected()) {
+            try (Connection conn = DBConnection.getConnection()) {
+                String querySelect = "SELECT stok, harga, nama FROM tb_produk WHERE id_produk = ?";
+                PreparedStatement stmtSelect = conn.prepareStatement(querySelect);
+                stmtSelect.setInt(1, idProduk);
 
-            hitung();
+                ResultSet rs = stmtSelect.executeQuery();
+
+                if (rs.next()) {
+                    int stok = rs.getInt("stok");
+                    int harga = rs.getInt("harga");
+                    String namaProduk = rs.getString("nama");
+
+                    // Cek stok, tapi tidak mengurangi stok langsung
+                    if (stok >= qty) {
+                        int price = qty * harga;
+                        subtotal += price;
+                        x++;
+                        if (x == 1) {
+                            orderList();
+                        }
+
+                        // Simpan data pesanan sementara
+                        Map<String, Object> order = new HashMap<>();
+                        order.put("id_produk", idProduk);
+                        order.put("nama", namaProduk);
+                        order.put("qty", qty);
+                        order.put("price", price);
+                        order.put("stok_akhir", stok - qty);
+                        orders.add(order);
+
+                        String formattedText = String.format(
+                                "%-3d%-22s%4d%17d\n %3s\n",
+                                x, namaProduk, qty, price, "  " + opsiMenu.getSelectedItem()
+                        );
+                        jTextAreaOrder.setText(jTextAreaOrder.getText() + formattedText);
+
+                        hitung();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Stok tidak mencukupi untuk " + namaProduk, "Stok Tidak Cukup", JOptionPane.ERROR_MESSAGE);
+                        addMenu.setSelected(false);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Produk tidak ditemukan di database!", "Error", JOptionPane.ERROR_MESSAGE);
+                    addMenu.setSelected(false);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada database: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
             addMenu.setSelected(false);
         }
@@ -189,10 +218,10 @@ public class HomePage extends javax.swing.JFrame {
         Tanggal = new javax.swing.JLabel();
         LogoTop = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
-        HomePageBtn = new button.custom();
-        OrderPageBtn = new button.custom();
-        ReportsPageBtn = new button.custom();
-        ManagePageBtn = new button.custom();
+        HomePageBtn = new custom.button();
+        OrderPageBtn = new custom.button();
+        ReportsPageBtn = new custom.button();
+        ManagePageBtn = new custom.button();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -206,147 +235,157 @@ public class HomePage extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         inputTunai = new javax.swing.JTextField();
         outputKembali = new javax.swing.JTextField();
-        btnReset = new button.custom();
-        btnPrint = new button.custom();
-        btnBayar = new button.custom();
+        btnReset = new custom.button();
+        btnPrint = new custom.button();
+        btnBayar = new custom.button();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         outputSubtotal = new javax.swing.JTextField();
         outputPPN = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         outputTotal = new javax.swing.JTextField();
+
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         PanelMenu1 = new button.panel();
+
+        inputNamaPel = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        inputMeja = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        sesiIDStaff = new javax.swing.JTextField();
+        PanelMenu1 = new custom.panel();
+
         addMenu1 = new javax.swing.JCheckBox();
         qtyMenu1 = new javax.swing.JSpinner();
         lblVarian1 = new javax.swing.JLabel();
         lblMenu1 = new javax.swing.JLabel();
         picMenu1 = new javax.swing.JLabel();
         opsiMenu1 = new javax.swing.JComboBox<>();
-        PanelMenu2 = new button.panel();
+        PanelMenu2 = new custom.panel();
         addMenu2 = new javax.swing.JCheckBox();
         qtyMenu2 = new javax.swing.JSpinner();
         lblVarian2 = new javax.swing.JLabel();
         lblMenu2 = new javax.swing.JLabel();
         picMenu2 = new javax.swing.JLabel();
         opsiMenu2 = new javax.swing.JComboBox<>();
-        PanelMenu3 = new button.panel();
+        PanelMenu3 = new custom.panel();
         addMenu3 = new javax.swing.JCheckBox();
         qtyMenu3 = new javax.swing.JSpinner();
         lblVarian3 = new javax.swing.JLabel();
         lblMenu3 = new javax.swing.JLabel();
         picMenu3 = new javax.swing.JLabel();
         opsiMenu3 = new javax.swing.JComboBox<>();
-        PanelMenu4 = new button.panel();
+        PanelMenu4 = new custom.panel();
         addMenu4 = new javax.swing.JCheckBox();
         qtyMenu4 = new javax.swing.JSpinner();
         lblVarian4 = new javax.swing.JLabel();
         lblMenu4 = new javax.swing.JLabel();
         picMenu4 = new javax.swing.JLabel();
         opsiMenu4 = new javax.swing.JComboBox<>();
-        PanelMenu5 = new button.panel();
+        PanelMenu5 = new custom.panel();
         addMenu5 = new javax.swing.JCheckBox();
         qtyMenu5 = new javax.swing.JSpinner();
         lblVarian5 = new javax.swing.JLabel();
         lblMenu5 = new javax.swing.JLabel();
         picMenu5 = new javax.swing.JLabel();
         opsiMenu5 = new javax.swing.JComboBox<>();
-        PanelMenu8 = new button.panel();
+        PanelMenu8 = new custom.panel();
         addMenu8 = new javax.swing.JCheckBox();
         qtyMenu8 = new javax.swing.JSpinner();
         lblVarian8 = new javax.swing.JLabel();
         lblMenu8 = new javax.swing.JLabel();
         picMenu8 = new javax.swing.JLabel();
         opsiMenu8 = new javax.swing.JComboBox<>();
-        PanelMenu9 = new button.panel();
+        PanelMenu9 = new custom.panel();
         addMenu9 = new javax.swing.JCheckBox();
         qtyMenu9 = new javax.swing.JSpinner();
         lblVarian9 = new javax.swing.JLabel();
         lblMenu9 = new javax.swing.JLabel();
         picMenu9 = new javax.swing.JLabel();
         opsiMenu9 = new javax.swing.JComboBox<>();
-        PanelMenu10 = new button.panel();
+        PanelMenu10 = new custom.panel();
         addMenu10 = new javax.swing.JCheckBox();
         qtyMenu10 = new javax.swing.JSpinner();
         lblVarian10 = new javax.swing.JLabel();
         lblMenu10 = new javax.swing.JLabel();
         picMenu10 = new javax.swing.JLabel();
         opsiMenu10 = new javax.swing.JComboBox<>();
-        PanelMenu11 = new button.panel();
+        PanelMenu11 = new custom.panel();
         addMenu11 = new javax.swing.JCheckBox();
         qtyMenu11 = new javax.swing.JSpinner();
-        lblVarian11 = new javax.swing.JLabel();
         lblMenu11 = new javax.swing.JLabel();
         picMenu11 = new javax.swing.JLabel();
         opsiMenu11 = new javax.swing.JComboBox<>();
-        PanelMenu12 = new button.panel();
+        lblVarian11 = new javax.swing.JLabel();
+        PanelMenu12 = new custom.panel();
         addMenu12 = new javax.swing.JCheckBox();
         qtyMenu12 = new javax.swing.JSpinner();
-        lblVarian12 = new javax.swing.JLabel();
         lblMenu12 = new javax.swing.JLabel();
         picMenu12 = new javax.swing.JLabel();
+        lblVarian12 = new javax.swing.JLabel();
         opsiMenu12 = new javax.swing.JComboBox<>();
-        PanelMenu13 = new button.panel();
+        PanelMenu13 = new custom.panel();
         addMenu13 = new javax.swing.JCheckBox();
         qtyMenu13 = new javax.swing.JSpinner();
-        lblVarian13 = new javax.swing.JLabel();
         lblMenu13 = new javax.swing.JLabel();
         picMenu13 = new javax.swing.JLabel();
+        lblVarian13 = new javax.swing.JLabel();
         opsiMenu13 = new javax.swing.JComboBox<>();
-        PanelMenu14 = new button.panel();
+        PanelMenu14 = new custom.panel();
         addMenu14 = new javax.swing.JCheckBox();
         qtyMenu14 = new javax.swing.JSpinner();
-        lblVarian14 = new javax.swing.JLabel();
         lblMenu14 = new javax.swing.JLabel();
         picMenu14 = new javax.swing.JLabel();
         opsiMenu14 = new javax.swing.JComboBox<>();
-        PanelMenu15 = new button.panel();
+        lblVarian14 = new javax.swing.JLabel();
+        PanelMenu15 = new custom.panel();
         addMenu15 = new javax.swing.JCheckBox();
         qtyMenu15 = new javax.swing.JSpinner();
-        lblVarian15 = new javax.swing.JLabel();
         lblMenu15 = new javax.swing.JLabel();
         picMenu15 = new javax.swing.JLabel();
+        lblVarian15 = new javax.swing.JLabel();
         opsiMenu15 = new javax.swing.JComboBox<>();
-        PanelMenu16 = new button.panel();
+        PanelMenu16 = new custom.panel();
         addMenu16 = new javax.swing.JCheckBox();
         qtyMenu16 = new javax.swing.JSpinner();
-        lblVarian16 = new javax.swing.JLabel();
         lblMenu16 = new javax.swing.JLabel();
         picMenu16 = new javax.swing.JLabel();
+        lblVarian16 = new javax.swing.JLabel();
         opsiMenu16 = new javax.swing.JComboBox<>();
-        PanelMenu17 = new button.panel();
+        PanelMenu17 = new custom.panel();
         addMenu17 = new javax.swing.JCheckBox();
         qtyMenu17 = new javax.swing.JSpinner();
-        lblVarian17 = new javax.swing.JLabel();
         lblMenu17 = new javax.swing.JLabel();
         picMenu17 = new javax.swing.JLabel();
         opsiMenu17 = new javax.swing.JComboBox<>();
-        PanelMenu18 = new button.panel();
+        lblVarian17 = new javax.swing.JLabel();
+        PanelMenu18 = new custom.panel();
         addMenu18 = new javax.swing.JCheckBox();
         qtyMenu18 = new javax.swing.JSpinner();
-        lblVarian18 = new javax.swing.JLabel();
         lblMenu18 = new javax.swing.JLabel();
         picMenu18 = new javax.swing.JLabel();
+        lblVarian18 = new javax.swing.JLabel();
         opsiMenu18 = new javax.swing.JComboBox<>();
-        PanelMenu19 = new button.panel();
+        PanelMenu19 = new custom.panel();
         addMenu19 = new javax.swing.JCheckBox();
         qtyMenu19 = new javax.swing.JSpinner();
-        lblVarian19 = new javax.swing.JLabel();
         lblMenu19 = new javax.swing.JLabel();
         picMenu19 = new javax.swing.JLabel();
+        lblVarian19 = new javax.swing.JLabel();
         opsiMenu19 = new javax.swing.JComboBox<>();
-        PanelMenu20 = new button.panel();
+        PanelMenu20 = new custom.panel();
         addMenu20 = new javax.swing.JCheckBox();
         qtyMenu20 = new javax.swing.JSpinner();
-        lblVarian20 = new javax.swing.JLabel();
         lblMenu20 = new javax.swing.JLabel();
         picMenu20 = new javax.swing.JLabel();
         opsiMenu20 = new javax.swing.JComboBox<>();
+        lblVarian20 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sepanjang Rasa");
-        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/BahanSteak/iconSR.jpg")).getImage());
+        setTitle("Home - Sepanjang Rasa");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/components/iconSR.jpg")).getImage());
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -407,6 +446,11 @@ public class HomePage extends javax.swing.JFrame {
         HomePageBtn.setIconTextGap(8);
         HomePageBtn.setPreferredSize(new java.awt.Dimension(35, 35));
         HomePageBtn.setRadius(8);
+        HomePageBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HomePageBtnActionPerformed(evt);
+            }
+        });
 
         OrderPageBtn.setColorBorder(new java.awt.Color(255, 255, 255));
         OrderPageBtn.setColorClick(new java.awt.Color(204, 204, 204));
@@ -516,7 +560,7 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(ManagePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel9)
-                .addContainerGap(377, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         menuPanel.setBackground(new java.awt.Color(255, 242, 232));
@@ -525,7 +569,7 @@ public class HomePage extends javax.swing.JFrame {
         rightPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(159, 159, 158)));
 
         jTextAreaOrder.setColumns(20);
-        jTextAreaOrder.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        jTextAreaOrder.setFont(new java.awt.Font("Consolas", 0, 10)); // NOI18N
         jTextAreaOrder.setRows(5);
         jTextAreaOrder.setBorder(null);
         jScrollPane1.setViewportView(jTextAreaOrder);
@@ -551,6 +595,7 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
+        outputKembali.setEditable(false);
         outputKembali.setFont(new java.awt.Font("Poppins Medium", 1, 13)); // NOI18N
         outputKembali.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         outputKembali.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(159, 159, 158), 1, true));
@@ -643,13 +688,21 @@ public class HomePage extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(outputKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+
+                .addGap(18, 18, 18)
+
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBayar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+
                 .addContainerGap(23, Short.MAX_VALUE))
+
+                .addContainerGap(16, Short.MAX_VALUE))
+
         );
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -683,6 +736,50 @@ public class HomePage extends javax.swing.JFrame {
 
         jLabel11.setText("jLabel11");
 
+        inputNamaPel.setFont(new java.awt.Font("Poppins Medium", 1, 13)); // NOI18N
+        inputNamaPel.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        inputNamaPel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(159, 159, 158), 1, true));
+        inputNamaPel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputNamaPelActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Poppins Medium", 1, 13)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel10.setText("Nama Pelanggan");
+        jLabel10.setPreferredSize(new java.awt.Dimension(55, 25));
+
+        jLabel11.setFont(new java.awt.Font("Poppins Medium", 1, 13)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel11.setText("No Meja");
+        jLabel11.setPreferredSize(new java.awt.Dimension(55, 25));
+
+        inputMeja.setFont(new java.awt.Font("Poppins Medium", 1, 13)); // NOI18N
+        inputMeja.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        inputMeja.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(159, 159, 158), 1, true));
+        inputMeja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputMejaActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Poppins Medium", 1, 13)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel12.setText("ID Staff");
+        jLabel12.setPreferredSize(new java.awt.Dimension(55, 25));
+
+        sesiIDStaff.setEditable(false);
+        sesiIDStaff.setFont(new java.awt.Font("Poppins Medium", 1, 13)); // NOI18N
+        sesiIDStaff.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        sesiIDStaff.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(159, 159, 158), 1, true));
+        sesiIDStaff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sesiIDStaffActionPerformed(evt);
+            }
+        });
+
+
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
         rightPanel.setLayout(rightPanelLayout);
         rightPanelLayout.setHorizontalGroup(
@@ -703,7 +800,25 @@ public class HomePage extends javax.swing.JFrame {
                         .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(outputPPN)
                             .addComponent(outputSubtotal)
-                            .addComponent(outputTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))))
+                            .addComponent(outputTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)))
+                    .addGroup(rightPanelLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(rightPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(inputNamaPel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(rightPanelLayout.createSequentialGroup()
+                                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(rightPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(inputMeja, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(rightPanelLayout.createSequentialGroup()
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(sesiIDStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(77, 77, 77)))))
                 .addContainerGap())
             .addGroup(rightPanelLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
@@ -715,13 +830,30 @@ public class HomePage extends javax.swing.JFrame {
         rightPanelLayout.setVerticalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightPanelLayout.createSequentialGroup()
+
                 .addGap(26, 26, 26)
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1)
+
+                .addContainerGap()
+                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputNamaPel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputMeja, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sesiIDStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(outputSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -733,8 +865,9 @@ public class HomePage extends javax.swing.JFrame {
                 .addGroup(rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(outputTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         PanelMenu1.setBackground(new java.awt.Color(255, 255, 255));
@@ -752,7 +885,7 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu1.setBorder(null);
-        qtyMenu1.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu1.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu1StateChanged(evt);
@@ -814,9 +947,9 @@ public class HomePage extends javax.swing.JFrame {
                     .addComponent(lblVarian1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opsiMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
-                .addGroup(PanelMenu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(qtyMenu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(PanelMenu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(addMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(qtyMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(16, 16, 16))
         );
 
@@ -835,7 +968,7 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu2.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu2.setBorder(null);
-        qtyMenu2.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu2.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu2.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu2StateChanged(evt);
@@ -897,9 +1030,9 @@ public class HomePage extends javax.swing.JFrame {
                     .addComponent(lblVarian2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opsiMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
-                .addGroup(PanelMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(qtyMenu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(PanelMenu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(addMenu2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(qtyMenu2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(16, 16, 16))
         );
 
@@ -918,7 +1051,7 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu3.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu3.setBorder(null);
-        qtyMenu3.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu3.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu3.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu3StateChanged(evt);
@@ -931,7 +1064,7 @@ public class HomePage extends javax.swing.JFrame {
 
         lblMenu3.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         lblMenu3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblMenu3.setText("Combo Sharing");
+        lblMenu3.setText("Combo Sharing Meals");
         lblMenu3.setPreferredSize(new java.awt.Dimension(135, 20));
 
         picMenu3.setPreferredSize(new java.awt.Dimension(144, 100));
@@ -1001,7 +1134,7 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu4.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu4.setBorder(null);
-        qtyMenu4.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu4.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu4.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu4StateChanged(evt);
@@ -1084,7 +1217,7 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu5.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu5.setBorder(null);
-        qtyMenu5.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu5.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu5.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu5StateChanged(evt);
@@ -1167,7 +1300,7 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu8.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu8.setBorder(null);
-        qtyMenu8.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu8.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu8.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu8StateChanged(evt);
@@ -1250,7 +1383,7 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu9.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu9.setBorder(null);
-        qtyMenu9.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu9.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu9.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu9StateChanged(evt);
@@ -1333,7 +1466,7 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu10.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu10.setBorder(null);
-        qtyMenu10.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu10.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu10.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu10StateChanged(evt);
@@ -1416,31 +1549,31 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu11.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu11.setBorder(null);
-        qtyMenu11.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu11.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu11.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu11StateChanged(evt);
             }
         });
 
-        lblVarian11.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
-        lblVarian11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblVarian11.setText("Varian");
-
         lblMenu11.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         lblMenu11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblMenu11.setText("Expresso");
+        lblMenu11.setText("Espresso");
         lblMenu11.setPreferredSize(new java.awt.Dimension(135, 20));
 
         picMenu11.setPreferredSize(new java.awt.Dimension(144, 100));
 
-        opsiMenu11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 shot", "2 shot", "3 shot" }));
+        opsiMenu11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sugar", "Less Sugar" }));
         opsiMenu11.setBorder(null);
         opsiMenu11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu11ActionPerformed(evt);
             }
         });
+
+        lblVarian11.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
+        lblVarian11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblVarian11.setText("Varian");
 
         javax.swing.GroupLayout PanelMenu11Layout = new javax.swing.GroupLayout(PanelMenu11);
         PanelMenu11.setLayout(PanelMenu11Layout);
@@ -1456,10 +1589,10 @@ public class HomePage extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE)
                 .addComponent(picMenu11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(8, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu11Layout.createSequentialGroup()
+            .addGroup(PanelMenu11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelMenu11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblMenu11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PanelMenu11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMenu11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PanelMenu11Layout.createSequentialGroup()
                         .addComponent(lblVarian11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16)
@@ -1473,11 +1606,11 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(picMenu11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMenu11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelMenu11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVarian11, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opsiMenu11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addGap(4, 4, 4)
                 .addGroup(PanelMenu11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addMenu11, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(qtyMenu11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1499,16 +1632,12 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu12.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu12.setBorder(null);
-        qtyMenu12.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu12.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu12.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu12StateChanged(evt);
             }
         });
-
-        lblVarian12.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
-        lblVarian12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblVarian12.setText("Varian");
 
         lblMenu12.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         lblMenu12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1517,7 +1646,11 @@ public class HomePage extends javax.swing.JFrame {
 
         picMenu12.setPreferredSize(new java.awt.Dimension(144, 100));
 
-        opsiMenu12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
+        lblVarian12.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
+        lblVarian12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblVarian12.setText("Varian");
+
+        opsiMenu12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sugar", "Less Sugar" }));
         opsiMenu12.setBorder(null);
         opsiMenu12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1541,9 +1674,9 @@ public class HomePage extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelMenu12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblMenu12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PanelMenu12Layout.createSequentialGroup()
+                .addGroup(PanelMenu12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMenu12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu12Layout.createSequentialGroup()
                         .addComponent(lblVarian12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16)
                         .addComponent(opsiMenu12, 0, 1, Short.MAX_VALUE)))
@@ -1556,11 +1689,11 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(picMenu12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMenu12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelMenu12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVarian12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opsiMenu12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addGap(4, 4, 4)
                 .addGroup(PanelMenu12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addMenu12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(qtyMenu12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1582,16 +1715,12 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu13.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu13.setBorder(null);
-        qtyMenu13.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu13.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu13.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu13StateChanged(evt);
             }
         });
-
-        lblVarian13.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
-        lblVarian13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblVarian13.setText("Varian");
 
         lblMenu13.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         lblMenu13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1600,7 +1729,11 @@ public class HomePage extends javax.swing.JFrame {
 
         picMenu13.setPreferredSize(new java.awt.Dimension(144, 100));
 
-        opsiMenu13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
+        lblVarian13.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
+        lblVarian13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblVarian13.setText("Varian");
+
+        opsiMenu13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sugar", "Less Sugar" }));
         opsiMenu13.setBorder(null);
         opsiMenu13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1622,15 +1755,13 @@ public class HomePage extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE)
                 .addComponent(picMenu13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(8, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu13Layout.createSequentialGroup()
-                .addGroup(PanelMenu13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(PanelMenu13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelMenu13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMenu13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PanelMenu13Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblMenu13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(PanelMenu13Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addComponent(lblVarian13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(16, 16, 16)
                         .addComponent(opsiMenu13, 0, 1, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1641,11 +1772,11 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(picMenu13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMenu13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(4, 4, 4)
                 .addGroup(PanelMenu13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVarian13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opsiMenu13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelMenu13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addMenu13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(qtyMenu13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1667,31 +1798,31 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu14.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu14.setBorder(null);
-        qtyMenu14.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu14.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu14.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu14StateChanged(evt);
             }
         });
 
-        lblVarian14.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
-        lblVarian14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblVarian14.setText("Varian");
-
         lblMenu14.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         lblMenu14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblMenu14.setText("Lemonade");
+        lblMenu14.setText("Strawberry Lemonade");
         lblMenu14.setPreferredSize(new java.awt.Dimension(135, 20));
 
         picMenu14.setPreferredSize(new java.awt.Dimension(144, 100));
 
-        opsiMenu14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
+        opsiMenu14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sugar", "Less Sugar" }));
         opsiMenu14.setBorder(null);
         opsiMenu14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu14ActionPerformed(evt);
             }
         });
+
+        lblVarian14.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
+        lblVarian14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblVarian14.setText("Varian");
 
         javax.swing.GroupLayout PanelMenu14Layout = new javax.swing.GroupLayout(PanelMenu14);
         PanelMenu14.setLayout(PanelMenu14Layout);
@@ -1707,10 +1838,10 @@ public class HomePage extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE)
                 .addComponent(picMenu14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(8, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu14Layout.createSequentialGroup()
+            .addGroup(PanelMenu14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelMenu14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblMenu14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PanelMenu14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMenu14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PanelMenu14Layout.createSequentialGroup()
                         .addComponent(lblVarian14, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16)
@@ -1724,11 +1855,11 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(picMenu14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMenu14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(1, 1, 1)
                 .addGroup(PanelMenu14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVarian14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opsiMenu14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelMenu14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addMenu14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(qtyMenu14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1750,16 +1881,12 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu15.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu15.setBorder(null);
-        qtyMenu15.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu15.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu15.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu15StateChanged(evt);
             }
         });
-
-        lblVarian15.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
-        lblVarian15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblVarian15.setText("Varian");
 
         lblMenu15.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         lblMenu15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1768,7 +1895,11 @@ public class HomePage extends javax.swing.JFrame {
 
         picMenu15.setPreferredSize(new java.awt.Dimension(144, 100));
 
-        opsiMenu15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
+        lblVarian15.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
+        lblVarian15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblVarian15.setText("Varian");
+
+        opsiMenu15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sugar", "Less Sugar" }));
         opsiMenu15.setBorder(null);
         opsiMenu15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1792,9 +1923,9 @@ public class HomePage extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu15Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelMenu15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblMenu15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PanelMenu15Layout.createSequentialGroup()
+                .addGroup(PanelMenu15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMenu15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu15Layout.createSequentialGroup()
                         .addComponent(lblVarian15, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16)
                         .addComponent(opsiMenu15, 0, 1, Short.MAX_VALUE)))
@@ -1807,11 +1938,11 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(picMenu15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMenu15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(4, 4, 4)
                 .addGroup(PanelMenu15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVarian15, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opsiMenu15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelMenu15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addMenu15, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(qtyMenu15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1833,16 +1964,12 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu16.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu16.setBorder(null);
-        qtyMenu16.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu16.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu16.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu16StateChanged(evt);
             }
         });
-
-        lblVarian16.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
-        lblVarian16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblVarian16.setText("Varian");
 
         lblMenu16.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         lblMenu16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1851,7 +1978,11 @@ public class HomePage extends javax.swing.JFrame {
 
         picMenu16.setPreferredSize(new java.awt.Dimension(144, 100));
 
-        opsiMenu16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
+        lblVarian16.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
+        lblVarian16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblVarian16.setText("Varian");
+
+        opsiMenu16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sugar", "Less Sugar" }));
         opsiMenu16.setBorder(null);
         opsiMenu16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1873,10 +2004,10 @@ public class HomePage extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE)
                 .addComponent(picMenu16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(8, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu16Layout.createSequentialGroup()
+            .addGroup(PanelMenu16Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelMenu16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblMenu16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PanelMenu16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMenu16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PanelMenu16Layout.createSequentialGroup()
                         .addComponent(lblVarian16, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16)
@@ -1890,11 +2021,11 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(picMenu16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMenu16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(4, 4, 4)
                 .addGroup(PanelMenu16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVarian16, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opsiMenu16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelMenu16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addMenu16, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(qtyMenu16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1916,16 +2047,12 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu17.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu17.setBorder(null);
-        qtyMenu17.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu17.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu17.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu17StateChanged(evt);
             }
         });
-
-        lblVarian17.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
-        lblVarian17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblVarian17.setText("Varian");
 
         lblMenu17.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         lblMenu17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1934,13 +2061,17 @@ public class HomePage extends javax.swing.JFrame {
 
         picMenu17.setPreferredSize(new java.awt.Dimension(144, 100));
 
-        opsiMenu17.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
+        opsiMenu17.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sugar", "Less Sugar" }));
         opsiMenu17.setBorder(null);
         opsiMenu17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu17ActionPerformed(evt);
             }
         });
+
+        lblVarian17.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
+        lblVarian17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblVarian17.setText("Varian");
 
         javax.swing.GroupLayout PanelMenu17Layout = new javax.swing.GroupLayout(PanelMenu17);
         PanelMenu17.setLayout(PanelMenu17Layout);
@@ -1958,9 +2089,9 @@ public class HomePage extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu17Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelMenu17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblMenu17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PanelMenu17Layout.createSequentialGroup()
+                .addGroup(PanelMenu17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMenu17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu17Layout.createSequentialGroup()
                         .addComponent(lblVarian17, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16)
                         .addComponent(opsiMenu17, 0, 1, Short.MAX_VALUE)))
@@ -1973,14 +2104,14 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(picMenu17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMenu17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(4, 4, 4)
                 .addGroup(PanelMenu17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVarian17, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opsiMenu17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addGroup(PanelMenu17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addMenu17, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(qtyMenu17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelMenu17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(addMenu17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(qtyMenu17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(16, 16, 16))
         );
 
@@ -1999,25 +2130,25 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu18.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu18.setBorder(null);
-        qtyMenu18.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu18.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu18.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu18StateChanged(evt);
             }
         });
 
-        lblVarian18.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
-        lblVarian18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblVarian18.setText("Varian");
-
         lblMenu18.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         lblMenu18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblMenu18.setText("Choco Lava Cake");
+        lblMenu18.setText("Chocolate Lava Cake");
         lblMenu18.setPreferredSize(new java.awt.Dimension(135, 20));
 
         picMenu18.setPreferredSize(new java.awt.Dimension(144, 100));
 
-        opsiMenu18.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
+        lblVarian18.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
+        lblVarian18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblVarian18.setText("Varian");
+
+        opsiMenu18.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sugar", "Less Sugar" }));
         opsiMenu18.setBorder(null);
         opsiMenu18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2041,9 +2172,9 @@ public class HomePage extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu18Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelMenu18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblMenu18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PanelMenu18Layout.createSequentialGroup()
+                .addGroup(PanelMenu18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMenu18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu18Layout.createSequentialGroup()
                         .addComponent(lblVarian18, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16)
                         .addComponent(opsiMenu18, 0, 1, Short.MAX_VALUE)))
@@ -2056,11 +2187,11 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(picMenu18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMenu18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(4, 4, 4)
                 .addGroup(PanelMenu18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVarian18, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opsiMenu18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelMenu18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addMenu18, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(qtyMenu18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2082,16 +2213,12 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu19.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu19.setBorder(null);
-        qtyMenu19.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu19.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu19.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu19StateChanged(evt);
             }
         });
-
-        lblVarian19.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
-        lblVarian19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblVarian19.setText("Varian");
 
         lblMenu19.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         lblMenu19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -2100,7 +2227,11 @@ public class HomePage extends javax.swing.JFrame {
 
         picMenu19.setPreferredSize(new java.awt.Dimension(144, 100));
 
-        opsiMenu19.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
+        lblVarian19.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
+        lblVarian19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblVarian19.setText("Varian");
+
+        opsiMenu19.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sugar", "Less Sugar" }));
         opsiMenu19.setBorder(null);
         opsiMenu19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2124,9 +2255,9 @@ public class HomePage extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu19Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelMenu19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblMenu19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PanelMenu19Layout.createSequentialGroup()
+                .addGroup(PanelMenu19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMenu19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu19Layout.createSequentialGroup()
                         .addComponent(lblVarian19, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16)
                         .addComponent(opsiMenu19, 0, 1, Short.MAX_VALUE)))
@@ -2139,11 +2270,11 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(picMenu19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMenu19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(4, 4, 4)
                 .addGroup(PanelMenu19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVarian19, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opsiMenu19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelMenu19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addMenu19, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(qtyMenu19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2165,16 +2296,12 @@ public class HomePage extends javax.swing.JFrame {
 
         qtyMenu20.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         qtyMenu20.setBorder(null);
-        qtyMenu20.setPreferredSize(new java.awt.Dimension(65, 22));
+        qtyMenu20.setPreferredSize(new java.awt.Dimension(65, 23));
         qtyMenu20.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 qtyMenu20StateChanged(evt);
             }
         });
-
-        lblVarian20.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
-        lblVarian20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblVarian20.setText("Varian");
 
         lblMenu20.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         lblMenu20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -2183,13 +2310,17 @@ public class HomePage extends javax.swing.JFrame {
 
         picMenu20.setPreferredSize(new java.awt.Dimension(144, 100));
 
-        opsiMenu20.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rare", "Medium rare", "Medium", "Medium well", "Welldone" }));
+        opsiMenu20.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sugar", "Less Sugar" }));
         opsiMenu20.setBorder(null);
         opsiMenu20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opsiMenu20ActionPerformed(evt);
             }
         });
+
+        lblVarian20.setFont(new java.awt.Font("Poppins Light", 1, 12)); // NOI18N
+        lblVarian20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblVarian20.setText("Varian");
 
         javax.swing.GroupLayout PanelMenu20Layout = new javax.swing.GroupLayout(PanelMenu20);
         PanelMenu20.setLayout(PanelMenu20Layout);
@@ -2205,10 +2336,10 @@ public class HomePage extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE)
                 .addComponent(picMenu20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(8, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu20Layout.createSequentialGroup()
+            .addGroup(PanelMenu20Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelMenu20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblMenu20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PanelMenu20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMenu20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PanelMenu20Layout.createSequentialGroup()
                         .addComponent(lblVarian20, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16)
@@ -2222,11 +2353,11 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(picMenu20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMenu20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(4, 4, 4)
                 .addGroup(PanelMenu20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVarian20, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(opsiMenu20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelMenu20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addMenu20, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(qtyMenu20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2281,7 +2412,6 @@ public class HomePage extends javax.swing.JFrame {
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(rightPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(menuPanelLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2308,6 +2438,9 @@ public class HomePage extends javax.swing.JFrame {
                     .addComponent(PanelMenu19, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PanelMenu20, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addComponent(rightPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layerDasarHomeLayout = new javax.swing.GroupLayout(layerDasarHome);
@@ -2329,9 +2462,9 @@ public class HomePage extends javax.swing.JFrame {
             .addGroup(layerDasarHomeLayout.createSequentialGroup()
                 .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layerDasarHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(leftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
-                    .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(leftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE))
+                .addGap(0, 21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -2349,13 +2482,13 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu1ActionPerformed
-        prosesOrder(qtyMenu1, addMenu1, lblMenu1, opsiMenu1, 69000);
+        prosesOrder(qtyMenu1, addMenu1, lblMenu1, opsiMenu1, 105);
     }//GEN-LAST:event_addMenu1ActionPerformed
 
     private void opsiMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_opsiMenu1ActionPerformed
-    
+
     private void outputKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputKembaliActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_outputKembaliActionPerformed
@@ -2392,7 +2525,7 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_ManagePageBtnActionPerformed
 
     private void addMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu2ActionPerformed
-        prosesOrder(qtyMenu2, addMenu2, lblMenu2, opsiMenu2, 69000);
+        prosesOrder(qtyMenu2, addMenu2, lblMenu2, opsiMenu2, 106);
     }//GEN-LAST:event_addMenu2ActionPerformed
 
     private void qtyMenu2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu2StateChanged
@@ -2404,7 +2537,7 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_opsiMenu2ActionPerformed
 
     private void addMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu3ActionPerformed
-        prosesOrder(qtyMenu3, addMenu3, lblMenu3, opsiMenu3, 69000);
+        prosesOrder(qtyMenu3, addMenu3, lblMenu3, opsiMenu3, 107);
     }//GEN-LAST:event_addMenu3ActionPerformed
 
     private void qtyMenu3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu3StateChanged
@@ -2416,7 +2549,7 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_opsiMenu3ActionPerformed
 
     private void addMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu4ActionPerformed
-        prosesOrder(qtyMenu4, addMenu4, lblMenu4, opsiMenu4, 69000);
+        prosesOrder(qtyMenu4, addMenu4, lblMenu4, opsiMenu4, 103);
     }//GEN-LAST:event_addMenu4ActionPerformed
 
     private void qtyMenu4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu4StateChanged
@@ -2428,7 +2561,7 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_opsiMenu4ActionPerformed
 
     private void addMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu5ActionPerformed
-        prosesOrder(qtyMenu5, addMenu5, lblMenu5, opsiMenu5, 69000);
+        prosesOrder(qtyMenu5, addMenu5, lblMenu5, opsiMenu5, 100);
     }//GEN-LAST:event_addMenu5ActionPerformed
 
     private void qtyMenu5StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu5StateChanged
@@ -2440,7 +2573,7 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_opsiMenu5ActionPerformed
 
     private void addMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu8ActionPerformed
-        prosesOrder(qtyMenu8, addMenu8, lblMenu8, opsiMenu8, 69000);
+        prosesOrder(qtyMenu8, addMenu8, lblMenu8, opsiMenu8, 101);
     }//GEN-LAST:event_addMenu8ActionPerformed
 
     private void qtyMenu8StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu8StateChanged
@@ -2452,7 +2585,7 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_opsiMenu8ActionPerformed
 
     private void addMenu9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu9ActionPerformed
-        prosesOrder(qtyMenu9, addMenu9, lblMenu9, opsiMenu9, 69000);
+        prosesOrder(qtyMenu9, addMenu9, lblMenu9, opsiMenu9, 102);
     }//GEN-LAST:event_addMenu9ActionPerformed
 
     private void qtyMenu9StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu9StateChanged
@@ -2464,7 +2597,7 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_opsiMenu9ActionPerformed
 
     private void addMenu10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu10ActionPerformed
-        prosesOrder(qtyMenu10, addMenu10, lblMenu10, opsiMenu10, 69000);
+        prosesOrder(qtyMenu10, addMenu10, lblMenu10, opsiMenu10, 104);
     }//GEN-LAST:event_addMenu10ActionPerformed
 
     private void qtyMenu10StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu10StateChanged
@@ -2476,124 +2609,84 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_opsiMenu10ActionPerformed
 
     private void addMenu11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu11ActionPerformed
-        prosesOrder(qtyMenu11, addMenu11, lblMenu11, opsiMenu11, 69000);
+        prosesOrder(qtyMenu11, addMenu11, lblMenu11, opsiMenu11, 53);
     }//GEN-LAST:event_addMenu11ActionPerformed
 
     private void qtyMenu11StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu11StateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_qtyMenu11StateChanged
 
-    private void opsiMenu11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opsiMenu11ActionPerformed
-
     private void addMenu12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu12ActionPerformed
-        prosesOrder(qtyMenu12, addMenu12, lblMenu12, opsiMenu12, 69000);
+        prosesOrder(qtyMenu12, addMenu12, lblMenu12, opsiMenu12, 54);
     }//GEN-LAST:event_addMenu12ActionPerformed
 
     private void qtyMenu12StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu12StateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_qtyMenu12StateChanged
 
-    private void opsiMenu12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opsiMenu12ActionPerformed
-
     private void addMenu13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu13ActionPerformed
-        prosesOrder(qtyMenu13, addMenu13, lblMenu13, opsiMenu13, 69000);
+        prosesOrder(qtyMenu13, addMenu13, lblMenu13, opsiMenu13, 55);
     }//GEN-LAST:event_addMenu13ActionPerformed
 
     private void qtyMenu13StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu13StateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_qtyMenu13StateChanged
 
-    private void opsiMenu13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opsiMenu13ActionPerformed
-
     private void addMenu14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu14ActionPerformed
-        prosesOrder(qtyMenu14, addMenu14, lblMenu14, opsiMenu14, 69000);
+        prosesOrder(qtyMenu14, addMenu14, lblMenu14, opsiMenu14, 52);
     }//GEN-LAST:event_addMenu14ActionPerformed
 
     private void qtyMenu14StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu14StateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_qtyMenu14StateChanged
 
-    private void opsiMenu14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opsiMenu14ActionPerformed
-
     private void addMenu15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu15ActionPerformed
-        prosesOrder(qtyMenu15, addMenu15, lblMenu15, opsiMenu15, 69000);
+        prosesOrder(qtyMenu15, addMenu15, lblMenu15, opsiMenu15, 51);
     }//GEN-LAST:event_addMenu15ActionPerformed
 
     private void qtyMenu15StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu15StateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_qtyMenu15StateChanged
 
-    private void opsiMenu15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opsiMenu15ActionPerformed
-
     private void addMenu16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu16ActionPerformed
-        prosesOrder(qtyMenu16, addMenu16, lblMenu16, opsiMenu16, 69000);
+        prosesOrder(qtyMenu16, addMenu16, lblMenu16, opsiMenu16, 15);
     }//GEN-LAST:event_addMenu16ActionPerformed
 
     private void qtyMenu16StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu16StateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_qtyMenu16StateChanged
 
-    private void opsiMenu16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opsiMenu16ActionPerformed
-
     private void addMenu17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu17ActionPerformed
-        prosesOrder(qtyMenu17, addMenu17, lblMenu17, opsiMenu17, 69000);
+        prosesOrder(qtyMenu17, addMenu17, lblMenu17, opsiMenu17, 12);
     }//GEN-LAST:event_addMenu17ActionPerformed
 
     private void qtyMenu17StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu17StateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_qtyMenu17StateChanged
 
-    private void opsiMenu17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu17ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opsiMenu17ActionPerformed
-
     private void addMenu18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu18ActionPerformed
-        prosesOrder(qtyMenu18, addMenu18, lblMenu18, opsiMenu18, 69000);
+        prosesOrder(qtyMenu18, addMenu18, lblMenu18, opsiMenu18, 11);
     }//GEN-LAST:event_addMenu18ActionPerformed
 
     private void qtyMenu18StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu18StateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_qtyMenu18StateChanged
 
-    private void opsiMenu18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu18ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opsiMenu18ActionPerformed
-
     private void addMenu19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu19ActionPerformed
-        prosesOrder(qtyMenu19, addMenu19, lblMenu19, opsiMenu19, 69000);
+        prosesOrder(qtyMenu19, addMenu19, lblMenu19, opsiMenu19, 13);
     }//GEN-LAST:event_addMenu19ActionPerformed
 
     private void qtyMenu19StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu19StateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_qtyMenu19StateChanged
 
-    private void opsiMenu19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu19ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opsiMenu19ActionPerformed
-
     private void addMenu20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMenu20ActionPerformed
-        prosesOrder(qtyMenu20, addMenu20, lblMenu20, opsiMenu20, 69000);
+        prosesOrder(qtyMenu20, addMenu20, lblMenu20, opsiMenu20, 14);
     }//GEN-LAST:event_addMenu20ActionPerformed
 
     private void qtyMenu20StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_qtyMenu20StateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_qtyMenu20StateChanged
-
-    private void opsiMenu20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_opsiMenu20ActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         reset();
@@ -2607,21 +2700,207 @@ public class HomePage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPrintActionPerformed
 
+
     private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarActionPerformed
         int tunai = Integer.parseInt(inputTunai.getText());
         kembali = tunai - total;
 
         if (tunai == 0) {
-            JOptionPane.showMessageDialog(null, ("Masukkan nominal tunai"));
-        } else {
-            outputKembali.setText(outputKembali.getText() + "Rp. " + kembali);
-            btnBayar.setEnabled(false);
-            jTextAreaOrder.setText(jTextAreaOrder.getText() + "\n\n******************************************************\n"
-                    + "Subtotal: \t\t\t\t" + subtotal + "\nPajak 12%: \t\t\t\t" + PPN + "\nTotal: \t\t\t\t\t" + total + "\nTunai: \t\t\t\t\t" + tunai
-                    + "\n********************** Thank You *********************\n");
-            btnPrint.setEnabled(true);
+            JOptionPane.showMessageDialog(null, "Masukkan nominal tunai");
+            return;
+        } else if (kembali < 0) {
+            JOptionPane.showMessageDialog(null, "Uang tunai tidak mencukupi");
+            return;
+        }
+
+        String inputMeja = this.inputMeja.getText().trim(); // Ambil input No Meja
+        String namaPelanggan = this.inputNamaPel.getText().trim(); // Ambil input Nama Pelanggan
+
+        if (inputMeja.isEmpty() || namaPelanggan.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Harap lengkapi semua input (No Meja, Nama Pelanggan)!");
+            return;
+        }
+
+        // Ambil ID Staff dari session
+        String inputIDStaff = Session.getLoggedInStaffID();
+
+        if (inputIDStaff == null || inputIDStaff.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Sesi ID Staff tidak ditemukan. Harap login ulang.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Set nilai ID Staff ke kolom output
+        sesiIDStaff.setText(String.valueOf(inputIDStaff));
+
+        try (Connection conn = DBConnection.getConnection()) {
+            // Validasi ID Staff
+            String queryStaff = "SELECT * FROM tb_staff WHERE id_staff = ?";
+            PreparedStatement stmtStaff = conn.prepareStatement(queryStaff);
+            stmtStaff.setString(1, inputIDStaff);
+
+            ResultSet rsStaff = stmtStaff.executeQuery();
+            if (!rsStaff.next()) {
+                JOptionPane.showMessageDialog(null, "ID Staff tidak valid!");
+                return;
+            }
+            String namaStaff = rsStaff.getString("nama");
+
+            // Validasi Meja
+            String queryMeja = "SELECT * FROM tb_meja WHERE id_meja = ?";
+            PreparedStatement stmtMeja = conn.prepareStatement(queryMeja);
+            stmtMeja.setString(1, inputMeja);
+
+            ResultSet rsMeja = stmtMeja.executeQuery();
+
+            if (rsMeja.next()) {
+                int statusMeja = rsMeja.getInt("status");
+                String namaMeja = rsMeja.getString("nama");
+
+                if (statusMeja == 0) {
+                    JOptionPane.showMessageDialog(null, "Meja tidak tersedia!");
+                    return;
+                }
+
+                // Totalkan qty untuk semua pesanan
+                int totalQty = 0;
+                for (Map<String, Object> order : orders) {
+                    totalQty += (int) order.get("qty");
+                }
+
+                // Format tanggal dan waktu untuk ID Transaksi
+                SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyyHHmm");
+                Date date = new Date(); // Tanggal dan waktu saat ini
+                String idTransaksi = "TRX" + formatter.format(date); // Gabungkan prefix dengan tanggal-waktu
+
+                // Tambahkan transaksi ke database tb_transaksi untuk setiap produk
+                String queryInsertTransaksi = "INSERT INTO tb_transaksi (id_transaksi, id_staff, id_produk, id_meja, nama_pel, tgl_transaksi, qty, subtotal, ppn, total_harga, tunai, kembalian, status) VALUES (?, ?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement stmtInsertTransaksi = conn.prepareStatement(queryInsertTransaksi);
+
+                for (Map<String, Object> order : orders) {
+                    stmtInsertTransaksi.setString(1, idTransaksi); // Menggunakan ID Transaksi yang sama
+                    stmtInsertTransaksi.setString(2, inputIDStaff); // ID Staff dari sesi
+                    stmtInsertTransaksi.setInt(3, (int) order.get("id_produk")); // ID Produk
+                    stmtInsertTransaksi.setString(4, inputMeja); // ID Meja
+                    stmtInsertTransaksi.setString(5, namaPelanggan); // Nama Pelanggan
+                    stmtInsertTransaksi.setInt(6, (int) order.get("qty")); // Qty
+                    stmtInsertTransaksi.setInt(7, subtotal); // Subtotal
+                    stmtInsertTransaksi.setInt(8, PPN); // PPN
+                    stmtInsertTransaksi.setInt(9, total); // Total Harga
+                    stmtInsertTransaksi.setInt(10, tunai); // Tunai
+                    stmtInsertTransaksi.setInt(11, kembali); // Kembalian
+                    stmtInsertTransaksi.setInt(12, 0); // Status
+                    stmtInsertTransaksi.executeUpdate();
+                }
+
+                // Update status meja menjadi tidak tersedia
+                String queryUpdateMeja = "UPDATE tb_meja SET status = 0 WHERE id_meja = ?";
+                PreparedStatement stmtUpdateMeja = conn.prepareStatement(queryUpdateMeja);
+                stmtUpdateMeja.setString(1, inputMeja);
+                stmtUpdateMeja.executeUpdate();
+
+                // Update status transaksi menjadi selesai
+                String queryUpdateStatus = "UPDATE tb_transaksi SET status = 1 WHERE id_transaksi = ?";
+                PreparedStatement stmtUpdateStatus = conn.prepareStatement(queryUpdateStatus);
+                stmtUpdateStatus.setString(1, idTransaksi);
+                stmtUpdateStatus.executeUpdate();
+
+                // Set nilai kembalian ke kolom output
+                outputKembali.setText(String.valueOf(kembali));
+
+                // Kurangi stok produk di database
+                for (Map<String, Object> order : orders) {
+                    String queryUpdateStok = "UPDATE tb_produk SET stok = ? WHERE id_produk = ?";
+                    PreparedStatement stmtUpdateStok = conn.prepareStatement(queryUpdateStok);
+                    stmtUpdateStok.setInt(1, (int) order.get("stok_akhir"));
+                    stmtUpdateStok.setInt(2, (int) order.get("id_produk"));
+                    stmtUpdateStok.executeUpdate();
+                }
+
+                JOptionPane.showMessageDialog(null, "Transaksi berhasil!");
+
+                // Reset pesanan setelah pembayaran
+                orders.clear();
+                jTextAreaOrder.setText(jTextAreaOrder.getText() + "\n\n****************************************************\n"
+                        + "id: " + idTransaksi + "\n"
+                        + "Meja: " + inputMeja + " (" + namaMeja + ")\n"
+                        + "Staff: " + namaStaff + "\n"
+                        + "Pelanggan: " + namaPelanggan + "\n"
+                        + "Total Qty: " + totalQty + "\n"
+                        + "\nSubtotal: \t\t\t\t" + subtotal + "\nPajak 12%: \t\t\t\t" + PPN + "\nTotal: \t\t\t\t\t" + total + "\nTunai: \t\t\t\t\t" + tunai + "\nKembali: \t\t\t\t" + kembali
+                        + "\n********************* Thank You *********************\n");
+                btnBayar.setEnabled(false);
+                btnPrint.setEnabled(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Nomor meja tidak ditemukan!");
+            }
+
+            rsStaff.close();
+            stmtStaff.close();
+            rsMeja.close();
+            stmtMeja.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat memproses transaksi: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnBayarActionPerformed
+
+    private void opsiMenu11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opsiMenu11ActionPerformed
+
+    private void opsiMenu12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opsiMenu12ActionPerformed
+
+    private void opsiMenu13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opsiMenu13ActionPerformed
+
+    private void opsiMenu14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opsiMenu14ActionPerformed
+
+    private void opsiMenu15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opsiMenu15ActionPerformed
+
+    private void opsiMenu16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opsiMenu16ActionPerformed
+
+    private void opsiMenu17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opsiMenu17ActionPerformed
+
+    private void opsiMenu18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu18ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opsiMenu18ActionPerformed
+
+    private void opsiMenu19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu19ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opsiMenu19ActionPerformed
+
+    private void opsiMenu20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiMenu20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opsiMenu20ActionPerformed
+
+    private void inputNamaPelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNamaPelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputNamaPelActionPerformed
+
+    private void inputMejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputMejaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputMejaActionPerformed
+
+    private void HomePageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomePageBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HomePageBtnActionPerformed
+
+    private void sesiIDStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sesiIDStaffActionPerformed
+
+    }//GEN-LAST:event_sesiIDStaffActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2660,7 +2939,7 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private button.custom HomePageBtn;
+    private custom.button HomePageBtn;
     private javax.swing.JLabel LogoTop;
     private button.custom ManagePageBtn;
     private button.custom OrderPageBtn;
@@ -2683,6 +2962,27 @@ public class HomePage extends javax.swing.JFrame {
     private button.panel PanelMenu8;
     private button.panel PanelMenu9;
     private button.custom ReportsPageBtn;
+    private custom.button ManagePageBtn;
+    private custom.button OrderPageBtn;
+    private custom.panel PanelMenu1;
+    private custom.panel PanelMenu10;
+    private custom.panel PanelMenu11;
+    private custom.panel PanelMenu12;
+    private custom.panel PanelMenu13;
+    private custom.panel PanelMenu14;
+    private custom.panel PanelMenu15;
+    private custom.panel PanelMenu16;
+    private custom.panel PanelMenu17;
+    private custom.panel PanelMenu18;
+    private custom.panel PanelMenu19;
+    private custom.panel PanelMenu2;
+    private custom.panel PanelMenu20;
+    private custom.panel PanelMenu3;
+    private custom.panel PanelMenu4;
+    private custom.panel PanelMenu5;
+    private custom.panel PanelMenu8;
+    private custom.panel PanelMenu9;
+    private custom.button ReportsPageBtn;
     private javax.swing.JLabel Tanggal;
     private javax.swing.JLabel Waktu;
     private javax.swing.JCheckBox addMenu1;
@@ -2703,13 +3003,18 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JCheckBox addMenu5;
     private javax.swing.JCheckBox addMenu8;
     private javax.swing.JCheckBox addMenu9;
-    private button.custom btnBayar;
-    private button.custom btnPrint;
-    private button.custom btnReset;
+    private custom.button btnBayar;
+    private custom.button btnPrint;
+    private custom.button btnReset;
+    private javax.swing.JTextField inputMeja;
+    private javax.swing.JTextField inputNamaPel;
     private javax.swing.JTextField inputTunai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+
+    private javax.swing.JLabel jLabel12;
+
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -2819,6 +3124,7 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JSpinner qtyMenu8;
     private javax.swing.JSpinner qtyMenu9;
     private javax.swing.JPanel rightPanel;
+    private javax.swing.JTextField sesiIDStaff;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
 }

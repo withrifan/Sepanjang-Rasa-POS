@@ -17,15 +17,15 @@ public class Reports extends javax.swing.JFrame {
     }
 
     public void setImg() {
-        MethodClass.setIconLabel(LogoTop, "/BahanSteak/LogoSepanjangRasa2.png");
+        MethodClass.setIconLabel(LogoTop, "/components/LogoSepanjangRasa2.png");
     }
 
     private void setIconBtn() {
         // Menggunakan MethodClass untuk mengatur ikon pada tombol
-        MethodClass.setIconBtn(HomePageBtn, "/BahanSteak/logoHome2.png");
-        MethodClass.setIconBtn(OrderPageBtn, "/BahanSteak/logoOrder2.png");
-        MethodClass.setIconBtn(ReportsPageBtn, "/BahanSteak/logoReport1.png");
-        MethodClass.setIconBtn(ManagePageBtn, "/BahanSteak/logoStaff2.png");
+        MethodClass.setIconBtn(HomePageBtn, "/components/logoHome2.png");
+        MethodClass.setIconBtn(OrderPageBtn, "/components/logoOrder2.png");
+        MethodClass.setIconBtn(ReportsPageBtn, "/components/logoReport1.png");
+        MethodClass.setIconBtn(ManagePageBtn, "/components/logoStaff2.png");
     }
 
 
@@ -40,15 +40,17 @@ public class Reports extends javax.swing.JFrame {
         Tanggal = new javax.swing.JLabel();
         panelLeftOrderPage = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        HomePageBtn = new button.custom();
+        HomePageBtn = new custom.button();
         jLabel5 = new javax.swing.JLabel();
-        OrderPageBtn = new button.custom();
-        ReportsPageBtn = new button.custom();
+        OrderPageBtn = new custom.button();
+        ReportsPageBtn = new custom.button();
         jLabel6 = new javax.swing.JLabel();
-        ManagePageBtn = new button.custom();
+        ManagePageBtn = new custom.button();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Reports - Sepanjang Rasa");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/components/iconSR.jpg")).getImage());
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -76,7 +78,7 @@ public class Reports extends javax.swing.JFrame {
             .addGroup(panelTopOrderPageLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(LogoTop, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1169, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2961, Short.MAX_VALUE)
                 .addGroup(panelTopOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Tanggal, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(Waktu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -204,8 +206,8 @@ public class Reports extends javax.swing.JFrame {
             bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgOrderPageLayout.createSequentialGroup()
                 .addComponent(panelLeftOrderPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(panelTopOrderPage, javax.swing.GroupLayout.DEFAULT_SIZE, 1536, Short.MAX_VALUE)
+                .addGap(0, 3248, Short.MAX_VALUE))
+            .addComponent(panelTopOrderPage, javax.swing.GroupLayout.DEFAULT_SIZE, 3328, Short.MAX_VALUE)
         );
         bgOrderPageLayout.setVerticalGroup(
             bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,11 +277,11 @@ public class Reports extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private button.custom HomePageBtn;
+    private custom.button HomePageBtn;
     private javax.swing.JLabel LogoTop;
-    private button.custom ManagePageBtn;
-    private button.custom OrderPageBtn;
-    private button.custom ReportsPageBtn;
+    private custom.button ManagePageBtn;
+    private custom.button OrderPageBtn;
+    private custom.button ReportsPageBtn;
     private javax.swing.JLabel Tanggal;
     private javax.swing.JLabel Waktu;
     private javax.swing.JPanel bgOrderPage;

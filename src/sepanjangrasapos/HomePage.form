@@ -3,9 +3,9 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Sepanjang Rasa"/>
+    <Property name="title" type="java.lang.String" value="Home - Sepanjang Rasa"/>
     <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-      <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/BahanSteak/iconSR.jpg&quot;)).getImage()" type="code"/>
+      <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/components/iconSR.jpg&quot;)).getImage()" type="code"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -69,10 +69,10 @@
               <Group type="102" attributes="0">
                   <Component id="topPanel" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="leftPanel" pref="722" max="32767" attributes="0"/>
                       <Component id="menuPanel" max="32767" attributes="0"/>
+                      <Component id="leftPanel" pref="735" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -228,13 +228,13 @@
                       <Component id="ManagePageBtn" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="377" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="button.custom" name="HomePageBtn">
+            <Component class="custom.button" name="HomePageBtn">
               <Properties>
                 <Property name="colorBorder" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -251,8 +251,11 @@
                 </Property>
                 <Property name="radius" type="int" value="8"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HomePageBtnActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="button.custom" name="OrderPageBtn">
+            <Component class="custom.button" name="OrderPageBtn">
               <Properties>
                 <Property name="colorBorder" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -273,7 +276,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrderPageBtnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="button.custom" name="ReportsPageBtn">
+            <Component class="custom.button" name="ReportsPageBtn">
               <Properties>
                 <Property name="colorBorder" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -294,7 +297,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ReportsPageBtnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="button.custom" name="ManagePageBtn">
+            <Component class="custom.button" name="ManagePageBtn">
               <Properties>
                 <Property name="colorBorder" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -434,7 +437,6 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="rightPanel" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -464,6 +466,10 @@
                           <Component id="PanelMenu20" min="-2" pref="212" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="rightPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -507,6 +513,31 @@
                                       <Component id="outputTotal" alignment="1" pref="212" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel10" min="-2" pref="126" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="inputNamaPel" min="-2" pref="190" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel11" min="-2" pref="126" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="inputMeja" min="-2" pref="113" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel12" min="-2" pref="126" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Component id="sesiIDStaff" min="-2" pref="113" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="77" pref="77" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -522,6 +553,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -529,7 +561,26 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" max="32767" attributes="0"/>
+
                           <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel10" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="inputNamaPel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          </Group>
+
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel11" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="inputMeja" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel12" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="sesiIDStaff" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="392" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                               <Component id="outputSubtotal" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
@@ -544,8 +595,9 @@
                               <Component id="jLabel3" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                               <Component id="outputTotal" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -562,7 +614,7 @@
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Consolas" size="12" style="0"/>
+                          <Font name="Consolas" size="10" style="0"/>
                         </Property>
                         <Property name="rows" type="int" value="5"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -621,15 +673,22 @@
                                   <Component id="outputKembali" min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
+
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnBayar" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
+
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnBayar" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+
                                       <Component id="btnPrint" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                       <Component id="btnReset" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="23" max="32767" attributes="0"/>
+                              <EmptySpace pref="16" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -679,6 +738,7 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="outputKembali">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Poppins Medium" size="13" style="1"/>
                         </Property>
@@ -695,7 +755,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="outputKembaliActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="button.custom" name="btnReset">
+                    <Component class="custom.button" name="btnReset">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -730,7 +790,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="button.custom" name="btnPrint">
+                    <Component class="custom.button" name="btnPrint">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -765,7 +825,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrintActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="button.custom" name="btnBayar">
+                    <Component class="custom.button" name="btnBayar">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="19" green="80" red="fc" type="rgb"/>
@@ -874,19 +934,111 @@
                     </Property>
                   </Properties>
                 </Component>
+
                 <Component class="javax.swing.JLabel" name="jLabel10">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jLabel10"/>
+
+                <Component class="javax.swing.JTextField" name="inputNamaPel">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Medium" size="13" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder roundedCorners="true">
+                          <Color PropertyName="color" blue="9e" green="9f" red="9f" type="rgb"/>
+                        </LineBorder>
+                      </Border>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputNamaPelActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel10">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Medium" size="13" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="Nama Pelanggan"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[55, 25]"/>
+                    </Property>
+
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel11">
                   <Properties>
+
                     <Property name="text" type="java.lang.String" value="jLabel11"/>
                   </Properties>
+
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Medium" size="13" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="No Meja"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[55, 25]"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="inputMeja">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Medium" size="13" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder roundedCorners="true">
+                          <Color PropertyName="color" blue="9e" green="9f" red="9f" type="rgb"/>
+                        </LineBorder>
+                      </Border>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputMejaActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel12">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Medium" size="13" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="ID Staff"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[55, 25]"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="sesiIDStaff">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Medium" size="13" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder roundedCorners="true">
+                          <Color PropertyName="color" blue="9e" green="9f" red="9f" type="rgb"/>
+                        </LineBorder>
+                      </Border>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sesiIDStaffActionPerformed"/>
+                  </Events>
+
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu1">
+            <Container class="custom.panel" name="PanelMenu1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -942,9 +1094,9 @@
                               <Component id="opsiMenu1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="addMenu1" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="qtyMenu1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="addMenu1" max="32767" attributes="0"/>
+                              <Component id="qtyMenu1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
@@ -966,7 +1118,7 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1025,7 +1177,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu2">
+            <Container class="custom.panel" name="PanelMenu2">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1081,9 +1233,9 @@
                               <Component id="opsiMenu2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="addMenu2" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="qtyMenu2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="addMenu2" max="32767" attributes="0"/>
+                              <Component id="qtyMenu2" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
@@ -1105,7 +1257,7 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1164,7 +1316,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu3">
+            <Container class="custom.panel" name="PanelMenu3">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1244,7 +1396,7 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1266,7 +1418,7 @@
                       <Font name="Poppins SemiBold" size="14" style="0"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Combo Sharing"/>
+                    <Property name="text" type="java.lang.String" value="Combo Sharing Meals"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[135, 20]"/>
                     </Property>
@@ -1303,7 +1455,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu4">
+            <Container class="custom.panel" name="PanelMenu4">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1383,7 +1535,7 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1442,7 +1594,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu5">
+            <Container class="custom.panel" name="PanelMenu5">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1522,7 +1674,7 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1581,7 +1733,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu8">
+            <Container class="custom.panel" name="PanelMenu8">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1661,7 +1813,7 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1720,7 +1872,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu9">
+            <Container class="custom.panel" name="PanelMenu9">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1800,7 +1952,7 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1859,7 +2011,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu10">
+            <Container class="custom.panel" name="PanelMenu10">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1939,7 +2091,7 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1998,7 +2150,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu11">
+            <Container class="custom.panel" name="PanelMenu11">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2027,11 +2179,11 @@
                           <Component id="picMenu11" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="8" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblMenu11" alignment="1" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblVarian11" min="-2" pref="43" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   <Component id="opsiMenu11" pref="0" max="32767" attributes="0"/>
@@ -2048,12 +2200,12 @@
                           <Component id="picMenu11" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lblMenu11" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblVarian11" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="opsiMenu11" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="addMenu11" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="qtyMenu11" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2078,21 +2230,12 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="qtyMenu11StateChanged"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblVarian11">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Light" size="12" style="1"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Varian"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblMenu11">
                   <Properties>
@@ -2100,7 +2243,7 @@
                       <Font name="Poppins SemiBold" size="14" style="0"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Expresso"/>
+                    <Property name="text" type="java.lang.String" value="Espresso"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[135, 20]"/>
                     </Property>
@@ -2116,10 +2259,9 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu11">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="1 shot"/>
-                        <StringItem index="1" value="2 shot"/>
-                        <StringItem index="2" value="3 shot"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Sugar"/>
+                        <StringItem index="1" value="Less Sugar"/>
                       </StringArray>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2133,9 +2275,18 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
+                <Component class="javax.swing.JLabel" name="lblVarian11">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Light" size="12" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="Varian"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu12">
+            <Container class="custom.panel" name="PanelMenu12">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2166,7 +2317,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblMenu12" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="lblVarian12" min="-2" pref="43" max="-2" attributes="0"/>
@@ -2185,12 +2336,12 @@
                           <Component id="picMenu12" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lblMenu12" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblVarian12" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="opsiMenu12" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="addMenu12" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="qtyMenu12" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2215,21 +2366,12 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="qtyMenu12StateChanged"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblVarian12">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Light" size="12" style="1"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Varian"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblMenu12">
                   <Properties>
@@ -2250,15 +2392,21 @@
                     </Property>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JLabel" name="lblVarian12">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Light" size="12" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="Varian"/>
+                  </Properties>
+                </Component>
                 <Component class="javax.swing.JComboBox" name="opsiMenu12">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Rare"/>
-                        <StringItem index="1" value="Medium rare"/>
-                        <StringItem index="2" value="Medium"/>
-                        <StringItem index="3" value="Medium well"/>
-                        <StringItem index="4" value="Welldone"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Sugar"/>
+                        <StringItem index="1" value="Less Sugar"/>
                       </StringArray>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2274,7 +2422,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu13">
+            <Container class="custom.panel" name="PanelMenu13">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2303,16 +2451,13 @@
                           <Component id="picMenu13" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="8" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMenu13" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblMenu13" alignment="1" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblVarian13" min="-2" pref="43" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   <Component id="opsiMenu13" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -2327,12 +2472,12 @@
                           <Component id="picMenu13" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lblMenu13" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblVarian13" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="opsiMenu13" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="addMenu13" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="qtyMenu13" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2357,21 +2502,12 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="qtyMenu13StateChanged"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblVarian13">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Light" size="12" style="1"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Varian"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblMenu13">
                   <Properties>
@@ -2392,15 +2528,21 @@
                     </Property>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JLabel" name="lblVarian13">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Light" size="12" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="Varian"/>
+                  </Properties>
+                </Component>
                 <Component class="javax.swing.JComboBox" name="opsiMenu13">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Rare"/>
-                        <StringItem index="1" value="Medium rare"/>
-                        <StringItem index="2" value="Medium"/>
-                        <StringItem index="3" value="Medium well"/>
-                        <StringItem index="4" value="Welldone"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Sugar"/>
+                        <StringItem index="1" value="Less Sugar"/>
                       </StringArray>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2416,7 +2558,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu14">
+            <Container class="custom.panel" name="PanelMenu14">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2445,11 +2587,11 @@
                           <Component id="picMenu14" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="8" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblMenu14" alignment="1" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblVarian14" min="-2" pref="43" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   <Component id="opsiMenu14" pref="0" max="32767" attributes="0"/>
@@ -2466,12 +2608,12 @@
                           <Component id="picMenu14" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lblMenu14" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblVarian14" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="opsiMenu14" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="addMenu14" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="qtyMenu14" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2496,21 +2638,12 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="qtyMenu14StateChanged"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblVarian14">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Light" size="12" style="1"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Varian"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblMenu14">
                   <Properties>
@@ -2518,7 +2651,7 @@
                       <Font name="Poppins SemiBold" size="14" style="0"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Lemonade"/>
+                    <Property name="text" type="java.lang.String" value="Strawberry Lemonade"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[135, 20]"/>
                     </Property>
@@ -2534,12 +2667,9 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu14">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Rare"/>
-                        <StringItem index="1" value="Medium rare"/>
-                        <StringItem index="2" value="Medium"/>
-                        <StringItem index="3" value="Medium well"/>
-                        <StringItem index="4" value="Welldone"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Sugar"/>
+                        <StringItem index="1" value="Less Sugar"/>
                       </StringArray>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2553,9 +2683,18 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
+                <Component class="javax.swing.JLabel" name="lblVarian14">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Light" size="12" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="Varian"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu15">
+            <Container class="custom.panel" name="PanelMenu15">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2586,7 +2725,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblMenu15" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="lblVarian15" min="-2" pref="43" max="-2" attributes="0"/>
@@ -2605,12 +2744,12 @@
                           <Component id="picMenu15" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lblMenu15" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblVarian15" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="opsiMenu15" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="addMenu15" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="qtyMenu15" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2635,21 +2774,12 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="qtyMenu15StateChanged"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblVarian15">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Light" size="12" style="1"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Varian"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblMenu15">
                   <Properties>
@@ -2670,15 +2800,21 @@
                     </Property>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JLabel" name="lblVarian15">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Light" size="12" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="Varian"/>
+                  </Properties>
+                </Component>
                 <Component class="javax.swing.JComboBox" name="opsiMenu15">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Rare"/>
-                        <StringItem index="1" value="Medium rare"/>
-                        <StringItem index="2" value="Medium"/>
-                        <StringItem index="3" value="Medium well"/>
-                        <StringItem index="4" value="Welldone"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Sugar"/>
+                        <StringItem index="1" value="Less Sugar"/>
                       </StringArray>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2694,7 +2830,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu16">
+            <Container class="custom.panel" name="PanelMenu16">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2723,11 +2859,11 @@
                           <Component id="picMenu16" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="8" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblMenu16" alignment="1" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblVarian16" min="-2" pref="43" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   <Component id="opsiMenu16" pref="0" max="32767" attributes="0"/>
@@ -2744,12 +2880,12 @@
                           <Component id="picMenu16" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lblMenu16" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblVarian16" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="opsiMenu16" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="addMenu16" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="qtyMenu16" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2774,21 +2910,12 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="qtyMenu16StateChanged"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblVarian16">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Light" size="12" style="1"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Varian"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblMenu16">
                   <Properties>
@@ -2809,15 +2936,21 @@
                     </Property>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JLabel" name="lblVarian16">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Light" size="12" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="Varian"/>
+                  </Properties>
+                </Component>
                 <Component class="javax.swing.JComboBox" name="opsiMenu16">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Rare"/>
-                        <StringItem index="1" value="Medium rare"/>
-                        <StringItem index="2" value="Medium"/>
-                        <StringItem index="3" value="Medium well"/>
-                        <StringItem index="4" value="Welldone"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Sugar"/>
+                        <StringItem index="1" value="Less Sugar"/>
                       </StringArray>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2833,7 +2966,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu17">
+            <Container class="custom.panel" name="PanelMenu17">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -2864,7 +2997,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblMenu17" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="lblVarian17" min="-2" pref="43" max="-2" attributes="0"/>
@@ -2883,15 +3016,15 @@
                           <Component id="picMenu17" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lblMenu17" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblVarian17" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="opsiMenu17" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="addMenu17" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="qtyMenu17" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="addMenu17" max="32767" attributes="0"/>
+                              <Component id="qtyMenu17" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
@@ -2913,21 +3046,12 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="qtyMenu17StateChanged"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblVarian17">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Light" size="12" style="1"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Varian"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblMenu17">
                   <Properties>
@@ -2951,12 +3075,9 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu17">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Rare"/>
-                        <StringItem index="1" value="Medium rare"/>
-                        <StringItem index="2" value="Medium"/>
-                        <StringItem index="3" value="Medium well"/>
-                        <StringItem index="4" value="Welldone"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Sugar"/>
+                        <StringItem index="1" value="Less Sugar"/>
                       </StringArray>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -2970,9 +3091,18 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
+                <Component class="javax.swing.JLabel" name="lblVarian17">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Light" size="12" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="Varian"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu18">
+            <Container class="custom.panel" name="PanelMenu18">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -3003,7 +3133,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblMenu18" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="lblVarian18" min="-2" pref="43" max="-2" attributes="0"/>
@@ -3022,12 +3152,12 @@
                           <Component id="picMenu18" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lblMenu18" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblVarian18" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="opsiMenu18" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="addMenu18" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="qtyMenu18" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -3052,21 +3182,12 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="qtyMenu18StateChanged"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblVarian18">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Light" size="12" style="1"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Varian"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblMenu18">
                   <Properties>
@@ -3074,7 +3195,7 @@
                       <Font name="Poppins SemiBold" size="14" style="0"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Choco Lava Cake"/>
+                    <Property name="text" type="java.lang.String" value="Chocolate Lava Cake"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[135, 20]"/>
                     </Property>
@@ -3087,15 +3208,21 @@
                     </Property>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JLabel" name="lblVarian18">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Light" size="12" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="Varian"/>
+                  </Properties>
+                </Component>
                 <Component class="javax.swing.JComboBox" name="opsiMenu18">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Rare"/>
-                        <StringItem index="1" value="Medium rare"/>
-                        <StringItem index="2" value="Medium"/>
-                        <StringItem index="3" value="Medium well"/>
-                        <StringItem index="4" value="Welldone"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Sugar"/>
+                        <StringItem index="1" value="Less Sugar"/>
                       </StringArray>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -3111,7 +3238,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu19">
+            <Container class="custom.panel" name="PanelMenu19">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -3142,7 +3269,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblMenu19" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="lblVarian19" min="-2" pref="43" max="-2" attributes="0"/>
@@ -3161,12 +3288,12 @@
                           <Component id="picMenu19" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lblMenu19" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblVarian19" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="opsiMenu19" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="addMenu19" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="qtyMenu19" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -3191,21 +3318,12 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="qtyMenu19StateChanged"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblVarian19">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Light" size="12" style="1"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Varian"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblMenu19">
                   <Properties>
@@ -3226,15 +3344,21 @@
                     </Property>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JLabel" name="lblVarian19">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Light" size="12" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="Varian"/>
+                  </Properties>
+                </Component>
                 <Component class="javax.swing.JComboBox" name="opsiMenu19">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Rare"/>
-                        <StringItem index="1" value="Medium rare"/>
-                        <StringItem index="2" value="Medium"/>
-                        <StringItem index="3" value="Medium well"/>
-                        <StringItem index="4" value="Welldone"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Sugar"/>
+                        <StringItem index="1" value="Less Sugar"/>
                       </StringArray>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -3250,7 +3374,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="button.panel" name="PanelMenu20">
+            <Container class="custom.panel" name="PanelMenu20">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -3279,11 +3403,11 @@
                           <Component id="picMenu20" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="8" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblMenu20" alignment="1" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblVarian20" min="-2" pref="43" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   <Component id="opsiMenu20" pref="0" max="32767" attributes="0"/>
@@ -3300,12 +3424,12 @@
                           <Component id="picMenu20" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lblMenu20" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblVarian20" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="opsiMenu20" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="addMenu20" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
                               <Component id="qtyMenu20" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -3330,21 +3454,12 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[65, 22]"/>
+                      <Dimension value="[65, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="qtyMenu20StateChanged"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblVarian20">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Poppins Light" size="12" style="1"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="Varian"/>
-                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblMenu20">
                   <Properties>
@@ -3368,12 +3483,9 @@
                 <Component class="javax.swing.JComboBox" name="opsiMenu20">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Rare"/>
-                        <StringItem index="1" value="Medium rare"/>
-                        <StringItem index="2" value="Medium"/>
-                        <StringItem index="3" value="Medium well"/>
-                        <StringItem index="4" value="Welldone"/>
+                      <StringArray count="2">
+                        <StringItem index="0" value="Sugar"/>
+                        <StringItem index="1" value="Less Sugar"/>
                       </StringArray>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -3386,6 +3498,15 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblVarian20">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Poppins Light" size="12" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="Varian"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
