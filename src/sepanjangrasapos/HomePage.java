@@ -2765,10 +2765,10 @@ public class HomePage extends javax.swing.JFrame {
                 stmtUpdateMeja.executeUpdate();
 
                 // Update status transaksi menjadi selesai
-                String queryUpdateStatus = "UPDATE tb_transaksi SET status = 1 WHERE id_transaksi = ?";
-                PreparedStatement stmtUpdateStatus = conn.prepareStatement(queryUpdateStatus);
-                stmtUpdateStatus.setString(1, idTransaksi);
-                stmtUpdateStatus.executeUpdate();
+                //String queryUpdateStatus = "UPDATE tb_transaksi SET status = 1 WHERE id_transaksi = ?";
+                //PreparedStatement stmtUpdateStatus = conn.prepareStatement(queryUpdateStatus);
+                //stmtUpdateStatus.setString(1, idTransaksi);
+                //stmtUpdateStatus.executeUpdate();
 
                 // Set nilai kembalian ke kolom output
                 outputKembali.setText(String.valueOf(kembali));
