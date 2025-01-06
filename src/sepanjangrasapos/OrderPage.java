@@ -10,6 +10,7 @@ public class OrderPage extends javax.swing.JFrame {
         setTime();
         setImg();
         setIconBtn();
+        setExtendedState(Manage.MAXIMIZED_BOTH);
     }
     
     public void setTime() {
