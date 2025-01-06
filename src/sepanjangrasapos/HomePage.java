@@ -9,6 +9,8 @@ import javax.swing.JSpinner;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
+import java.text.MessageFormat; 
+import javax.swing.JTextArea;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -563,7 +565,7 @@ public class HomePage extends javax.swing.JFrame {
         rightPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(159, 159, 158)));
 
         jTextAreaOrder.setColumns(20);
-        jTextAreaOrder.setFont(new java.awt.Font("Consolas", 0, 10)); // NOI18N
+        jTextAreaOrder.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         jTextAreaOrder.setRows(5);
         jTextAreaOrder.setBorder(null);
         jScrollPane1.setViewportView(jTextAreaOrder);
@@ -1030,7 +1032,7 @@ public class HomePage extends javax.swing.JFrame {
 
         lblMenu3.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         lblMenu3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblMenu3.setText("Combo Sharing Meals");
+        lblMenu3.setText("Combo  Meals");
         lblMenu3.setPreferredSize(new java.awt.Dimension(135, 20));
 
         picMenu3.setPreferredSize(new java.awt.Dimension(144, 100));
@@ -1801,9 +1803,9 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(addMenu14)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(PanelMenu14Layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(picMenu14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(PanelMenu14Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelMenu14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2133,9 +2135,9 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(addMenu18)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(PanelMenu18Layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(picMenu18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu18Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelMenu18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2660,7 +2662,11 @@ public class HomePage extends javax.swing.JFrame {
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         try {
-            jTextAreaOrder.print();
+            JTextArea printTextArea = new JTextArea();
+            printTextArea.setText(jTextAreaOrder.getText());
+            printTextArea.setFont(new java.awt.Font("Consolas", java.awt.Font.PLAIN, 9));
+            
+            printTextArea.print();
         } catch (PrinterException ex) {
             Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
         }
