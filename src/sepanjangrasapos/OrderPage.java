@@ -90,7 +90,6 @@ public class OrderPage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextAreaDetailPesanan = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -100,8 +99,8 @@ public class OrderPage extends javax.swing.JFrame {
         outTotal = new javax.swing.JTextField();
         outTunai = new javax.swing.JTextField();
         outKembalian = new javax.swing.JTextField();
-        opsiUpdateStatus = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
+        btnStatusSelesai = new custom.button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Order - Sepanjang Rasa");
@@ -135,7 +134,7 @@ public class OrderPage extends javax.swing.JFrame {
             .addGroup(panelTopOrderPageLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(LogoTop, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1218, Short.MAX_VALUE)
                 .addGroup(panelTopOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Waktu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -270,21 +269,28 @@ public class OrderPage extends javax.swing.JFrame {
 
         jTableRiwayatPesanan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id Transaksi", "Tanggal", "Produk", "Qty", "Meja", "Total", "Tunai", "Kembalian"
+                "Id Transaksi", "Tanggal", "Produk", "Qty", "Meja", "Total", "Tunai", "Kembalian", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jTableRiwayatPesanan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -303,10 +309,6 @@ public class OrderPage extends javax.swing.JFrame {
         jTextAreaDetailPesanan.setColumns(20);
         jTextAreaDetailPesanan.setRows(5);
         jScrollPane2.setViewportView(jTextAreaDetailPesanan);
-
-        jLabel3.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel3.setText("Status");
-        jLabel3.setPreferredSize(new java.awt.Dimension(45, 22));
 
         jLabel4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel4.setText("Pajak 12%");
@@ -346,26 +348,30 @@ public class OrderPage extends javax.swing.JFrame {
         outKembalian.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
         outKembalian.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        opsiUpdateStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selesai", "Proses" }));
-        opsiUpdateStatus.setBorder(null);
-        opsiUpdateStatus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opsiUpdateStatusActionPerformed(evt);
-            }
-        });
-
         jLabel12.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel12.setText("Subtotal");
         jLabel12.setPreferredSize(new java.awt.Dimension(45, 22));
+
+        btnStatusSelesai.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnStatusSelesai.setForeground(new java.awt.Color(255, 255, 255));
+        btnStatusSelesai.setText("Selesai");
+        btnStatusSelesai.setColor(new java.awt.Color(9, 170, 41));
+        btnStatusSelesai.setColorBorder(new java.awt.Color(9, 170, 41));
+        btnStatusSelesai.setColorClick(new java.awt.Color(0, 102, 0));
+        btnStatusSelesai.setColorOver(new java.awt.Color(51, 255, 51));
+        btnStatusSelesai.setFont(new java.awt.Font("Poppins Medium", 1, 14)); // NOI18N
+        btnStatusSelesai.setPreferredSize(new java.awt.Dimension(95, 30));
+        btnStatusSelesai.setRadius(10);
+        btnStatusSelesai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStatusSelesaiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,22 +393,22 @@ public class OrderPage extends javax.swing.JFrame {
                             .addComponent(outSubtotal, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(outKembalian, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(opsiUpdateStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnStatusSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(opsiUpdateStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))
+                    .addComponent(btnStatusSelesai, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -514,10 +520,10 @@ public class OrderPage extends javax.swing.JFrame {
             String idTransaksi = jTableRiwayatPesanan.getValueAt(selectedRow, 0).toString();
 
             try (Connection conn = DBConnection.getConnection()) {
-                // Query untuk mendapatkan detail transaksi, produk, dan nama staff
+                // Query untuk mendapatkan detail transaksi, produk, nama staff dan status
                 String query = "SELECT t.id_transaksi, t.tgl_transaksi, t.id_staff, s.nama, "
                         + "p.nama AS nama_produk, t.qty, t.id_meja, t.nama_pel, "
-                        + "t.subtotal, t.ppn, t.total_harga, t.tunai, t.kembalian "
+                        + "t.subtotal, t.ppn, t.total_harga, t.tunai, t.kembalian, t.status "
                         + "FROM tb_transaksi t "
                         + "JOIN tb_produk p ON t.id_produk = p.id_produk "
                         + "JOIN tb_staff s ON t.id_staff = s.id_staff "
@@ -537,6 +543,7 @@ public class OrderPage extends javax.swing.JFrame {
                 int totalHarga = 0;
                 int tunai = 0;
                 int kembalian = 0;
+                int status = 0;
 
                 // Proses hasil query
                 while (rs.next()) {
@@ -549,6 +556,7 @@ public class OrderPage extends javax.swing.JFrame {
                     totalHarga = rs.getInt("total_harga");
                     tunai = rs.getInt("tunai");
                     kembalian = rs.getInt("kembalian");
+                    status = rs.getInt("status");  // Ambil status
 
                     // Ambil nama produk dan qty
                     String namaProduk = rs.getString("nama_produk");
@@ -559,10 +567,11 @@ public class OrderPage extends javax.swing.JFrame {
                 }
 
                 // Format output ke jTextAreaDetailPesanan
+                String statusText = (status == 1) ? "Selesai" : "Proses";  // Tentukan status
                 String detailPesanan = String.format(
                         "ID Transaksi: %s\nTanggal Transaksi: %s\nNama Staff: %s\n\n"
-                        + "Detail Produk:\n%s\nID Meja: %s\nNama Pelanggan: %s",
-                        idTransaksi, tglTransaksi, namaStaff, detailProduk.toString(), idMeja, namaPelanggan
+                        + "Detail Produk:\n%s\nID Meja: %s\nNama Pelanggan: %s\nStatus: %s",
+                        idTransaksi, tglTransaksi, namaStaff, detailProduk.toString(), idMeja, namaPelanggan, statusText
                 );
 
                 // Tampilkan data di jTextAreaDetailPesanan
@@ -575,16 +584,42 @@ public class OrderPage extends javax.swing.JFrame {
                 outTunai.setText(String.format("Rp%,d", tunai));
                 outKembalian.setText(String.format("Rp%,d", kembalian));
 
+                // Tentukan apakah status sudah selesai dan ubah status checkbox di tabel
+                if (status == 1) {
+                    jTableRiwayatPesanan.setValueAt(true, selectedRow, 8);  // Centang kolom status jika selesai
+                } else {
+                    jTableRiwayatPesanan.setValueAt(false, selectedRow, 8);  // Biarkan tidak dicentang jika belum selesai
+                }
+
             } catch (SQLException e) {
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error saat mengambil data: " + e.getMessage());
+                JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
             }
         }
     }//GEN-LAST:event_jTableRiwayatPesananMouseClicked
 
-    private void opsiUpdateStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiUpdateStatusActionPerformed
+    private void btnStatusSelesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusSelesaiActionPerformed
+        int selectedRow = jTableRiwayatPesanan.getSelectedRow();
+        if (selectedRow != -1) {
+            // Ambil id_transaksi dari baris yang dipilih
+            String idTransaksi = jTableRiwayatPesanan.getValueAt(selectedRow, 0).toString();
 
-    }//GEN-LAST:event_opsiUpdateStatusActionPerformed
+            // Update status transaksi menjadi "selesai" (1)
+            try (Connection conn = DBConnection.getConnection()) {
+                String updateStatusQuery = "UPDATE tb_transaksi SET status = 1 WHERE id_transaksi = ?";
+                PreparedStatement stmtUpdateStatus = conn.prepareStatement(updateStatusQuery);
+                stmtUpdateStatus.setString(1, idTransaksi);
+                stmtUpdateStatus.executeUpdate();
+
+                // Perbarui status di jTableRiwayatPesanan
+                jTableRiwayatPesanan.setValueAt(true, selectedRow, 8);  // Centang kolom status
+                JOptionPane.showMessageDialog(this, "Status transaksi berhasil diperbarui menjadi selesai.");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error saat memperbarui status: " + e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_btnStatusSelesaiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -637,12 +672,12 @@ public class OrderPage extends javax.swing.JFrame {
     private javax.swing.JLabel Tanggal;
     private javax.swing.JLabel Waktu;
     private javax.swing.JPanel bgOrderPage;
+    private custom.button btnStatusSelesai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -654,7 +689,6 @@ public class OrderPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableRiwayatPesanan;
     private javax.swing.JTextArea jTextAreaDetailPesanan;
-    private javax.swing.JComboBox<String> opsiUpdateStatus;
     private javax.swing.JTextField outKembalian;
     private javax.swing.JTextField outPajak;
     private javax.swing.JTextField outSubtotal;
