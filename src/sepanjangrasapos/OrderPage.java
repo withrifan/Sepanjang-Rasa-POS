@@ -64,7 +64,7 @@ public class OrderPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Gagal memuat riwayat pesanan: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -89,7 +89,7 @@ public class OrderPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaDetailPesanan = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -99,10 +99,9 @@ public class OrderPage extends javax.swing.JFrame {
         outPajak = new javax.swing.JTextField();
         outTotal = new javax.swing.JTextField();
         outTunai = new javax.swing.JTextField();
-        outStatus = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        outKembalian = new javax.swing.JTextField();
+        opsiUpdateStatus = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Order - Sepanjang Rasa");
@@ -271,17 +270,17 @@ public class OrderPage extends javax.swing.JFrame {
 
         jTableRiwayatPesanan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null,  new Boolean(false)},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id Pesanan", "Tanggal", "Produk", "Qty", "Meja", "Total", "Tunai", "Kembalian", "Status"
+                "Id Transaksi", "Tanggal", "Produk", "Qty", "Meja", "Total", "Tunai", "Kembalian"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -301,12 +300,12 @@ public class OrderPage extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Poppins Medium", 1, 24)); // NOI18N
         jLabel2.setText("Detail Pesanan");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jTextAreaDetailPesanan.setColumns(20);
+        jTextAreaDetailPesanan.setRows(5);
+        jScrollPane2.setViewportView(jTextAreaDetailPesanan);
 
         jLabel3.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel3.setText("Subtotal");
+        jLabel3.setText("Status");
         jLabel3.setPreferredSize(new java.awt.Dimension(45, 22));
 
         jLabel4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
@@ -320,7 +319,7 @@ public class OrderPage extends javax.swing.JFrame {
         jLabel6.setText("Tunai");
 
         jLabel7.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
-        jLabel7.setText("Status");
+        jLabel7.setText("Kembalian");
 
         outSubtotal.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         outSubtotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -344,39 +343,20 @@ public class OrderPage extends javax.swing.JFrame {
         outTunai.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
         outTunai.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        outStatus.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
-        outStatus.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        outKembalian.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
+        outKembalian.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        jTextField1.setFont(new java.awt.Font("Poppins SemiBold", 0, 13)); // NOI18N
-        jTextField1.setText("ID : 261224001");
-        jTextField1.setBorder(null);
-        jTextField1.setCaretColor(new java.awt.Color(255, 255, 255));
-        jTextField1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        jTextField1.setDoubleBuffered(true);
-
-        jTextField2.setFont(new java.awt.Font("Poppins SemiBold", 0, 13)); // NOI18N
-        jTextField2.setText("Take way");
-        jTextField2.setBorder(null);
-        jTextField2.setCaretColor(new java.awt.Color(255, 255, 255));
-        jTextField2.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        jTextField2.setDoubleBuffered(true);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        opsiUpdateStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selesai", "Proses" }));
+        opsiUpdateStatus.setBorder(null);
+        opsiUpdateStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                opsiUpdateStatusActionPerformed(evt);
             }
         });
 
-        jTextField3.setFont(new java.awt.Font("Poppins Medium", 0, 13)); // NOI18N
-        jTextField3.setText("41");
-        jTextField3.setBorder(null);
-        jTextField3.setCaretColor(new java.awt.Color(255, 255, 255));
-        jTextField3.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        jTextField3.setDoubleBuffered(true);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
+        jLabel12.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jLabel12.setText("Subtotal");
+        jLabel12.setPreferredSize(new java.awt.Dimension(45, 22));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -384,16 +364,8 @@ public class OrderPage extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,35 +375,40 @@ public class OrderPage extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(outTunai, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(outTotal, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(outPajak, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(outSubtotal, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(outStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(outKembalian, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(opsiUpdateStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(2, 2, 2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(opsiUpdateStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(outSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -447,7 +424,7 @@ public class OrderPage extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(outStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(outKembalian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -526,21 +503,88 @@ public class OrderPage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_HomePageBtnActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
     private void outTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outTotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_outTotalActionPerformed
 
     private void jTableRiwayatPesananMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableRiwayatPesananMouseClicked
-        // TODO add your handling code here:
+        int selectedRow = jTableRiwayatPesanan.getSelectedRow();
+        if (selectedRow != -1) {
+            // Ambil id_transaksi dari baris yang dipilih
+            String idTransaksi = jTableRiwayatPesanan.getValueAt(selectedRow, 0).toString();
+
+            try (Connection conn = DBConnection.getConnection()) {
+                // Query untuk mendapatkan detail transaksi, produk, dan nama staff
+                String query = "SELECT t.id_transaksi, t.tgl_transaksi, t.id_staff, s.nama, "
+                        + "p.nama AS nama_produk, t.qty, t.id_meja, t.nama_pel, "
+                        + "t.subtotal, t.ppn, t.total_harga, t.tunai, t.kembalian "
+                        + "FROM tb_transaksi t "
+                        + "JOIN tb_produk p ON t.id_produk = p.id_produk "
+                        + "JOIN tb_staff s ON t.id_staff = s.id_staff "
+                        + "WHERE t.id_transaksi = ?";
+                PreparedStatement stmt = conn.prepareStatement(query);
+                stmt.setString(1, idTransaksi);
+                ResultSet rs = stmt.executeQuery();
+
+                // Variabel untuk menyusun data
+                StringBuilder detailProduk = new StringBuilder();
+                String tglTransaksi = "";
+                String idMeja = "";
+                String namaPelanggan = "";
+                String namaStaff = "";
+                int subtotal = 0;
+                int ppn = 0;
+                int totalHarga = 0;
+                int tunai = 0;
+                int kembalian = 0;
+
+                // Proses hasil query
+                while (rs.next()) {
+                    tglTransaksi = rs.getString("tgl_transaksi");
+                    idMeja = rs.getString("id_meja");
+                    namaPelanggan = rs.getString("nama_pel");
+                    namaStaff = rs.getString("nama");
+                    subtotal = rs.getInt("subtotal");
+                    ppn = rs.getInt("ppn");
+                    totalHarga = rs.getInt("total_harga");
+                    tunai = rs.getInt("tunai");
+                    kembalian = rs.getInt("kembalian");
+
+                    // Ambil nama produk dan qty
+                    String namaProduk = rs.getString("nama_produk");
+                    int qty = rs.getInt("qty");
+                    detailProduk.append("- ").append(namaProduk)
+                            .append(" x ").append(qty)
+                            .append("\n");
+                }
+
+                // Format output ke jTextAreaDetailPesanan
+                String detailPesanan = String.format(
+                        "ID Transaksi: %s\nTanggal Transaksi: %s\nNama Staff: %s\n\n"
+                        + "Detail Produk:\n%s\nID Meja: %s\nNama Pelanggan: %s",
+                        idTransaksi, tglTransaksi, namaStaff, detailProduk.toString(), idMeja, namaPelanggan
+                );
+
+                // Tampilkan data di jTextAreaDetailPesanan
+                jTextAreaDetailPesanan.setText(detailPesanan);
+
+                // Tampilkan data ke kolom output
+                outSubtotal.setText(String.format("Rp%,d", subtotal));
+                outPajak.setText(String.format("Rp%,d", ppn));
+                outTotal.setText(String.format("Rp%,d", totalHarga));
+                outTunai.setText(String.format("Rp%,d", tunai));
+                outKembalian.setText(String.format("Rp%,d", kembalian));
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error saat mengambil data: " + e.getMessage());
+            }
+        }
     }//GEN-LAST:event_jTableRiwayatPesananMouseClicked
+
+    private void opsiUpdateStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opsiUpdateStatusActionPerformed
+
+    }//GEN-LAST:event_opsiUpdateStatusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -596,6 +640,7 @@ public class OrderPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -608,12 +653,10 @@ public class OrderPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableRiwayatPesanan;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextArea jTextAreaDetailPesanan;
+    private javax.swing.JComboBox<String> opsiUpdateStatus;
+    private javax.swing.JTextField outKembalian;
     private javax.swing.JTextField outPajak;
-    private javax.swing.JTextField outStatus;
     private javax.swing.JTextField outSubtotal;
     private javax.swing.JTextField outTotal;
     private javax.swing.JTextField outTunai;
