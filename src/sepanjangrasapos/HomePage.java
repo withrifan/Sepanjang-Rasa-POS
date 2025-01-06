@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 public class HomePage extends javax.swing.JFrame {
 
@@ -2746,8 +2747,14 @@ public class HomePage extends javax.swing.JFrame {
                 Date date = new Date(); // Tanggal dan waktu saat ini
                 String idTransaksi = "TRX" + formatter.format(date); // Gabungkan prefix dengan tanggal-waktu
 
-                // Tambahkan transaksi ke database tb_transaksi untuk setiap produk
-                String queryInsertTransaksi = "INSERT INTO tb_transaksi (id_transaksi, id_staff, id_produk, id_meja, nama_pel, tgl_transaksi, qty, subtotal, ppn, total_harga, tunai, kembalian, status) VALUES (?, ?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?)";
+                // Membuat format tanggal dan waktu sesuai format 'yyyy-MM-dd HH:mm:ss' untuk tipe DATETIME
+                SimpleDateFormat formatterDateTrx = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date dateTrans = new Date(); // Mengambil tanggal saat ini
+                String formattedDate = formatterDateTrx.format(dateTrans); // Memformat tanggal
+
+                // Query SQL untuk insert ke tb_transaksi
+                String queryInsertTransaksi = "INSERT INTO tb_transaksi (id_transaksi, id_staff, id_produk, id_meja, nama_pel, tgl_transaksi, qty, subtotal, ppn, total_harga, tunai, kembalian, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
                 PreparedStatement stmtInsertTransaksi = conn.prepareStatement(queryInsertTransaksi);
 
                 for (Map<String, Object> order : orders) {
@@ -2756,13 +2763,14 @@ public class HomePage extends javax.swing.JFrame {
                     stmtInsertTransaksi.setInt(3, (int) order.get("id_produk")); // ID Produk
                     stmtInsertTransaksi.setString(4, inputMeja); // ID Meja
                     stmtInsertTransaksi.setString(5, namaPelanggan); // Nama Pelanggan
-                    stmtInsertTransaksi.setInt(6, (int) order.get("qty")); // Qty
-                    stmtInsertTransaksi.setInt(7, subtotal); // Subtotal
-                    stmtInsertTransaksi.setInt(8, PPN); // PPN
-                    stmtInsertTransaksi.setInt(9, total); // Total Harga
-                    stmtInsertTransaksi.setInt(10, tunai); // Tunai
-                    stmtInsertTransaksi.setInt(11, kembali); // Kembalian
-                    stmtInsertTransaksi.setInt(12, 0); // Status
+                    stmtInsertTransaksi.setString(6, formattedDate); // Tanggal dalam format ddMMyyyy
+                    stmtInsertTransaksi.setInt(7, (int) order.get("qty")); // Qty
+                    stmtInsertTransaksi.setInt(8, subtotal); // Subtotal
+                    stmtInsertTransaksi.setInt(9, PPN); // PPN
+                    stmtInsertTransaksi.setInt(10, total); // Total Harga
+                    stmtInsertTransaksi.setInt(11, tunai); // Tunai
+                    stmtInsertTransaksi.setInt(12, kembali); // Kembalian
+                    stmtInsertTransaksi.setInt(13, 0); // Status
                     stmtInsertTransaksi.executeUpdate();
                 }
 
@@ -2773,11 +2781,10 @@ public class HomePage extends javax.swing.JFrame {
                 stmtUpdateMeja.executeUpdate();
 
                 // Update status transaksi menjadi selesai
-                String queryUpdateStatus = "UPDATE tb_transaksi SET status = 1 WHERE id_transaksi = ?";
-                PreparedStatement stmtUpdateStatus = conn.prepareStatement(queryUpdateStatus);
-                stmtUpdateStatus.setString(1, idTransaksi);
-                stmtUpdateStatus.executeUpdate();
-
+                //String queryUpdateStatus = "UPDATE tb_transaksi SET status = 1 WHERE id_transaksi = ?";
+                //PreparedStatement stmtUpdateStatus = conn.prepareStatement(queryUpdateStatus);
+                //stmtUpdateStatus.setString(1, idTransaksi);
+                //stmtUpdateStatus.executeUpdate();
                 // Set nilai kembalian ke kolom output
                 outputKembali.setText(String.valueOf(kembali));
 
@@ -2789,6 +2796,20 @@ public class HomePage extends javax.swing.JFrame {
                     stmtUpdateStok.setInt(2, (int) order.get("id_produk"));
                     stmtUpdateStok.executeUpdate();
                 }
+
+                // Setelah selesai meng-insert data ke tb_transaksi
+                // Insert ke tb_history
+                String queryInsertHistory = "INSERT INTO tb_history (id_history, id_transaksi, status) VALUES (?, ?, ?)";
+                PreparedStatement stmtInsertHistory = conn.prepareStatement(queryInsertHistory);
+
+                // Format tanggal untuk ID History
+                SimpleDateFormat formatterHistory = new SimpleDateFormat("ddMMyyHHmm");
+                Date dateHistory = new Date(); // Tanggal dan waktu saat ini
+                String idHistory = "H" + formatterHistory.format(dateHistory);
+                stmtInsertHistory.setString(1, idHistory);
+                stmtInsertHistory.setString(2, idTransaksi); // Menggunakan ID Transaksi dari transaksi ini
+                stmtInsertHistory.setInt(3, 0); // Status default adalah 0 (belum selesai)
+                stmtInsertHistory.executeUpdate();
 
                 JOptionPane.showMessageDialog(null, "Transaksi berhasil!");
 
