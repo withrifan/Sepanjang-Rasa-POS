@@ -9,6 +9,8 @@ import javax.swing.JSpinner;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
+import java.text.MessageFormat; 
+import javax.swing.JTextArea;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -564,7 +566,7 @@ public class HomePage extends javax.swing.JFrame {
         rightPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(159, 159, 158)));
 
         jTextAreaOrder.setColumns(20);
-        jTextAreaOrder.setFont(new java.awt.Font("Consolas", 0, 10)); // NOI18N
+        jTextAreaOrder.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         jTextAreaOrder.setRows(5);
         jTextAreaOrder.setBorder(null);
         jScrollPane1.setViewportView(jTextAreaOrder);
@@ -675,11 +677,11 @@ public class HomePage extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
+                .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(inputTunai, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(outputKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -834,7 +836,7 @@ public class HomePage extends javax.swing.JFrame {
                     .addComponent(outputTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(14, 14, 14))
         );
 
         PanelMenu1.setBackground(new java.awt.Color(255, 255, 255));
@@ -1031,7 +1033,7 @@ public class HomePage extends javax.swing.JFrame {
 
         lblMenu3.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         lblMenu3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblMenu3.setText("Combo Sharing Meals");
+        lblMenu3.setText("Combo  Meals");
         lblMenu3.setPreferredSize(new java.awt.Dimension(135, 20));
 
         picMenu3.setPreferredSize(new java.awt.Dimension(144, 100));
@@ -1774,7 +1776,7 @@ public class HomePage extends javax.swing.JFrame {
 
         lblMenu14.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         lblMenu14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblMenu14.setText("Strawberry Lemonade");
+        lblMenu14.setText("Strawberry Lemon");
         lblMenu14.setPreferredSize(new java.awt.Dimension(135, 20));
 
         picMenu14.setPreferredSize(new java.awt.Dimension(144, 100));
@@ -1796,24 +1798,26 @@ public class HomePage extends javax.swing.JFrame {
         PanelMenu14Layout.setHorizontalGroup(
             PanelMenu14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelMenu14Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(qtyMenu14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(addMenu14)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(PanelMenu14Layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
-                .addComponent(picMenu14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
-            .addGroup(PanelMenu14Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(PanelMenu14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMenu14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(PanelMenu14Layout.createSequentialGroup()
-                        .addComponent(lblVarian14, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
-                        .addComponent(opsiMenu14, 0, 1, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addGroup(PanelMenu14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMenu14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(PanelMenu14Layout.createSequentialGroup()
+                                .addComponent(lblVarian14, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(16, 16, 16)
+                                .addComponent(opsiMenu14, 0, 89, Short.MAX_VALUE))))
+                    .addGroup(PanelMenu14Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(qtyMenu14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(addMenu14)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(PanelMenu14Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(picMenu14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelMenu14Layout.setVerticalGroup(
             PanelMenu14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2134,9 +2138,9 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(addMenu18)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(PanelMenu18Layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
+                .addGap(8, 8, 8)
                 .addComponent(picMenu18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu18Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelMenu18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2406,7 +2410,7 @@ public class HomePage extends javax.swing.JFrame {
                     .addComponent(PanelMenu20, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(menuPanelLayout.createSequentialGroup()
-                .addComponent(rightPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rightPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -2430,8 +2434,8 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(topPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layerDasarHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(leftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE))
-                .addGap(0, 21, Short.MAX_VALUE))
+                    .addComponent(leftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -2661,7 +2665,11 @@ public class HomePage extends javax.swing.JFrame {
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         try {
-            jTextAreaOrder.print();
+            JTextArea printTextArea = new JTextArea();
+            printTextArea.setText(jTextAreaOrder.getText());
+            printTextArea.setFont(new java.awt.Font("Consolas", java.awt.Font.PLAIN, 9));
+            
+            printTextArea.print();
         } catch (PrinterException ex) {
             Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
         }

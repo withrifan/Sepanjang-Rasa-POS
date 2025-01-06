@@ -13,7 +13,11 @@ public class OrderPage extends javax.swing.JFrame {
         setTime();
         setImg();
         setIconBtn();
+
+        setExtendedState(Manage.MAXIMIZED_BOTH);
+
         loadRiwayatPesanan(); // Muat data ke tabel
+
     }
 
     public void setTime() {
@@ -513,6 +517,7 @@ public class OrderPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_outTotalActionPerformed
 
+
     private void jTableRiwayatPesananMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableRiwayatPesananMouseClicked
         int selectedRow = jTableRiwayatPesanan.getSelectedRow();
         if (selectedRow != -1) {
@@ -624,6 +629,7 @@ public class OrderPage extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
