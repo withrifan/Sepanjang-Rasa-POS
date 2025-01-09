@@ -606,7 +606,7 @@ public class OrderPage extends javax.swing.JFrame {
                         "***********************************\n"
                         + "ID     : %s\nTanggal: %s\nStaff  : %s\n"
                         + "***********************************\n"
-                        + "Produk \t\t\t\t Qty\n%s"
+                        + "Produk                         Qty\n%s"
                         + "***********************************\n"
                         + "Nomor Meja: %s\nPelanggan : %s\nStatus    : %s\n"
                         + "***********************************",
