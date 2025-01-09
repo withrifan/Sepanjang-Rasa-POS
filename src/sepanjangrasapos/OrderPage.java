@@ -13,11 +13,8 @@ public class OrderPage extends javax.swing.JFrame {
         setTime();
         setImg();
         setIconBtn();
-
         setExtendedState(Manage.MAXIMIZED_BOTH);
-
-        loadRiwayatPesanan(); // Muat data ke tabel
-
+        loadRiwayatPesanan(); // Muat data ke tabel 
     }
 
     public void setTime() {
@@ -165,9 +162,13 @@ public class OrderPage extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Poppins Medium", 1, 30)); // NOI18N
         jLabel2.setText("Detail Pesanan");
 
+        jTextAreaDetailPesanan.setBackground(new java.awt.Color(255, 255, 255));
         jTextAreaDetailPesanan.setColumns(20);
-        jTextAreaDetailPesanan.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        jTextAreaDetailPesanan.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         jTextAreaDetailPesanan.setRows(5);
+        jTextAreaDetailPesanan.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jTextAreaDetailPesanan.setEnabled(false);
+        jTextAreaDetailPesanan.setSelectedTextColor(new java.awt.Color(0, 0, 0));
         jScrollPane2.setViewportView(jTextAreaDetailPesanan);
 
         jLabel4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
@@ -556,11 +557,9 @@ public class OrderPage extends javax.swing.JFrame {
     private void jTableRiwayatPesananMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableRiwayatPesananMouseClicked
         int selectedRow = jTableRiwayatPesanan.getSelectedRow();
         if (selectedRow != -1) {
-            // Ambil id_transaksi dari baris yang dipilih
             String idTransaksi = jTableRiwayatPesanan.getValueAt(selectedRow, 0).toString();
 
             try (Connection conn = DBConnection.getConnection()) {
-                // Query untuk mendapatkan detail transaksi, produk, nama staff dan status
                 String query = "SELECT t.id_transaksi, t.tgl_transaksi, t.id_staff, s.nama, "
                         + "p.nama AS nama_produk, t.qty, t.id_meja, t.nama_pel, "
                         + "t.subtotal, t.ppn, t.total_harga, t.tunai, t.kembalian, t.status "
@@ -572,7 +571,6 @@ public class OrderPage extends javax.swing.JFrame {
                 stmt.setString(1, idTransaksi);
                 ResultSet rs = stmt.executeQuery();
 
-                // Variabel untuk menyusun data
                 StringBuilder detailProduk = new StringBuilder();
                 String tglTransaksi = "";
                 String idMeja = "";
@@ -584,8 +582,8 @@ public class OrderPage extends javax.swing.JFrame {
                 int tunai = 0;
                 int kembalian = 0;
                 int status = 0;
+                int nomorUrut = 1;
 
-                // Proses hasil query
                 while (rs.next()) {
                     tglTransaksi = rs.getString("tgl_transaksi");
                     idMeja = rs.getString("id_meja");
@@ -596,39 +594,37 @@ public class OrderPage extends javax.swing.JFrame {
                     totalHarga = rs.getInt("total_harga");
                     tunai = rs.getInt("tunai");
                     kembalian = rs.getInt("kembalian");
-                    status = rs.getInt("status");  // Ambil status
+                    status = rs.getInt("status");
 
-                    // Ambil nama produk dan qty
                     String namaProduk = rs.getString("nama_produk");
                     int qty = rs.getInt("qty");
-                    detailProduk.append("- ").append(namaProduk)
-                            .append(" x ").append(qty)
-                            .append("\n");
+                    detailProduk.append(String.format("%d. %-25s %4d\n", nomorUrut++, namaProduk, qty));
                 }
 
-                // Format output ke jTextAreaDetailPesanan
-                String statusText = (status == 1) ? "Selesai" : "Proses";  // Tentukan status
+                String statusText = (status == 1) ? "Selesai" : "Proses";
                 String detailPesanan = String.format(
-                        "ID Transaksi: %s\nTanggal Transaksi: %s\nNama Staff: %s\n\n"
-                        + "Detail Produk:\n%s\nID Meja: %s\nNama Pelanggan: %s\nStatus: %s",
+                        "***********************************\n"
+                        + "ID     : %s\nTanggal: %s\nStaff  : %s\n"
+                        + "***********************************\n"
+                        + "Produk \t\t\t\t Qty\n%s"
+                        + "***********************************\n"
+                        + "Nomor Meja: %s\nPelanggan : %s\nStatus    : %s\n"
+                        + "***********************************",
                         idTransaksi, tglTransaksi, namaStaff, detailProduk.toString(), idMeja, namaPelanggan, statusText
                 );
 
-                // Tampilkan data di jTextAreaDetailPesanan
                 jTextAreaDetailPesanan.setText(detailPesanan);
 
-                // Tampilkan data ke kolom output
                 outSubtotal.setText(String.format("Rp%,d", subtotal));
                 outPajak.setText(String.format("Rp%,d", ppn));
                 outTotal.setText(String.format("Rp%,d", totalHarga));
                 outTunai.setText(String.format("Rp%,d", tunai));
                 outKembalian.setText(String.format("Rp%,d", kembalian));
 
-                // Tentukan apakah status sudah selesai dan ubah status checkbox di tabel
                 if (status == 1) {
-                    jTableRiwayatPesanan.setValueAt(true, selectedRow, 8);  // Centang kolom status jika selesai
+                    jTableRiwayatPesanan.setValueAt(true, selectedRow, 8);
                 } else {
-                    jTableRiwayatPesanan.setValueAt(false, selectedRow, 8);  // Biarkan tidak dicentang jika belum selesai
+                    jTableRiwayatPesanan.setValueAt(false, selectedRow, 8);
                 }
 
             } catch (SQLException e) {
@@ -636,6 +632,7 @@ public class OrderPage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
             }
         }
+
     }//GEN-LAST:event_jTableRiwayatPesananMouseClicked
 
     private void btnStatusSelesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusSelesaiActionPerformed
@@ -665,10 +662,6 @@ public class OrderPage extends javax.swing.JFrame {
         new Manage().setVisible(true);
         dispose();
     }//GEN-LAST:event_ManagePageBtnActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -692,11 +685,7 @@ public class OrderPage extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(OrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
