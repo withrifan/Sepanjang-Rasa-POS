@@ -2134,7 +2134,7 @@ public class HomePage extends javax.swing.JFrame {
 
         lblMenu18.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         lblMenu18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblMenu18.setText("Chocolate Lava Cake");
+        lblMenu18.setText("Choco Lava Cake");
         lblMenu18.setPreferredSize(new java.awt.Dimension(135, 20));
 
         picMenu18.setPreferredSize(new java.awt.Dimension(144, 100));
@@ -2155,26 +2155,28 @@ public class HomePage extends javax.swing.JFrame {
         PanelMenu18.setLayout(PanelMenu18Layout);
         PanelMenu18Layout.setHorizontalGroup(
             PanelMenu18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu18Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelMenu18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMenu18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu18Layout.createSequentialGroup()
-                        .addComponent(lblVarian18, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
-                        .addComponent(opsiMenu18, 0, 1, Short.MAX_VALUE)))
-                .addContainerGap())
             .addGroup(PanelMenu18Layout.createSequentialGroup()
                 .addGroup(PanelMenu18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu18Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(PanelMenu18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMenu18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenu18Layout.createSequentialGroup()
+                                .addComponent(lblVarian18, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(16, 16, 16)
+                                .addComponent(opsiMenu18, 0, 89, Short.MAX_VALUE))))
                     .addGroup(PanelMenu18Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(qtyMenu18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(addMenu18))
-                    .addGroup(PanelMenu18Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(picMenu18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(PanelMenu18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelMenu18Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(qtyMenu18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(addMenu18))
+                            .addGroup(PanelMenu18Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(picMenu18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         PanelMenu18Layout.setVerticalGroup(
             PanelMenu18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
