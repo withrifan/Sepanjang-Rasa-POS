@@ -29,11 +29,11 @@ public class Manage extends javax.swing.JFrame {
         MethodClass.setIconBtn(HomePageBtn, "/components/logoHome2.png");
         MethodClass.setIconBtn(OrderPageBtn, "/components/logoOrder2.png");
         MethodClass.setIconBtn(TablePageBtn, "/components/logoTable2.png");
-        MethodClass.setIconBtn(ReportsPageBtn, "/components/logoReport2.png");
+        MethodClass.setIconBtn(btnLogout, "/components/logoutIcon.png");
         MethodClass.setIconBtn(ManagePageBtn, "/components/logoStaff1.png");
     }
-    
-    public void resetField(){
+
+    public void resetField() {
         idstaff_Field.setText("");
         nama_Field.setText("");
         telpon_Field.setText("");
@@ -198,7 +198,7 @@ public class Manage extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         TablePageBtn = new custom.button();
         jLabel4 = new javax.swing.JLabel();
-        ReportsPageBtn = new custom.button();
+        btnLogout = new custom.button();
         ManagePageBtn = new custom.button();
         jLabel5 = new javax.swing.JLabel();
         manageStaff_Label = new javax.swing.JLabel();
@@ -328,17 +328,18 @@ public class Manage extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Poppins SemiBold", 0, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(231, 43, 43));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Report");
+        jLabel4.setText("Logout");
 
-        ReportsPageBtn.setColorBorder(new java.awt.Color(255, 255, 255));
-        ReportsPageBtn.setColorClick(new java.awt.Color(204, 204, 204));
-        ReportsPageBtn.setColorOver(new java.awt.Color(245, 245, 245));
-        ReportsPageBtn.setPreferredSize(new java.awt.Dimension(35, 35));
-        ReportsPageBtn.setRadius(8);
-        ReportsPageBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnLogout.setColorBorder(new java.awt.Color(255, 255, 255));
+        btnLogout.setColorClick(new java.awt.Color(204, 204, 204));
+        btnLogout.setColorOver(new java.awt.Color(245, 245, 245));
+        btnLogout.setPreferredSize(new java.awt.Dimension(35, 35));
+        btnLogout.setRadius(8);
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReportsPageBtnActionPerformed(evt);
+                btnLogoutActionPerformed(evt);
             }
         });
 
@@ -361,17 +362,17 @@ public class Manage extends javax.swing.JFrame {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelLeftOrderPageLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(OrderPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TablePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ReportsPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(HomePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ManagePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ManagePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelLeftOrderPageLayout.setVerticalGroup(
             panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,14 +390,14 @@ public class Manage extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel3)
                 .addGap(30, 30, 30)
-                .addComponent(ReportsPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel4)
-                .addGap(30, 30, 30)
                 .addComponent(ManagePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel4)
+                .addGap(19, 19, 19))
         );
 
         manageStaff_Label.setFont(new java.awt.Font("Poppins Black", 1, 28)); // NOI18N
@@ -776,10 +777,12 @@ public class Manage extends javax.swing.JFrame {
         deleteStaffData();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
-    private void ReportsPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportsPageBtnActionPerformed
-        new Reports().setVisible(true);
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        LoginPage loginPage = new LoginPage();
+        loginPage.setLocationRelativeTo(null);
+        loginPage.setVisible(true);
         dispose();
-    }//GEN-LAST:event_ReportsPageBtnActionPerformed
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     public static void main(String args[]) {
 
@@ -801,13 +804,13 @@ public class Manage extends javax.swing.JFrame {
     private javax.swing.JLabel LogoTop;
     private custom.button ManagePageBtn;
     private custom.button OrderPageBtn;
-    private custom.button ReportsPageBtn;
     private custom.button TablePageBtn;
     private javax.swing.JLabel Tanggal;
     private javax.swing.JLabel Waktu;
     private javax.swing.JTextArea alamat_Field;
     private javax.swing.JLabel alamat_Label;
     private javax.swing.JPanel bgOrderPage;
+    private custom.button btnLogout;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel detailStaff_Label;
     private javax.swing.JTextField email_Field;

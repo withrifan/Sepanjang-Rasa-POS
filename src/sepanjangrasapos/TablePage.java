@@ -24,8 +24,8 @@ public class TablePage extends javax.swing.JFrame {
         MethodClass.setIconBtn(HomePageBtn, "/components/logoHome2.png");
         MethodClass.setIconBtn(OrderPageBtn, "/components/logoOrder2.png");
         MethodClass.setIconBtn(TablePageBtn, "/components/logoTable1.png");
-        MethodClass.setIconBtn(ManagePageBtn, "/components/logoReport2.png");
-        MethodClass.setIconBtn(ReportsPageBtn, "/components/logoStaff2.png");
+        MethodClass.setIconBtn(ManagePageBtn, "/components/logoStaff2.png");
+        MethodClass.setIconBtn(btnLogout, "/components/logoutIcon.png");
     }
 
     @SuppressWarnings("unchecked")
@@ -44,7 +44,7 @@ public class TablePage extends javax.swing.JFrame {
         OrderPageBtn = new custom.button();
         ManagePageBtn = new custom.button();
         jLabel6 = new javax.swing.JLabel();
-        ReportsPageBtn = new custom.button();
+        btnLogout = new custom.button();
         jLabel7 = new javax.swing.JLabel();
         TablePageBtn = new custom.button();
         jLabel8 = new javax.swing.JLabel();
@@ -164,20 +164,21 @@ public class TablePage extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Staff");
 
-        ReportsPageBtn.setColorBorder(new java.awt.Color(255, 255, 255));
-        ReportsPageBtn.setColorClick(new java.awt.Color(204, 204, 204));
-        ReportsPageBtn.setColorOver(new java.awt.Color(245, 245, 245));
-        ReportsPageBtn.setPreferredSize(new java.awt.Dimension(35, 35));
-        ReportsPageBtn.setRadius(8);
-        ReportsPageBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnLogout.setColorBorder(new java.awt.Color(255, 255, 255));
+        btnLogout.setColorClick(new java.awt.Color(204, 204, 204));
+        btnLogout.setColorOver(new java.awt.Color(245, 245, 245));
+        btnLogout.setPreferredSize(new java.awt.Dimension(35, 35));
+        btnLogout.setRadius(8);
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReportsPageBtnActionPerformed(evt);
+                btnLogoutActionPerformed(evt);
             }
         });
 
         jLabel7.setFont(new java.awt.Font("Poppins SemiBold", 0, 10)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(231, 43, 43));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Report");
+        jLabel7.setText("Logout");
 
         TablePageBtn.setColorBorder(new java.awt.Color(255, 255, 255));
         TablePageBtn.setColorClick(new java.awt.Color(204, 204, 204));
@@ -199,38 +200,27 @@ public class TablePage extends javax.swing.JFrame {
         panelLeftOrderPage.setLayout(panelLeftOrderPageLayout);
         panelLeftOrderPageLayout.setHorizontalGroup(
             panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLeftOrderPageLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLeftOrderPageLayout.createSequentialGroup()
                 .addContainerGap(13, Short.MAX_VALUE)
-                .addComponent(HomePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
-            .addGroup(panelLeftOrderPageLayout.createSequentialGroup()
                 .addGroup(panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLeftOrderPageLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ManagePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TablePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLeftOrderPageLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(panelLeftOrderPageLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(HomePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLeftOrderPageLayout.createSequentialGroup()
+                        .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelLeftOrderPageLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(OrderPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ReportsPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ManagePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TablePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelLeftOrderPageLayout.setVerticalGroup(
             panelLeftOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,14 +238,14 @@ public class TablePage extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel8)
                 .addGap(30, 30, 30)
-                .addComponent(ReportsPageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel7)
-                .addGap(30, 30, 30)
                 .addComponent(ManagePageBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel7)
+                .addGap(30, 30, 30))
         );
 
         panel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -494,7 +484,7 @@ public class TablePage extends javax.swing.JFrame {
             .addGroup(bgOrderPageLayout.createSequentialGroup()
                 .addComponent(panelTopOrderPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelLeftOrderPage, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
+                    .addComponent(panelLeftOrderPage, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgOrderPageLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addGroup(bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -552,10 +542,12 @@ public class TablePage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_OrderPageBtnActionPerformed
 
-    private void ReportsPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportsPageBtnActionPerformed
-        new Reports().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_ReportsPageBtnActionPerformed
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+       LoginPage loginPage = new LoginPage(); 
+       loginPage.setLocationRelativeTo(null);
+       loginPage.setVisible(true); 
+       dispose();
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void TablePageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TablePageBtnActionPerformed
         // TODO add your handling code here:
@@ -580,11 +572,11 @@ public class TablePage extends javax.swing.JFrame {
     private javax.swing.JLabel LogoTop;
     private custom.button ManagePageBtn;
     private custom.button OrderPageBtn;
-    private custom.button ReportsPageBtn;
     private custom.button TablePageBtn;
     private javax.swing.JLabel Tanggal;
     private javax.swing.JLabel Waktu;
     private javax.swing.JPanel bgOrderPage;
+    private custom.button btnLogout;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
