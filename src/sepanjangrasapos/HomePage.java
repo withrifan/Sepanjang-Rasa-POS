@@ -142,6 +142,7 @@ public class HomePage extends javax.swing.JFrame {
         addMenu19.setSelected(false);
         addMenu20.setSelected(false);
         btnBayar.setEnabled(true);
+        orders.clear();
     }
 
     public void orderList() {

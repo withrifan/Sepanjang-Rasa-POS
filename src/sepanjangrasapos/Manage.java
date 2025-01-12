@@ -765,10 +765,10 @@ public class Manage extends javax.swing.JFrame {
         idstaff_Field.setText(model.getValueAt(selectedRow, 0).toString());
         nama_Field.setText(model.getValueAt(selectedRow, 1).toString());
         jabatan_FieldCombo.setSelectedItem(model.getValueAt(selectedRow, 2).toString());
-        telpon_Field.setText(model.getValueAt(selectedRow, 3).toString());
-        email_Field.setText(model.getValueAt(selectedRow, 4).toString());
-        password_Field.setText(model.getValueAt(selectedRow, 5).toString());
-        jeniskelamin_FieldCombo.setSelectedItem(model.getValueAt(selectedRow, 6).toString());
+        jeniskelamin_FieldCombo.setSelectedItem(model.getValueAt(selectedRow, 3).toString());
+        telpon_Field.setText(model.getValueAt(selectedRow, 4).toString());
+        email_Field.setText(model.getValueAt(selectedRow, 5).toString());
+        password_Field.setText(model.getValueAt(selectedRow, 6).toString());
         alamat_Field.setText(model.getValueAt(selectedRow, 7).toString());
 
     }//GEN-LAST:event_jTableManageStaffMouseClicked
