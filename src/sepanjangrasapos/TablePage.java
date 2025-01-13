@@ -1,5 +1,12 @@
 package sepanjangrasapos;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class TablePage extends javax.swing.JFrame {
 
     public TablePage() {
@@ -7,6 +14,7 @@ public class TablePage extends javax.swing.JFrame {
         setTime();
         setImg();
         setIconBtn();
+        loadDataMeja();
         setExtendedState(Manage.MAXIMIZED_BOTH);
     }
 
@@ -26,6 +34,138 @@ public class TablePage extends javax.swing.JFrame {
         MethodClass.setIconBtn(TablePageBtn, "/components/logoTable1.png");
         MethodClass.setIconBtn(ManagePageBtn, "/components/logoStaff2.png");
         MethodClass.setIconBtn(btnLogout, "/components/logoutIcon.png");
+    }
+
+    public void resetField() {
+        inIdMeja.setText("");
+        inNamaMeja.setText("");
+        inKapasitasMejaCombo.getSelectedItem();
+        inLokasiMejaCombo.getSelectedItem();
+        inStatusMejaCombo.getSelectedItem();
+    }
+
+    // Metode untuk memuat data dari database ke JTable
+    private void loadDataMeja() {
+        DefaultTableModel model = new DefaultTableModel(
+                new String[]{"Id Meja", "Nama", "Kapasitas", "Lokasi", "Status"}, 0
+        );
+        jTableMeja.setModel(model);
+
+        model.setRowCount(0); // Reset data tabel
+
+        try {
+            String query = "SELECT * FROM tb_meja";
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                model.addRow(new Object[]{
+                    rs.getInt("id_meja"),
+                    rs.getString("nama"),
+                    rs.getString("kapasitas"),
+                    rs.getString("lokasi"),
+                    rs.getString("status"),
+                });
+            }
+            rs.close();
+            pst.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.err.println("Gagal memuat data: " + e.getMessage());
+        }
+    }
+
+    private void addDataMeja() {
+        String id = inIdMeja.getText();
+        String nama = inNamaMeja.getText();
+        String kapasitas = inKapasitasMejaCombo.getSelectedItem().toString();
+        String lokasi = inLokasiMejaCombo.getSelectedItem().toString();
+        String status = inStatusMejaCombo.getSelectedItem().toString();
+
+        String query = "INSERT INTO tb_meja (id_meja, nama, kapasitas, lokasi, status) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            // Mengatur parameter dalam query
+            pstmt.setString(1, id);
+            pstmt.setString(2, nama);
+            pstmt.setString(3, kapasitas);
+            pstmt.setString(4, lokasi);
+            pstmt.setString(5, status);
+
+            pstmt.executeUpdate(); // Eksekusi query INSERT
+            JOptionPane.showMessageDialog(this, "Data berhasil disimpan!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loadDataMeja(); // Refresh JTable setelah menyimpan data
+            resetField();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this,
+                    "Error saving data: " + e.getMessage(),
+                    "Database Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void updateDataMeja() {
+        try {
+            String query = "UPDATE tb_meja SET nama = ?, kapasitas = ?, lokasi = ?, status = ? WHERE id_meja = ?";
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement pst = conn.prepareStatement(query);
+
+            pst.setString(1, inNamaMeja.getText());    
+            pst.setString(2, inKapasitasMejaCombo.getSelectedItem().toString());
+            pst.setString(3, inLokasiMejaCombo.getSelectedItem().toString());
+            pst.setString(4, inStatusMejaCombo.getSelectedItem().toString());
+            pst.setInt(5, Integer.parseInt(inIdMeja.getText()));
+
+            int rowsUpdated = pst.executeUpdate();
+            if (rowsUpdated > 0) {
+                JOptionPane.showMessageDialog(this, "Data berhasil diupdate.");
+                loadDataMeja(); // Refresh tabel setelah update
+            }
+            pst.close();
+            conn.close();
+            resetField();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Gagal mengupdate data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "ID Meja harus berupa angka: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void deleteDataMeja() {
+        int selectedRow = jTableMeja.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "pilih baris yang akan di hapus");
+            return;
+        }
+
+        int confirm = JOptionPane.showConfirmDialog(this, "Yakin hapus data ini?", "konfirmasi", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            String id = jTableMeja.getValueAt(selectedRow, 0).toString();
+
+            try {
+                String query = "DELETE FROM tb_meja WHERE id_meja=?";
+                Connection conn = DBConnection.getConnection();
+                PreparedStatement pst = conn.prepareStatement(query);
+                pst.setString(1, id);
+
+                int rowDelete = pst.executeUpdate();
+                if (rowDelete > 0) {
+                    JOptionPane.showMessageDialog(this, "Data berhasil dihapus");
+
+                }
+                pst.close();
+                loadDataMeja(); // Refresh JTable setelah menyimpan data
+                resetField();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this,
+                        "Error delete data: " + e.getMessage(),
+                        "Database Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -51,23 +191,23 @@ public class TablePage extends javax.swing.JFrame {
         panel1 = new custom.panel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableMeja = new javax.swing.JTable();
         panel2 = new custom.panel();
-        AddTable = new custom.button();
-        AddTable1 = new custom.button();
-        AddTable2 = new custom.button();
+        btnAddTable = new custom.button();
+        btnUpdateTable = new custom.button();
+        btnDeleteTable = new custom.button();
         panel3 = new custom.panel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        inKapasitasMejaCombo = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        inLokasiMejaCombo = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        inStatusMejaCombo = new javax.swing.JComboBox<>();
+        inIdMeja = new javax.swing.JTextField();
+        inNamaMeja = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Reports - Sepanjang Rasa");
@@ -258,7 +398,7 @@ public class TablePage extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(252, 128, 25));
         jLabel2.setText("Daftar Meja");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableMeja.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -272,10 +412,30 @@ public class TablePage extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nomor", "Kapasitas", "Lokasi", "Status"
+                "Id Meja", "Nama", "Kapasitas", "Lokasi", "Status"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableMeja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableMejaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTableMeja);
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
@@ -307,40 +467,50 @@ public class TablePage extends javax.swing.JFrame {
         panel2.setRoundTopLeft(6);
         panel2.setRoundTopRight(6);
 
-        AddTable.setForeground(new java.awt.Color(255, 255, 255));
-        AddTable.setText("ADD");
-        AddTable.setColor(new java.awt.Color(9, 170, 41));
-        AddTable.setColorBorder(new java.awt.Color(9, 170, 41));
-        AddTable.setColorClick(new java.awt.Color(9, 121, 33));
-        AddTable.setColorOver(new java.awt.Color(9, 144, 48));
-        AddTable.setFont(new java.awt.Font("Poppins SemiBold", 1, 14)); // NOI18N
-        AddTable.setPreferredSize(new java.awt.Dimension(85, 30));
-        AddTable.setRadius(8);
-
-        AddTable1.setForeground(new java.awt.Color(255, 255, 255));
-        AddTable1.setText("SAVE");
-        AddTable1.setColor(new java.awt.Color(96, 76, 195));
-        AddTable1.setColorBorder(new java.awt.Color(96, 76, 195));
-        AddTable1.setColorClick(new java.awt.Color(96, 39, 186));
-        AddTable1.setColorOver(new java.awt.Color(96, 29, 163));
-        AddTable1.setFont(new java.awt.Font("Poppins SemiBold", 1, 14)); // NOI18N
-        AddTable1.setPreferredSize(new java.awt.Dimension(85, 30));
-        AddTable1.setRadius(8);
-        AddTable1.addActionListener(new java.awt.event.ActionListener() {
+        btnAddTable.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddTable.setText("ADD");
+        btnAddTable.setColor(new java.awt.Color(9, 170, 41));
+        btnAddTable.setColorBorder(new java.awt.Color(9, 170, 41));
+        btnAddTable.setColorClick(new java.awt.Color(9, 121, 33));
+        btnAddTable.setColorOver(new java.awt.Color(9, 144, 48));
+        btnAddTable.setFont(new java.awt.Font("Poppins SemiBold", 1, 14)); // NOI18N
+        btnAddTable.setPreferredSize(new java.awt.Dimension(85, 30));
+        btnAddTable.setRadius(8);
+        btnAddTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddTable1ActionPerformed(evt);
+                btnAddTableActionPerformed(evt);
             }
         });
 
-        AddTable2.setForeground(new java.awt.Color(255, 255, 255));
-        AddTable2.setText("DELETE");
-        AddTable2.setColor(new java.awt.Color(255, 0, 0));
-        AddTable2.setColorBorder(new java.awt.Color(255, 0, 0));
-        AddTable2.setColorClick(new java.awt.Color(204, 0, 0));
-        AddTable2.setColorOver(new java.awt.Color(204, 7, 13));
-        AddTable2.setFont(new java.awt.Font("Poppins SemiBold", 1, 14)); // NOI18N
-        AddTable2.setPreferredSize(new java.awt.Dimension(85, 30));
-        AddTable2.setRadius(8);
+        btnUpdateTable.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdateTable.setText("UPDATE");
+        btnUpdateTable.setColor(new java.awt.Color(96, 76, 195));
+        btnUpdateTable.setColorBorder(new java.awt.Color(96, 76, 195));
+        btnUpdateTable.setColorClick(new java.awt.Color(96, 39, 186));
+        btnUpdateTable.setColorOver(new java.awt.Color(96, 29, 163));
+        btnUpdateTable.setFont(new java.awt.Font("Poppins SemiBold", 1, 14)); // NOI18N
+        btnUpdateTable.setPreferredSize(new java.awt.Dimension(85, 30));
+        btnUpdateTable.setRadius(8);
+        btnUpdateTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateTableActionPerformed(evt);
+            }
+        });
+
+        btnDeleteTable.setForeground(new java.awt.Color(255, 255, 255));
+        btnDeleteTable.setText("DELETE");
+        btnDeleteTable.setColor(new java.awt.Color(255, 0, 0));
+        btnDeleteTable.setColorBorder(new java.awt.Color(255, 0, 0));
+        btnDeleteTable.setColorClick(new java.awt.Color(204, 0, 0));
+        btnDeleteTable.setColorOver(new java.awt.Color(204, 7, 13));
+        btnDeleteTable.setFont(new java.awt.Font("Poppins SemiBold", 1, 14)); // NOI18N
+        btnDeleteTable.setPreferredSize(new java.awt.Dimension(85, 30));
+        btnDeleteTable.setRadius(8);
+        btnDeleteTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteTableActionPerformed(evt);
+            }
+        });
 
         panel3.setBackground(new java.awt.Color(245, 245, 245));
         panel3.setRoundBottomLeft(8);
@@ -372,33 +542,35 @@ public class TablePage extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         jLabel4.setText("ID Meja");
 
-        jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         jLabel10.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
-        jLabel10.setText("Nomor Meja");
-
-        jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel10.setText("Nama Meja");
 
         jLabel12.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         jLabel12.setText("Kapasitas Meja");
 
-        jComboBox1.setFont(new java.awt.Font("Poppins Medium", 0, 13)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "4", "8", "12", " " }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        inKapasitasMejaCombo.setFont(new java.awt.Font("Poppins Medium", 0, 13)); // NOI18N
+        inKapasitasMejaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "4", "8", "12", " " }));
+        inKapasitasMejaCombo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel13.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         jLabel13.setText("Lokasi Meja");
 
-        jComboBox2.setFont(new java.awt.Font("Poppins Medium", 0, 13)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lantai 1", "Lantai 2", "Area luar", "Area VIP" }));
-        jComboBox2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        inLokasiMejaCombo.setFont(new java.awt.Font("Poppins Medium", 0, 13)); // NOI18N
+        inLokasiMejaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lantai 1", "Lantai 2", "Area luar", "Area VIP" }));
+        inLokasiMejaCombo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel14.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         jLabel14.setText("Status Meja");
 
-        jComboBox3.setFont(new java.awt.Font("Poppins Medium", 0, 13)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tersedia", "Terpakai" }));
-        jComboBox3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        inStatusMejaCombo.setFont(new java.awt.Font("Poppins Medium", 0, 13)); // NOI18N
+        inStatusMejaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "0" }));
+        inStatusMejaCombo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        inIdMeja.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        inIdMeja.setPreferredSize(new java.awt.Dimension(64, 30));
+
+        inNamaMeja.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        inNamaMeja.setPreferredSize(new java.awt.Dimension(64, 30));
 
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
         panel2.setLayout(panel2Layout);
@@ -409,23 +581,23 @@ public class TablePage extends javax.swing.JFrame {
                     .addGroup(panel2Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inStatusMejaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inLokasiMejaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(panel2Layout.createSequentialGroup()
-                                    .addComponent(AddTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnAddTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(30, 30, 30)
-                                    .addComponent(AddTable1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(30, 30, 30)
-                                    .addComponent(AddTable2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnDeleteTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(inKapasitasMejaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel12)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inIdMeja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(inNamaMeja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(panel2Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -438,29 +610,29 @@ public class TablePage extends javax.swing.JFrame {
                 .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jLabel4)
-                .addGap(3, 3, 3)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inIdMeja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel10)
-                .addGap(3, 3, 3)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inNamaMeja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel12)
                 .addGap(3, 3, 3)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inKapasitasMejaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel13)
                 .addGap(3, 3, 3)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inLokasiMejaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel14)
                 .addGap(3, 3, 3)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                .addComponent(inStatusMejaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AddTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AddTable1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AddTable2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAddTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeleteTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51))
         );
 
@@ -486,7 +658,7 @@ public class TablePage extends javax.swing.JFrame {
                 .addGroup(bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelLeftOrderPage, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgOrderPageLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addGroup(bgOrderPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -543,19 +715,38 @@ public class TablePage extends javax.swing.JFrame {
     }//GEN-LAST:event_OrderPageBtnActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-       LoginPage loginPage = new LoginPage(); 
-       loginPage.setLocationRelativeTo(null);
-       loginPage.setVisible(true); 
-       dispose();
+        LoginPage loginPage = new LoginPage();
+        loginPage.setLocationRelativeTo(null);
+        loginPage.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void TablePageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TablePageBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TablePageBtnActionPerformed
 
-    private void AddTable1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddTable1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AddTable1ActionPerformed
+    private void btnUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTableActionPerformed
+        updateDataMeja();
+    }//GEN-LAST:event_btnUpdateTableActionPerformed
+
+    private void btnAddTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTableActionPerformed
+        addDataMeja();
+    }//GEN-LAST:event_btnAddTableActionPerformed
+
+    private void btnDeleteTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTableActionPerformed
+        deleteDataMeja();
+    }//GEN-LAST:event_btnDeleteTableActionPerformed
+
+    private void jTableMejaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMejaMouseClicked
+        int selectedRow = jTableMeja.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jTableMeja.getModel();
+
+        inIdMeja.setText(model.getValueAt(selectedRow, 0).toString());
+        inNamaMeja.setText(model.getValueAt(selectedRow, 1).toString());
+        inKapasitasMejaCombo.setSelectedItem(model.getValueAt(selectedRow, 2).toString());
+        inLokasiMejaCombo.setSelectedItem(model.getValueAt(selectedRow, 3).toString());
+        inStatusMejaCombo.setSelectedItem(model.getValueAt(selectedRow, 4).toString());
+    }//GEN-LAST:event_jTableMejaMouseClicked
 
     public static void main(String args[]) {
 
@@ -565,9 +756,6 @@ public class TablePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private custom.button AddTable;
-    private custom.button AddTable1;
-    private custom.button AddTable2;
     private custom.button HomePageBtn;
     private javax.swing.JLabel LogoTop;
     private custom.button ManagePageBtn;
@@ -576,13 +764,17 @@ public class TablePage extends javax.swing.JFrame {
     private javax.swing.JLabel Tanggal;
     private javax.swing.JLabel Waktu;
     private javax.swing.JPanel bgOrderPage;
+    private custom.button btnAddTable;
+    private custom.button btnDeleteTable;
     private custom.button btnLogout;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private custom.button btnUpdateTable;
+    private javax.swing.JTextField inIdMeja;
+    private javax.swing.JComboBox<String> inKapasitasMejaCombo;
+    private javax.swing.JComboBox<String> inLokasiMejaCombo;
+    private javax.swing.JTextField inNamaMeja;
+    private javax.swing.JComboBox<String> inStatusMejaCombo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -593,9 +785,8 @@ public class TablePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableMeja;
     private custom.panel panel1;
     private custom.panel panel2;
     private custom.panel panel3;

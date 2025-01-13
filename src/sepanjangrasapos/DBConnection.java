@@ -11,12 +11,3 @@ public class DBConnection {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }
-  
-    
- //   public static ResultSet getStaffData() throws Exception { 
-  //      Connection conn = getConnection(); 
-  //      Statement stmt = conn.createStatement(); 
-  //      String query = "SELECT * FROM tb_staff"; 
-   //     return stmt.executeQuery(query); 
-    //}
-//}

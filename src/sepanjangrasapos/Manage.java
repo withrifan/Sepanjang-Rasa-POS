@@ -461,7 +461,7 @@ public class Manage extends javax.swing.JFrame {
         simpanButton.setBackground(new java.awt.Color(91, 121, 255));
         simpanButton.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
         simpanButton.setForeground(new java.awt.Color(255, 255, 255));
-        simpanButton.setText("Save");
+        simpanButton.setText("Add");
         simpanButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 simpanButtonActionPerformed(evt);
