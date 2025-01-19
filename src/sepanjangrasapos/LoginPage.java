@@ -1,7 +1,5 @@
 package sepanjangrasapos;
 
-import java.awt.Image;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,7 +34,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login - Sepanjang Rasa");
-        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/components/iconSR.jpg")).getImage());
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/components/iconSR.png")).getImage());
         setPreferredSize(new java.awt.Dimension(750, 450));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -169,8 +167,8 @@ public class LoginPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        String email = emailInput.getText().trim(); // Ambil input email
-        String password = String.valueOf(passwordInput.getPassword()).trim(); // Ambil input password
+        String email = emailInput.getText().trim();
+        String password = String.valueOf(passwordInput.getPassword()).trim();
 
         if (email.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Email dan Password tidak boleh kosong!", "Login Gagal", JOptionPane.WARNING_MESSAGE);
@@ -186,15 +184,13 @@ public class LoginPage extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                String idStaff = rs.getString("id_staff"); // Ambil ID staff yang berhasil login
-                String namaStaff = rs.getString("nama");   // Ambil nama staff
+                String idStaff = rs.getString("id_staff");
+                String namaStaff = rs.getString("nama");
 
-                // Simpan ID staff ke session
                 Session.setLoggedInStaffID(idStaff);
 
                 JOptionPane.showMessageDialog(this, "Login berhasil! Selamat datang, " + namaStaff, "Login Berhasil", JOptionPane.INFORMATION_MESSAGE);
 
-                // Berpindah ke halaman berikutnya (HomePage)
                 HomePage homePage = new HomePage();
                 homePage.setVisible(true);
                 dispose();
@@ -246,10 +242,10 @@ public class LoginPage extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                LoginPage loginPage = new LoginPage();// Membuat instance LoginPage
-                loginPage.pack();// Menyusun ukuran jendela agar sesuai dengan komponen yang ada
-                loginPage.setLocationRelativeTo(null);// Menempatkan jendela di tengah layar
-                loginPage.setVisible(true);// Menampilkan jendela
+                LoginPage loginPage = new LoginPage();
+                loginPage.pack();
+                loginPage.setLocationRelativeTo(null);
+                loginPage.setVisible(true);
             }
         });
     }
