@@ -1,9 +1,10 @@
 package sepanjangrasapos;
 
 public class Session {
+
     private static String loggedInStaffID;
     private static String loggedInStaffName;
-    private static String loggedInStaffRole;
+    private static String loggedInStaffJabatan; // Mengganti 'role' dengan 'jabatan'
 
     public static String getLoggedInStaffID() {
         return loggedInStaffID;
@@ -21,17 +22,17 @@ public class Session {
         loggedInStaffName = name;
     }
 
-    public static String getLoggedInStaffRole() {
-        return loggedInStaffRole;
+    public static String getLoggedInStaffJabatan() {
+        return loggedInStaffJabatan;
     }
 
-    public static void setLoggedInStaffRole(String role) {
-        loggedInStaffRole = role;
+    public static void setLoggedInStaffJabatan(String jabatan) {
+        loggedInStaffJabatan = jabatan;
     }
 
     public static void clearSession() {
         loggedInStaffID = null;
         loggedInStaffName = null;
-        loggedInStaffRole = null;
+        loggedInStaffJabatan = null;
     }
 }

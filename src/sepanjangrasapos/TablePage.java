@@ -65,8 +65,7 @@ public class TablePage extends javax.swing.JFrame {
                     rs.getString("nama"),
                     rs.getString("kapasitas"),
                     rs.getString("lokasi"),
-                    rs.getString("status"),
-                });
+                    rs.getString("status"),});
             }
             rs.close();
             pst.close();
@@ -113,7 +112,7 @@ public class TablePage extends javax.swing.JFrame {
             Connection conn = DBConnection.getConnection();
             PreparedStatement pst = conn.prepareStatement(query);
 
-            pst.setString(1, inNamaMeja.getText());    
+            pst.setString(1, inNamaMeja.getText());
             pst.setString(2, inKapasitasMejaCombo.getSelectedItem().toString());
             pst.setString(3, inLokasiMejaCombo.getSelectedItem().toString());
             pst.setString(4, inStatusMejaCombo.getSelectedItem().toString());
@@ -709,11 +708,11 @@ public class TablePage extends javax.swing.JFrame {
     }//GEN-LAST:event_mngStaffPagebtnActionPerformed
 
     private void ManagePageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagePageBtnActionPerformed
-        String role = Session.getLoggedInStaffRole();
-        if ("Admin".equalsIgnoreCase(role) || "Manager".equalsIgnoreCase(role)) {
+        String jabatan = Session.getLoggedInStaffJabatan();
+        if ("Admin".equalsIgnoreCase(jabatan) || "Manager".equalsIgnoreCase(jabatan)) {
             new Manage().setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(TablePage.this, "Anda tidak memiliki akses ke management staff. Hanya Admin dan Manager yang meiliki akses!", "Akses Ditolak", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(TablePage.this, "Anda tidak memiliki akses ke management staff. Hanya Admin dan Manager yang memiliki akses!", "Akses Ditolak", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_ManagePageBtnActionPerformed
 
