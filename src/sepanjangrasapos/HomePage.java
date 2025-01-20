@@ -2906,8 +2906,12 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_HomePageBtnActionPerformed
 
     private void ManagePageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagePageBtnActionPerformed
-        new Manage().setVisible(true);
-        dispose();
+        String role = Session.getLoggedInStaffRole();
+        if ("Admin".equalsIgnoreCase(role) || "Manager".equalsIgnoreCase(role)) {
+            new Manage().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(HomePage.this, "Anda tidak memiliki akses ke management staff. Hanya Admin dan Manager yang meiliki akses!", "Akses Ditolak", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_ManagePageBtnActionPerformed
 
     public static void main(String args[]) {
