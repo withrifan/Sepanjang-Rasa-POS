@@ -709,8 +709,12 @@ public class TablePage extends javax.swing.JFrame {
     }//GEN-LAST:event_mngStaffPagebtnActionPerformed
 
     private void ManagePageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagePageBtnActionPerformed
-        new Manage().setVisible(true);
-        dispose();
+        String role = Session.getLoggedInStaffRole();
+        if ("Admin".equalsIgnoreCase(role) || "Manager".equalsIgnoreCase(role)) {
+            new Manage().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(TablePage.this, "Anda tidak memiliki akses ke management staff. Hanya Admin dan Manager yang meiliki akses!", "Akses Ditolak", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_ManagePageBtnActionPerformed
 
     private void HomePageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomePageBtnActionPerformed

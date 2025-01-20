@@ -898,7 +898,6 @@ public class Manage extends javax.swing.JFrame {
     private javax.swing.JTextField nama_Field;
     private javax.swing.JLabel nama_Label;
     private custom.panel panel1;
-    private custom.panel panel2;
     private custom.panel panel3;
     private javax.swing.JPanel panelLeftOrderPage;
     private javax.swing.JPanel panelTopOrderPage;
